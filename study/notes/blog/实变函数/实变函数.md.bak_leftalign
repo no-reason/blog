@@ -1,4 +1,5 @@
 # 实变函数
+
 ## 课程内容概览
 - 集合论基础
 - 测度论
@@ -179,7 +180,7 @@ $$G_{\delta}集合F_{\sigma }集$$
 $$G_{\delta}集表示可数个开集的交集,F_{\sigma}表示可数个闭集的并集$$
 
 ## Sigma-代数
-$\sigma -代数(\sigma域),设\Gamma是集族,若\forall A\in \Sigma ,若集族\Sigma满足:\\
+$$\sigma -代数(\sigma域),设\Gamma是集族,若\forall A\in \Sigma ,若集族\Sigma满足:\\
 \emptyset \in \Sigma \\
 A\in \Sigma \implies A^c \in \Sigma \\
 A_i\in \Sigma \implies \bigcup_{i=1}^{\infty}A_i\in \Sigma \\
@@ -197,7 +198,7 @@ s.t. F是\sigma -代数\\
 \therefore A^c\in F_{\alpha}\\
 则\Gamma (\Sigma)一定是\Sigma -代数\\
 \\
-则上面构造出的代数就称为Borel代数\\$
+则上面构造出的代数就称为Borel代数\\$$
 
 
 ### Cantor三分集
@@ -283,7 +284,7 @@ $$
 
 点和集合间的距离
 
-$d(x_0,F)=\inf_{y\in F}\{d(x_0,y)\}\\
+$$d(x_0,F)=\inf_{y\in F}\{d(x_0,y)\}\\
 若x_0\in \overline{F},则d(x_0,F)=0\\$$
 
 命题：F是闭集,$$\exists y\in F,s.t. d(x_0,F)=(x_0-y)=d(x_0,y)\\
@@ -293,7 +294,7 @@ d(x_0,x_n)<\frac{1}{n}+d(x_0,F)\\
 s.t. (x_{n_k}\to y)\\
 d(x_0,y)\leq d(x_0,x_{n_k})+d(x_{n_k},y)\\
 其实已经证完了\\
-$
+$$
 # 3.25 轩轩笔记
 
 ## 12. 距离函数的连续性证明
@@ -360,7 +361,7 @@ $
 ## 开集的体积
 
 R^n区间(矩体)
-$
+$$
 G\subset R^n\\
 G=\cup _{k=1}^{\infty} J_k\\
 J_k是左开右闭的两两不交的矩体\\
@@ -390,7 +391,7 @@ F_k\subset J_k为闭集\\
 \exists M_N\\
 s.t. \cup_{j=1}^{M_N}G_j\supset\cup_{k=1}^{N}F_k\\
 因此\cup_{k=1}^{N}(|J_k|-\frac{\epsilon}{2^{j+1}})\leq |\cup_{k=1}^{N}F_k|\leq |\cup _{j=1}^{M_N}G_j|\leq \sum_{j=1}^{M_N}(|I_j|+\frac{\epsilon}{2^{j+1}})\\
-$
+$$
 ### 开集体积定义的良定义性（完整证明）
 
 设矩体统一取左开右闭形式
@@ -637,14 +638,14 @@ $$
 
 
 
-$E\subseteq R^n(\lambda >0)\\
+$$E\subseteq R^n(\lambda >0)\\
 \lambda E=\{\lambda x,x\in E\}\\
-|\lambda I|=\lambda ^n|I|\\$
+|\lambda I|=\lambda ^n|I|\\$$
 
 ## 从开集到一般
 
 外侧度
-$m^{*}(E)=\inf{|G|,G\supset E,G开}\\
+$$m^{*}(E)=\inf{|G|,G\supset E,G开}\\
 e.g. m^{*}(\{x_0\})=0,m^{*}(Q)=0\\
 下面计算Cantor集的外测度\\
 m^*(C)=0\\\\
@@ -684,10 +685,10 @@ m^*(B_k)=|B_k|<\frac{1}{2^{k+1}}\\
 令G=\cup_{k=1}^{\infty}B_k仍未开集\\
 则G\supset Q\cap (0,1)\\
 m^*(G)=|G|\leq \frac{1}{2^2}+\cdots=\frac{1}{2}\\
-$
+$$
 ## (不可测集)
 
-$\exists集合E_1,E_2\\
+$$\exists集合E_1,E_2\\
 E_1\cap E_2=\emptyset\\
 但m^*(E_1\cup E_2)\ne m^*(E_1)+m^*(E_2)\\
 \forall x\in (0,1),令R_{x}=\{y\in (0,1):y-x\in Q\}
@@ -702,7 +703,7 @@ S\subset (0,1)\\
 令r_k\in (-1,1)为有理数\\
 S_k=S+r_k\\
 则(0,1)\subset \cup_{k=1}^{+\infty}S_k\\
-$
+$$
 # 证明：Vitali 集不满足外测度的可数可加性
 
 ## 1. 构造准备
@@ -753,7 +754,7 @@ $$m^*\left(\bigcup_{k=1}^{\infty} V_k\right) = \sum_{k=1}^{\infty} m^*(V_k) = \s
 $$m^*\left(\bigcup_{k=1}^{\infty} V_k\right) \neq \sum_{k=1}^{\infty} m^*(V_k)$$
 
 ## Caratheodory 条件
-$m^*(T)=m^*(T\cap E)+m^*(T\cap E^c)\,E\subseteq R^n,\forall T\subseteq R^n\\
+$$m^*(T)=m^*(T\cap E)+m^*(T\cap E^c)\,E\subseteq R^n,\forall T\subseteq R^n\\
 若E满足Caratheodory条件,则E是可测集\\
 记m(E)=m^*(E)\\
 称之为E的Lebesgue测度\\
@@ -763,7 +764,7 @@ $m^*(T)=m^*(T\cap E)+m^*(T\cap E^c)\,E\subseteq R^n,\forall T\subseteq R^n\\
 对E_1,取T=E_1\cup E_2\\
 则T\cap E_1=E_1,T\cap E_1^c=E_2\\
 故有m^*(T)\ne m^*(E_1)+m^*(E_2)\\
-故知E_1不可测\\$
+故知E_1不可测\\$$
 
 ## 哪些集合可测？
 
@@ -825,12 +826,12 @@ $$m^*(T) = m^*(T \cap E) + m^*(T \cap E^c)$$
 
 e.g. E可测一定可以推导出$E^c$可测
 0测集天然满足Caratheodory条件,0测集一定可测
-$prove:
+$$prove:
 m^*(T)=m^*(T\cap E)+m^*(T\cap E^c)\\
 一方面显然有:\\
 m^*(T)\leq m^*(T\cap E)+m^*(T\cap E^c)\\
 另一方面RHS\leq m^*(E)+m^*(T)=m^*(T)\\
-$
+$$
 ### 证明：若 $E_1, E_2$ 可测，则 $E_1 \cup E_2$ 与 $E_1 \cap E_2$ 可测
 
 **前置知识（Carathéodory 条件）：**
@@ -903,22 +904,22 @@ $$E_1 \cap E_2 = (E_1^c \cup E_2^c)^c$$
 证毕。
 
 Property:
-$E_1,\cdots 可测（可数个可测集）\\
+$$E_1,\cdots 可测（可数个可测集）\\
 \cup_{i=1}^{\infty} E_i可测\\
 若A_1,\cdots ,A_n互不相交\\
 则\forall i,\exists E_i\supset A_i\\
 s.t. E_i\cap (\cup_{i\ne i_0} A_i)=\emptyset\\
 则m^*(T\cap \cup_{i=1}^n A_i)=\sum_{i=1}^n m^*(T\cap A_i)\\
-$
+$$
 证明:
-$m^*(T)=m^*(T\cap _{i=1}^{k}E_k)+m^*(T\cap (\cup_{i=1}^{k}E_i)^c)\\
+$$m^*(T)=m^*(T\cap _{i=1}^{k}E_k)+m^*(T\cap (\cup_{i=1}^{k}E_i)^c)\\
 \cup_{i=1}^{k}E_i可测\\
 设E_i两两不交\\
 =\sum_{i=1}^{k}m^*(T\cap E_i)+m^*(T\cap (\cup_{i=1}^{k}E_i)^c)
 \\
 \geq \sum_{i=1}^{k}m^*(T\cap E_i)+m^*(T\cap E^c)\\
 \geq \sum_{i=1}^{\infty}m^*(T\cap E_i)+m^*(T\cap E^c)\\
-\geq m^*(T\cap \cup_{i=1}^{\infty} E_i)+m^*(T\cap E^c)$
+\geq m^*(T\cap \cup_{i=1}^{\infty} E_i)+m^*(T\cap E^c)$$
 
 
 
@@ -1010,16 +1011,16 @@ $$m^*(T\cap \cup_{i=1}^{\infty} E_i)=\sum_{i=1}^{\infty} m^*(T\cap E_i)$$
 
 综上可知可测集全体构成\sigma 代数
 可测集的上下极限仍然可测
-若$E_1\subset E_2\subset \cdots \subset \cdots 均为可测集列\\
-则m(\lim_{i\to \infty}E_i)=\lim_{i\to \infty}m(E_i) \\$
+若$$E_1\subset E_2\subset \cdots \subset \cdots 均为可测集列\\
+则m(\lim_{i\to \infty}E_i)=\lim_{i\to \infty}m(E_i) \\$$
 
 令$S_1=E_1,S_2=E_2/E_1,\cdots$
 则
-$m(\cup_{i=1}^{\infty}S_i)=\lim_{i\to \infty}m(S_i)=\lim_{k\to \infty}\sum _{i=1}^{k}m(S_i)\\
-$
-$E_1\supset E_2\supset \cdots E_n\\
+$$m(\cup_{i=1}^{\infty}S_i)=\lim_{i\to \infty}m(S_i)=\lim_{k\to \infty}\sum _{i=1}^{k}m(S_i)\\
+$$
+$$E_1\supset E_2\supset \cdots E_n\\
 为可测下降集合列,且存在k_0,s.t. m(E_{k_0})<\infty\\
-m(\lim_{k\to \infty}E_k)=\lim_{k\to \infty}m(E_k)\\$
+m(\lim_{k\to \infty}E_k)=\lim_{k\to \infty}m(E_k)\\$$
 
 
 
@@ -1086,7 +1087,7 @@ $$m(E) = \lim_{n\to \infty} m(E_n)$$
 th:Borel集都可测
 证明:
 
-$我们只需证明所有的开集都可测\\
+$$我们只需证明所有的开集都可测\\
 G=\cup_{i=1}^{\infty}I_i\\
 I_i是两两不交的左开右闭矩体的并\\
 只需证明矩体可测\\
@@ -1097,18 +1098,18 @@ m^*(T)\leq m^*(T\cap I)+m^*(T\cap I^c)\\
 \leq m^*(T\cap I)+m^*(T\cap \partial I)+m^*(T\cap \overline{I}^c)\\
 =m^*(T\cap I)+m^*(T\cap \overline{I}^c)\\
 =m^*(T\cap I)+m^*(T\cap (I\cup \overline{I}^c))\\
-\leq m^*(T)\\$
+\leq m^*(T)\\$$
 
 ### 可测集不都是Borel集
-$
+$$
 \begin{aligned}
 &该问题通常有两种解决方案:\\
 &法一：证明可测集的势不等于Borel集的势\\
 &法二:考虑用Cantor函数直接进行反例构造\\
 \end{aligned}
-$
+$$
 ### 小结论
-$\forall E\subset R^n可测\\
+$$\forall E\subset R^n可测\\
 \forall \epsilon >0\\
 \exists G是开集\\
 s.t. m(G/E)<\epsilon \\
@@ -1118,11 +1119,11 @@ s.t. m(G/E)<\epsilon \\
 \forall E\subset R^n 可测,\\
 \forall \epsilon >0\\
 \exists F\subset E为闭集\\
-s.t. m(E/F)<\epsilon \\$
+s.t. m(E/F)<\epsilon \\$$
 
 
 证明:
-$
+$$
 若m(E)<+\infty\\
 由定义,\forall \epsilon >0\\
 \exists G\supset E,\\
@@ -1141,26 +1142,26 @@ m(G_i)<m(E_i)+\frac{\epsilon }{2^i}\\
 G_i\supset E_i\\
 令G=\cup_{i=1}^{+\infty}m(G_i)\\
 \leq \sum_{i=1}^{+\infty} (m(E_i)+\frac{\epsilon}{2^i})=mE+\epsilon\\
-$
+$$
 ### 下面条件等价
-$
+$$
 1.E可测\\
 2.\exists 零测集e,G_{\delta }集G,s.t. E\cup e=G\\
 3.\exists 零测集N,F_{\sigma }集F,s.t. F\cup N=E\\
 4.\exists G_{\delta }集G\supset E,F_{\sigma }集F\supset E,s.t. m(G/F)=0\\
 \\
-$
+$$
 证明:
-$
+$$
 1\to 2:\\
 由上一个小标题处的结论可知:\\
 \forall k\exists G_ k 为开集\\
 s.t. G_k\supset E,m(G_k/E)<\frac{1}{k}\\
 则令G=\cup_{k=1}^{\infty}G_k即可\\
-$
+$$
 ### 定理: m(A\times B)= m(A)m(B)
 
-$若A,B有界,可测\\
+$$若A,B有界,可测\\
 1.若A,B为矩体,\\
 则A\times B也是矩体\\
 则显然是吧\\
@@ -1184,13 +1185,16 @@ A_i互不相交有界可测\\
 B_i互不相交有界可测\\
 A\times B=\cup_{i,j} A_i\times B_j\\
 m(A\times B)=\sum_{i,j}m(A_i)m(B_j)\\
-=\sum_{i=1}^{+\infty}m(A_i)\times \sum_{j=1}^{+\infty}m(B_j)\\$
+=\sum_{i=1}^{+\infty}m(A_i)\times \sum_{j=1}^{+\infty}m(B_j)\\$$
 
 
 ## 截口
-$
+$$
 对于E\subseteq R^{p+q}\\
-定义E_{x_0}=\{y\in R^{q},(x_0,y_0)\in E\}$
+定义E_{x_0}=\{y\in R^{q},(x_0,y_0)\in E\}$$
+
+
+
 
 
 

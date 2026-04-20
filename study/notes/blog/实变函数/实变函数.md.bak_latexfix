@@ -1,4 +1,5 @@
 # 实变函数
+
 ## 课程内容概览
 - 集合论基础
 - 测度论
@@ -174,9 +175,9 @@ G=\bigcup_{i=1}^{\infty}I_i,
 $$
 
 
-$$G_{\delta}集合F_{\sigma }集$$
+$G_{\delta}集合F_{\sigma }集$
 
-$$G_{\delta}集表示可数个开集的交集,F_{\sigma}表示可数个闭集的并集$$
+$G_{\delta}集表示可数个开集的交集,F_{\sigma}表示可数个闭集的并集$
 
 ## Sigma-代数
 $\sigma -代数(\sigma域),设\Gamma是集族,若\forall A\in \Sigma ,若集族\Sigma满足:\\
@@ -284,9 +285,9 @@ $$
 点和集合间的距离
 
 $d(x_0,F)=\inf_{y\in F}\{d(x_0,y)\}\\
-若x_0\in \overline{F},则d(x_0,F)=0\\$$
+若x_0\in \overline{F},则d(x_0,F)=0\\$
 
-命题：F是闭集,$$\exists y\in F,s.t. d(x_0,F)=(x_0-y)=d(x_0,y)\\
+命题：F是闭集,$\exists y\in F,s.t. d(x_0,F)=(x_0-y)=d(x_0,y)\\
 证明:\forall n,\exists x_n\in F\\
 d(x_0,x_n)<\frac{1}{n}+d(x_0,F)\\
 又由\{x_n\}有界,\exists 聚点y\\
@@ -294,6 +295,8 @@ s.t. (x_{n_k}\to y)\\
 d(x_0,y)\leq d(x_0,x_{n_k})+d(x_{n_k},y)\\
 其实已经证完了\\
 $
+
+
 # 3.25 轩轩笔记
 
 ## 12. 距离函数的连续性证明
@@ -391,6 +394,7 @@ F_k\subset J_k为闭集\\
 s.t. \cup_{j=1}^{M_N}G_j\supset\cup_{k=1}^{N}F_k\\
 因此\cup_{k=1}^{N}(|J_k|-\frac{\epsilon}{2^{j+1}})\leq |\cup_{k=1}^{N}F_k|\leq |\cup _{j=1}^{M_N}G_j|\leq \sum_{j=1}^{M_N}(|I_j|+\frac{\epsilon}{2^{j+1}})\\
 $
+
 ### 开集体积定义的良定义性（完整证明）
 
 设矩体统一取左开右闭形式
@@ -685,6 +689,7 @@ m^*(B_k)=|B_k|<\frac{1}{2^{k+1}}\\
 则G\supset Q\cap (0,1)\\
 m^*(G)=|G|\leq \frac{1}{2^2}+\cdots=\frac{1}{2}\\
 $
+
 ## (不可测集)
 
 $\exists集合E_1,E_2\\
@@ -831,6 +836,7 @@ m^*(T)=m^*(T\cap E)+m^*(T\cap E^c)\\
 m^*(T)\leq m^*(T\cap E)+m^*(T\cap E^c)\\
 另一方面RHS\leq m^*(E)+m^*(T)=m^*(T)\\
 $
+
 ### 证明：若 $E_1, E_2$ 可测，则 $E_1 \cup E_2$ 与 $E_1 \cap E_2$ 可测
 
 **前置知识（Carathéodory 条件）：**
@@ -910,6 +916,7 @@ $E_1,\cdots 可测（可数个可测集）\\
 s.t. E_i\cap (\cup_{i\ne i_0} A_i)=\emptyset\\
 则m^*(T\cap \cup_{i=1}^n A_i)=\sum_{i=1}^n m^*(T\cap A_i)\\
 $
+
 证明:
 $m^*(T)=m^*(T\cap _{i=1}^{k}E_k)+m^*(T\cap (\cup_{i=1}^{k}E_i)^c)\\
 \cup_{i=1}^{k}E_i可测\\
@@ -938,9 +945,9 @@ $m^*(T)=m^*(T\cap _{i=1}^{k}E_k)+m^*(T\cap (\cup_{i=1}^{k}E_i)^c)\\
 **第一步：“正交化”构造互不相交的可测集**
 为了方便计算，我们构造一个新集合序列 $\{A_i\}$，使得它们互不相交，且它们的并集就是 $E$：
 令 $A_1 = E_1$
-令 $A_2 = E_2 \setminus E_1 = E_2 \cap E_1^c$
+$A_2 = E_2 \setminus E_1 = E_2 \cap E_1^c$
 $\dots$
-令 $A_n = E_n \setminus \bigcup_{i=1}^{n-1} E_i = E_n \cap E_{n-1}^c \cap \dots \cap E_1^c$
+$A_n = E_n \setminus \bigcup_{i=1}^{n-1} E_i = E_n \cap E_{n-1}^c \cap \dots \cap E_1^c$
 
 因为有限个可测集的交和补仍是可测集，所以**所有的 $A_n$ 都是可测集**。
 并且显然有：$\bigcup_{i=1}^{\infty} A_i = \bigcup_{i=1}^{\infty} E_i = E$，且 $A_i \cap A_j = \emptyset \ (i \ne j)$。
@@ -1002,13 +1009,13 @@ $$m^*(T) \ge m^*(T \cap E) + m^*(T \cap E^c)$$
 副产品:
 
 1.若E_i两两不交,可测.则
-$$m^*(T\cap \cup_{i=1}^{\infty} E_i)=\sum_{i=1}^{\infty} m^*(T\cap E_i)$$
+$m^*(T\cap \cup_{i=1}^{\infty} E_i)=\sum_{i=1}^{\infty} m^*(T\cap E_i)$
 （直到这里我们才证明了可测集的外侧度具有分离可数可加性）
 特别地,取T=R^n
 则$m^*(\cup_{i=1}^{\infty} E_i)=\sum_{i=1}^{\infty} m^*(T\cap E_i)$
 
 
-综上可知可测集全体构成\sigma 代数
+综上可知可测集全体构成\simga 代数
 可测集的上下极限仍然可测
 若$E_1\subset E_2\subset \cdots \subset \cdots 均为可测集列\\
 则m(\lim_{i\to \infty}E_i)=\lim_{i\to \infty}m(E_i) \\$
@@ -1017,6 +1024,8 @@ $$m^*(T\cap \cup_{i=1}^{\infty} E_i)=\sum_{i=1}^{\infty} m^*(T\cap E_i)$$
 则
 $m(\cup_{i=1}^{\infty}S_i)=\lim_{i\to \infty}m(S_i)=\lim_{k\to \infty}\sum _{i=1}^{k}m(S_i)\\
 $
+
+
 $E_1\supset E_2\supset \cdots E_n\\
 为可测下降集合列,且存在k_0,s.t. m(E_{k_0})<\infty\\
 m(\lim_{k\to \infty}E_k)=\lim_{k\to \infty}m(E_k)\\$
@@ -1107,6 +1116,7 @@ $
 &法二:考虑用Cantor函数直接进行反例构造\\
 \end{aligned}
 $
+
 ### 小结论
 $\forall E\subset R^n可测\\
 \forall \epsilon >0\\
@@ -1142,7 +1152,10 @@ G_i\supset E_i\\
 令G=\cup_{i=1}^{+\infty}m(G_i)\\
 \leq \sum_{i=1}^{+\infty} (m(E_i)+\frac{\epsilon}{2^i})=mE+\epsilon\\
 $
+
+
 ### 下面条件等价
+
 $
 1.E可测\\
 2.\exists 零测集e,G_{\delta }集G,s.t. E\cup e=G\\
@@ -1150,6 +1163,8 @@ $
 4.\exists G_{\delta }集G\supset E,F_{\sigma }集F\supset E,s.t. m(G/F)=0\\
 \\
 $
+
+
 证明:
 $
 1\to 2:\\
@@ -1158,6 +1173,8 @@ $
 s.t. G_k\supset E,m(G_k/E)<\frac{1}{k}\\
 则令G=\cup_{k=1}^{\infty}G_k即可\\
 $
+
+
 ### 定理: m(A\times B)= m(A)m(B)
 
 $若A,B有界,可测\\
@@ -1191,6 +1208,9 @@ m(A\times B)=\sum_{i,j}m(A_i)m(B_j)\\
 $
 对于E\subseteq R^{p+q}\\
 定义E_{x_0}=\{y\in R^{q},(x_0,y_0)\in E\}$
+
+
+
 
 
 
