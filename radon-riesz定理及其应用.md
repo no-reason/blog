@@ -95,5 +95,25 @@ $
 &\forall \epsilon >0\\
 &\exists E_{0}测度有限\\
 &s.t. \int _{E/E_{0}}|f(x)|^{p}dx  \leq \epsilon \\ 
+&在E_{0}集合上\\
+&我们仍然首先考虑a.s.收敛的情况\\
+&由Egorov定理可知:\\
+&\exists e\in E_{0}\\
+&s.t. f_{n}(x)一致收敛于f(x)在E_{0}/e上\\
+&故有\lim _{n\to \infty}\int _{E_{0}/e}|f_{n}(x)-f(x)|^{p}dx=\int _{E/e_{0}}\lim_{n\to \infty}|f_{n}(x)-f(x)|^{p}dx\\
+&=0\\
+&下面我们只需估计e和E/E_{0}上|f_{n}(x)-f(x)|^{p}的积分的大小\\
+&记e\cup (E/E_{0})=F\\
+&则我们只需对\int _{F}|f_{n}(x)-f(x)|^{p}dx进行估计\\
+&则由Holder不等式知:\\
+&|f_{n}(x)-f(x)|^{p}\leq 2^{p-1}(|f_{n}(x)|^{p}+|f(x)|^{p})\\
+&而由|f(x)|^{p}积分的绝对连续性\\
+&我们可以对|f(x)|^{p}在F上的积分做出有效的估计\\
+&我们下面只需对|f_{n}(x)|^{p}的积分设法做出估计\\
+&我们考虑利用条件\\
+&\lim_{n\to \infty}\int _{E}|f_{n}(x)|^{p}dx=\int _{E}|f(x)|^{p}dx\\
+&=\lim_{n\to \infty}\int _{E/F}|f_{n}(x)|^{p}dx+\lim_{n\to \infty}\int _{F}|f_{n}(x)|^{p}dx\\
+&而由于|f_{n}(x)|^{p}在E/F上一致收敛于f(x)\\
+&故有上式=\int _{E/F}|f(x)|^{p}dx+\lim_{n\to \infty}\int _{F}|f_{n}(x)|^{p}dx\\
 \end{aligned}
 $
