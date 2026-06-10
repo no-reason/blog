@@ -88,6 +88,12 @@ $
 &若\{f_{n}\}\overset{p}{\to } f时,Radon-Riesz定理仍成立\\
 &\\\\
 &(Egorov定理)\\
-&
+&为了应用Egorov定理进行证明\\
+&我们首先需要对积分集合进行切割\\
+&(Egorov定理只能处理测度有限的情况)\\
+&由f\in L^p可知\\
+&\forall \epsilon >0\\
+&\exists E_{0}测度有限\\
+&s.t. \int _{E/E_{0}}|f(x)|^{p}dx  \leq \epsilon \\ 
 \end{aligned}
 $
