@@ -23,7 +23,7 @@ $
 
 $
 \begin{aligned}
-&我们下面给出基于Fatou引理和Egorov定理的两种证明思路\\
+&我们下面给出基于Fatou引理和Egorov定理,Vitali定理的三种证明思路\\
 &\\\\
 &(Fatou引理)\\
 &我们首先考虑证明f_{n}\overset{a.e.}{\to }f的情况\\
@@ -115,5 +115,26 @@ $
 &=\lim_{n\to \infty}\int _{E/F}|f_{n}(x)|^{p}dx+\lim_{n\to \infty}\int _{F}|f_{n}(x)|^{p}dx\\
 &而由于|f_{n}(x)|^{p}在E/F上一致收敛于f(x)\\
 &故有上式=\int _{E/F}|f(x)|^{p}dx+\lim_{n\to \infty}\int _{F}|f_{n}(x)|^{p}dx\\
+&因此有\\
+&\lim_{n\to \infty}\int _{F}|f_{n}(x)|^{p}dx=\int _{F} |f(x)|^{p}dx\\
+&因此\\
+&我们也就利用Egorov定理证明了Radon-Riesz定理的正确性\\
+&\\\\
+&(Vitali定理):\\
+&与Egorov定理相同,Vitali定理只能处理测度有限的情况\\
+&因此我们首先考虑对原积分集合做截断\\
+&考虑\forall \epsilon >0\\
+&\exists 有限测度集E_{0},s.t. \\
+&\int _{E/E_{0}}|f(x)|^{p}dx \leq \epsilon \\
+&对于E_{0}集合上的积分\\
+&\int _{E_{0}}|f_{n}(x)-f(x)|^{p}dx\\
+&我们首先考虑其是否满足等度绝对连续\\
+&事实上,我们可以证明下述结论:\\
+&\overline{\lim_{n\to \infty}} \int _{A} |f_{n}(x)|^{p}dx\leq \int _{A} |f(x)|^{p}dx\\
+&\forall A\subseteq E\\
+&\int _{E}|f_{n}(x)|^{p}dx=\int _{A}|f_{n}(x)|^{p}dx+\int _{E/A}|f_{n}(x)|^{p}dx\\
+&考虑\overline{\lim_{n\to \infty}}\int _{E}|f_{n}(x)|^{p}dx=\int _{E}|f(x)|^{p}dx\\
+&=\overline{\lim_{n\to \infty}}(\int _{A}|f_{n}(x)|^{p}dx+\int _{E/A}|f_{n}(x)|^{p}dx)\\
+&=\lim_{k\to \infty}sup_{n\geq k}
 \end{aligned}
 $
