@@ -244,6 +244,12 @@ $
 &||f-f_{k}||_{2}^{2}=||f||_{2}^{2}-\sum_{i=1}^{k}c_{i}^2\\
 &\\
 &Bessel不等式:\\
-&
+&\sum c_i^2\leq ||f||_2^2\\
+&Riesz-Fisher定理:\phi_k 是标准正交系\\
+&c_k满足\sum c_k^2<+\infty\\
+&\exists g\in L^2,s.t.<g,\phi_k>=c_k,\forall k\\
+&\\\\
+&完全正交系:\\
+&\{\phi_k\}是标准正交系
 \end{aligned}
 $
