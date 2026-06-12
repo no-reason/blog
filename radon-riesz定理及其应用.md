@@ -2,7 +2,7 @@
 
 ## 前言
 
-本文主要介绍Radon-Riesz定理，并给出几个赛题作为例子
+本文主要介绍Radon-Riesz定理,给出基于Fatou定理的一种证明方法以及基于Egorov定理的两种证明方法,并介绍了第9届和第12届CMC决赛的考题作为例题，分别使用Egorov定理的第一种蒸发和Fatou定理证法解决了这两道赛题。
 
 ## Radon-Riesz定理
 
@@ -167,3 +167,69 @@ $
 \end{aligned}
 $
 
+## 应用
+
+$
+\begin{aligned}
+&该定理在第9届和第12届CMC的决赛中均有考察\\
+&(9决)设E\subset R^{n}为可测集满足m(E)<\infty.\\
+&设f,f_{k}\in L^{2}(E),在E上几乎处处有f_{k}\to f\\
+&且\lim_{k\to \infty}sup\int _{E}|f_{k}(t)|^{2}dt\leq \int _{E}|f(t)|^2dt<\infty\\
+&求证:\\
+&\lim_{k\to \infty}\int _{E}|f_{k}(t)-f(t)|^{2}dt=0\\
+&我们首先考虑Egorov\\
+&\forall \epsilon >0\\
+&\exists m(e)<\epsilon \\
+&s.t. f(x)在E/e上一致收敛于f(x)\\
+&故此时\\
+&\\
+&\int _{E}|f_{k}(t)-f(t)|^{2}dt=\\
+&=\int _{E/e}|f_{k}(t)-f(t)|^{2}dt+\int _{e}|f_{k}(t)-f(t)|^{2}dt\\
+&对于\int _{E/e}|f_{k}(t)-f(t)|^{2}dt而言\\
+&我们可以直接利用一致收敛完成积分与极限换序\\
+&对\int _{e}|f_{k}(t)-f(t)|^{2}dt而言\\
+&我们结合已知:\\
+&\overline{\lim_{k\to \infty}}\int _{E}|f_{k}(t)|^2dt\\
+&=\overline{\lim_{k\to \infty}}(\int _{E/e}|f_{k}(t)|^2dt+\int _{e}|f_{k}(t)|^2dt)\\
+&\leq \overline{\lim_{k\to \infty}}\int _{E/e}|f_{k}(t)|^2dt+\overline{\lim_{k\to \infty}}\int _{e}|f_{k}(t)|^2dt\\
+&而由于在E/e上f_{k}(t)一致收敛于f(t)\\
+&故知=\int _{E/e}|f(t)|^2dt+\overline{\lim_{k\to \infty}}\int _{e}|f_{k}(t)|^2dt\\
+&因此有\overline{\lim_{k\to \infty}}\int _{e}|f_{k}(t)|^{2}dt\leq \int _{e}|f(t)|^{2}dt\\
+&由f(t)的绝对连续性知:\\
+&\int _{e}|f(t)|^2dt\leq \epsilon \\
+&故知\exists K\in N_{+}\\
+&s.t. \\
+&\forall k>K\\
+&\int _{e}|f_{k}(t)|^2dt\leq 2\epsilon \\
+&又由f_{k}(t)一致收敛于f(t)于E/e\\
+&故知\exists K'\in N_{+}\\
+&s.t. \\
+&\forall k>K'\\
+&\int _{E/e}|f_{k}(t)-f(t)|^2dt\leq \epsilon \\
+&故知\forall k>max(K,K')\\
+&\int _{E}|f_{k}(t)-f(t)|^2dt\leq\\
+&\int _{e}2(|f_{k}(t)|^2+|f(t)|^2)dt+\int _{E/e}|f_{k}(t)-f(t)|^2dt\\
+&\leq \epsilon +6\epsilon =7epsilon \\
+&令\epsilon \to 0\\
+&即有\lim_{k\to \infty}\int _{E}|f_{k}(t)-f(t)|^2dt=0\\
+&故原命题得证\\
+&\\\\\\\\
+&(12决)设\{f_{n}(x)\}_{n\geq 1}是R上可测函数列,\\
+&f_{n}^2,f^{2}\in L(R)(\forall n\geq 1)\\
+&且对L-a.e. x\in R,\lim_{n\to \infty}f_{n}(x)=f(x)\\
+&若\\
+&\lim_{n\to \infty} \int _{R}|f_{n}(x)|^2dm=\int _{R}|f(x)|^2dm\\
+&\\
+&则\lim_{n\to \infty}\int _{R}|f_{n}(x)-f(x)|^2dm=0\\
+&我们考虑使用Fatou法来证明该命题\\
+&\\
+&g_{n}(t)=2(|f_{n}(t)|^2+|f(t)|^2)-|f_{n}(t)-f(t)|^2\\
+&则对g_{n}(t)使用Fatou引理有:\\
+&\lim inf \int g_{n}(t)\geq \int \lim inf g_{n}(t)\\
+&RHS=4\int _{R}|f(t)|^2dt\\
+&LHS=4\int _{R}|f(t)|^2dt-\overline{\lim_{n\to \infty}}\int _{R}|f_{n}(t)-f(t)|^2dt\\
+&\Rightarrow \\
+&\overline{\lim_{n\to \infty}}\int _{R}|f_{n}(t)-f(t)|^2dt\leq 0\\
+&故知原命题成立\\
+\end{aligned}
+$
