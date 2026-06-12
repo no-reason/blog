@@ -23,7 +23,7 @@ $
 
 $
 \begin{aligned}
-&我们下面给出基于Fatou引理和Egorov定理,Vitali定理的三种证明思路\\
+&我们下面给出基于Fatou引理和Egorov定理的共三种证明思路\\
 &\\\\
 &(Fatou引理)\\
 &我们首先考虑证明f_{n}\overset{a.e.}{\to }f的情况\\
@@ -87,7 +87,7 @@ $
 &故由上述对a.s. 收敛情况下的套路可知 \\
 &若\{f_{n}\}\overset{p}{\to } f时,Radon-Riesz定理仍成立\\
 &\\\\
-&(Egorov定理)\\
+&(Egorov定理证法1)\\
 &为了应用Egorov定理进行证明\\
 &我们首先需要对积分集合进行切割\\
 &(Egorov定理只能处理测度有限的情况)\\
@@ -120,15 +120,24 @@ $
 &因此\\
 &我们也就利用Egorov定理证明了Radon-Riesz定理的正确性\\
 &\\\\
-&(Vitali定理):\\
-&与Egorov定理相同,Vitali定理只能处理测度有限的情况\\
-&因此我们首先考虑对原积分集合做截断\\
+&(Egorov定理证法2)\\
+&Egorov定理只能处理测度有限的情况\\
+&因此和上面相同\\
+&我们首先考虑对原积分集合做截断\\
 &考虑\forall \epsilon >0\\
 &\exists 有限测度集E_{0},s.t. \\
 &\int _{E/E_{0}}|f(x)|^{p}dx \leq \epsilon \\
 &对于E_{0}集合上的积分\\
 &\int _{E_{0}}|f_{n}(x)-f(x)|^{p}dx\\
-&我们首先考虑其是否满足等度绝对连续\\
+&我们首先应用Egorov定理\\
+&\exists e\in E_{0}\\
+&s.t. m(e)<\epsilon \\
+&且f_{n}(x)在E_{0}/e上一致收敛于f(x)\\
+&因此有\\
+&\lim_{n\to \infty}\int _{E_{0}/e}|f_{n}(x)-f(x)|^{p}dx\\
+&=\int _{E_{0}/e}\lim_{n\to \infty}|f_{n}(x)-f(x)|^{p}dx\\
+&=0\\
+&下面我们考虑处理(E/E_{0})\cup e\\
 &事实上,我们可以证明下述结论:\\
 &\overline{\lim_{n\to \infty}} \int _{A} |f_{n}(x)|^{p}dx\leq \int _{A} |f(x)|^{p}dx\\
 &\forall A\subseteq E\\
@@ -145,5 +154,16 @@ $
 &=\overline{\lim_{n\to \infty}}\int _{A}|f_{n}(x)|^{p}dx+\int _{E/A}|f(x)|^{p}dx\\
 &故有\\
 &\overline{\lim_{n\to \infty}}\int _{A}|f_{n}(x)|^{p}dx\leq \int _{A}|f(x)|^{p}dx,\forall A\subset E\\
+&我们取A=(E/E_{0})\cup e\\
+&则由\int _{A}|f(x)|^{p}dx的绝对连续性可知\\
+&我们可取(E/E_{0})\cup e,s.t. \\
+&\overline{\lim_{n\to \infty}}\int _{A}|f_{n}(x)|^{p}dx\leq \int _{A}|f(x)|^{p}dx\leq \epsilon \\
+&\\
+&故\overline{\lim_{n\to \infty}}\int _{(E/E_{0}\cup e)}|f_{n}(x)-f(x)|^{p}dx\leq \overline{\lim_{n\to \infty}}\int _{(E/E_{0})\cup e}2^{p-1}(|f_{n}(x)|^{p}+|f(x)|^{p})dx\\
+&\leq 2^{p-1}\int _{(E/E_{0})\cup e}|f(x)|^{p}dx+2^{p-1}\overline{\lim_{n\to \infty}}\int _{(E/E_{0})\cup e}|f_{n}(x)|^{p}dx\\
+&\\
+&\leq 2^{p}\int _{(E/E_{0})\cup e}|f(x)|^{p}dx\leq 2^{p}\epsilon \\
+&故知原命题成立\\
 \end{aligned}
 $
+
