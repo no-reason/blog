@@ -135,6 +135,15 @@ $
 &\int _{E}|f_{n}(x)|^{p}dx=\int _{A}|f_{n}(x)|^{p}dx+\int _{E/A}|f_{n}(x)|^{p}dx\\
 &考虑\overline{\lim_{n\to \infty}}\int _{E}|f_{n}(x)|^{p}dx=\int _{E}|f(x)|^{p}dx\\
 &=\overline{\lim_{n\to \infty}}(\int _{A}|f_{n}(x)|^{p}dx+\int _{E/A}|f_{n}(x)|^{p}dx)\\
-&=\lim_{k\to \infty}sup_{n\geq k}
+&而我们熟知:\\
+&\lim_{n\to \infty}sup(a_{n}+b_{n})\geq \lim_{n\to \infty}sup(a_{n})+\lim_{n\to \infty}inf(b_{n})\\
+&故有:\\
+&\overline{\lim_{n\to \infty}}(\int _{A}|f_{n}(x)|^{p}dx+\int _{E/A}|f_{n}(x)|^{p}dx)\geq \\
+&\overline{\lim_{n\to \infty}}\int _{A}|f_{n}(x)|^{p}dx+\underline{\lim_{n\to \infty}}\int _{E/A}|f_{n}(x)|^{p}dx\\
+&利用Fatou引理有:\\
+&\geq \overline{\lim_{n\to \infty}}\int _{A}|f_{n}(x)|^{p}dx+\int _{E/A}\underline{\lim_{n\to \infty}}|f_{n}(x)|^{p}dx\\
+&=\overline{\lim_{n\to \infty}}\int _{A}|f_{n}(x)|^{p}dx+\int _{E/A}|f(x)|^{p}dx\\
+&故有\\
+&\overline{\lim_{n\to \infty}}\int _{A}|f_{n}(x)|^{p}dx\leq \int _{A}|f(x)|^{p}dx,\forall A\subset E\\
 \end{aligned}
 $
