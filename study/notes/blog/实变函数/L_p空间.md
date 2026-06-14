@@ -250,6 +250,8 @@ $
 &\exists g\in L^2,s.t.<g,\phi_k>=c_k,\forall k\\
 &\\\\
 &完全正交系:\\
-&\{\phi_k\}是标准正交系
+&\{\phi_k\}是标准正交系,\\
+&(\phi,\phi_{k})=0,\forall k,\iff  \phi=0\\
+&\\
 \end{aligned}
 $
