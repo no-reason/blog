@@ -227,3 +227,128 @@ $F=\mathbb{R}$（闭但无界），取开覆盖
 显然 $\mathbb{R}=\bigcup_{n=1}^{\infty}(-n,n)$，但任取有限子族
 $(-n_1,n_1),\dots,(-n_k,n_k)$，其并仍为 $(-N,N)$（$N=\max n_i$），不能覆盖 $\mathbb{R}$。
 故去掉“有界”后结论不成立。
+
+
+
+
+# R^{n}中开集可以表示成可数个开矩体的并
+
+可以用“有理端点开矩体”来证明。核心想法是：\(\mathbb Q\) 可数，所以所有端点都是有理数的开矩体只有可数多个；而有理数又足够稠密，可以在任意开集的每个点附近塞进一个这样的开矩体。
+
+设 \(G\subset \mathbb R^n\) 是开集。
+
+考虑所有形如
+
+\[
+I=(a_1,b_1)\times(a_2,b_2)\times\cdots\times(a_n,b_n)
+\]
+
+的开矩体，其中
+
+\[
+a_i,b_i\in \mathbb Q,\qquad a_i<b_i.
+\]
+
+这样的开矩体称为**有理开矩体**。
+
+因为 \(\mathbb Q\) 可数，所以
+
+\[
+\mathbb Q^{2n}
+\]
+
+也是可数的。因此所有有理开矩体构成一个可数族。
+
+现在只取其中完全包含在 \(G\) 里的那些：
+
+\[
+\mathcal B=\{I:\ I\text{ 是有理开矩体，且 }I\subset G\}.
+\]
+
+由于 \(\mathcal B\) 是可数集合的子集，所以 \(\mathcal B\) 仍然至多可数。
+
+我们证明
+
+\[
+G=\bigcup_{I\in\mathcal B} I.
+\]
+
+一方面，如果 \(I\in\mathcal B\)，则由定义 \(I\subset G\)，所以
+
+\[
+\bigcup_{I\in\mathcal B}I\subset G.
+\]
+
+另一方面，任取 \(x=(x_1,\dots,x_n)\in G\)。因为 \(G\) 是开集，所以存在 \(\varepsilon>0\)，使得
+
+\[
+B(x,\varepsilon)\subset G.
+\]
+
+现在要找一个有理开矩体 \(I\)，满足
+
+\[
+x\in I\subset B(x,\varepsilon)\subset G.
+\]
+
+例如先取 \(\delta>0\)，使得
+
+\[
+\sqrt n\,\delta<\varepsilon.
+\]
+
+由于 \(\mathbb Q\) 在 \(\mathbb R\) 中稠密，对每个 \(i=1,\dots,n\)，可以取有理数 \(a_i,b_i\)，使得
+
+\[
+x_i-\delta<a_i<x_i<b_i<x_i+\delta.
+\]
+
+于是令
+
+\[
+I=(a_1,b_1)\times\cdots\times(a_n,b_n).
+\]
+
+则
+
+\[
+x\in I.
+\]
+
+并且对任意 \(y=(y_1,\dots,y_n)\in I\)，有
+
+\[
+|y_i-x_i|<\delta,\qquad i=1,\dots,n.
+\]
+
+所以
+
+\[
+|y-x|
+=
+\left(\sum_{i=1}^n |y_i-x_i|^2\right)^{1/2}
+<
+\sqrt n\,\delta
+<
+\varepsilon.
+\]
+
+因此
+
+\[
+I\subset B(x,\varepsilon)\subset G.
+\]
+
+于是 \(I\in\mathcal B\)，且 \(x\in I\)。这说明
+
+\[
+G\subset \bigcup_{I\in\mathcal B}I.
+\]
+
+综上，
+
+\[
+G=\bigcup_{I\in\mathcal B}I.
+\]
+
+所以 \(\mathbb R^n\) 中任何开集都可以写成可数个开矩体的并。
