@@ -232,7 +232,7 @@ $$\sqrt{2} \le \|e_\alpha - e_\beta\| < \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} 
 ## Fourier
 
 $
-\begin{aligned}
+\begin{aligned}W
 &引理:令f_{k}(x)=\sum_{i=1}^{k}a_{i}\phi_{i}(x)\\
 &则a_{i}=c_{i}时\\
 &(这里的c_{i}是Fourier展开中的系数)\\
