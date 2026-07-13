@@ -18,6 +18,57 @@ to approximate the derivative of $f$ at a point $x_0$. Assume $f$ is a smooth fu
 
 $
 \begin{aligned}
+&(a)\\
+&对f(x_{0}+h)做Taylor展开\\
+&f(x_0+h)=f(x_0)+f'(x_0)h+O(h^2)\\
+&\Rightarrow  D_h^+f(x_0)-f'(x_0)=\frac{O(h^2)}{h}=O(h)\\
+&\\
+&对f(x_0+h)和f(x_0-h)做Taylor展开，展开到h^3项\\
+&\\
+&f(x_0+h)=f(x_0)+f'(x_0)h+f''(x_0)\frac{h^2}{2}+O(h^3)\\
+&f(x_0-h)=f(x_0)-f'(x_0)h+f''(x_0)\frac{h^2}{2}+O(h^3)\\
+&\Rightarrow D_h^0f(x_0)-f'(x_0)=O(h^2)\\
+&故知(a)得证\\
+&\\\\
+&(b)\\
+&g(h)=\frac{f(x_0+h)-f(x_0)}{h}=f'(x_0)+\frac{1}{2}f''(x_0)h+O(h^2)\\
+&g(\frac{h}{2})=f'(x_0)+\frac{1}{2}f''(x_0)\frac{h}{2}+O(h^2)\\
+&2g(\frac{h}{2})-g(h)=f'(x_0)+O(h^2)\\
+&故知上述估计即可满足题意\\
+&\\\\
+&(c)\\
+&由(a)可知D_{h}^{0}f(x_0)显然具有2阶精度\\
+&故只需考虑D_{h}^{+}f(x_0)\\
+&\frac{sin(h)}{h}=\frac{h+O(h^3)}{h}=1+O(h^2)\\
+&而\frac{sin(x)}{dx}=cosx\\
+&cos0=1\\
+&故知上述估计也具有2阶精度\\
+&\\
+&D_h^0f(x_0)=\frac{sinh-sin(-h)}{2h}=\frac{sin(h)}{h}\\
+&=D_h^+f(x_0)\\
+&故知上述两种估计方法在该情况下相同\\
+&故(c)得证\\
+\end{aligned}
+$
+
+
+**2.** For functions defined on a closed interval $[0, 1]$, we want to compute the following definite integral,
+$$I[f] = \int_0^1 f(x) \log(1/x)dx.$$
+
+Here we consider the weight function $\log(1/x)$, and denote $P_n(x)$ as the monic orthogonal polynomials for the corresponding weighted inner product.
+
+**(a)** Let $P_0 = 1$. Find $P_1(x)$, and the corresponding node $x_1^1$ and weight $\omega_1^1$ for the 1-point Gaussian quadrature rule.
+
+**(b)** Derive a recursive formula for $P_{n+1}(x)$ using $P_n(x)$ and $P_{n-1}(x)$.
+
+**(c)** Consider the normalized orthogonal polynomials $Q_n(x) = P_n(x)/\|P_n\|$, where
+$$ \|P_n\| = \sqrt{ P_n(x)^2 \log(1/x) dx }. $$
+
+Derive a recursive formula for $Q_{n+1}(x)$ using $Q_n(x)$ and $Q_{n-1}(x)$.
+
+
+$
+\begin{aligned}
 &
 \end{aligned}
 $
