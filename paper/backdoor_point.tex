@@ -1,0 +1,154 @@
+% !TeX program = xelatex
+\documentclass[UTF8,a4paper,11pt]{ctexart}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,mathtools,bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+\newcommand{\subsubsubsection}[1]{\paragraph{#1}\mbox{}\par}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  urlcolor=blue
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\CD}{\operatorname{CD}}
+\newcommand{\ASR}{\operatorname{ASR}}
+
+\title{Geometric Backdoor Attacks against Point-Cloud Diffusion Models}
+\author{作者：待补充}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+本文系统研究点云扩散生成模型中的固定目标后门攻击，分别探索输入条件与扩散状态两类触发器注入路径，并通过条件式 Diffusion-Point-Cloud 与直接点空间扩散模型 PVD 的实验，揭示后门攻击效果对生成架构及其可用注入路径具有显著依赖性。
+
+
+GAP：现有扩散模型后门研究几乎都建立在二维图像模型上，并默认这些攻击思路能够迁移到其他扩散模型；然而，对于具有完全不同数据表示和生成架构的点云扩散模型，这种假设从未被系统验证。
+以及这种攻击是否收到攻击架构和trigger注入路径的影响仍然有待验证。
+即使攻击成功，目前仍缺乏对于模型真正学习内容的系统分析；特别是在几何Trigger下，模型究竟依赖几何结构、点索引、训练记忆还是空间位置，尚未得到深入研究。
+
+
+QUESTION：
+
+RQ1：点云扩散生成模型能够成功的被植入后门吗？
+  RQ1.1 是否依赖于扩散模型的生成架构？
+  RQ1.2 是否依赖于 trigger 的注入路径？
+  RQ2：成功的输入 trigger 到底依赖哪些信息？
+
+RQ2.1 是否依赖点索引或训练样本记忆？
+
+RQ2.2 是否依赖完整、固定规模的局部结构？
+
+RQ2.3 是否具有空间位置依赖？
+\section{Introduction}
+
+
+
+近年来，扩散模型（Diffusion Models）凭借其优异的生成质量和稳定的训练特性，已成为生成式人工智能领域的重要技术路线。随着三维视觉的发展，扩散模型逐渐被应用于点云生成任务，并在三维重建、数字孪生、机器人感知以及自动驾驶等场景展现出广阔的应用前景。与此同时，生成模型的安全问题也日益受到关注，其中后门攻击（Backdoor Attack）由于能够在保持模型正常功能的同时，通过特定触发器控制模型生成预期目标，已经成为生成模型安全研究的重要方向。
+
+近年来，大量研究已经证明了图像扩散模型存在后门攻击风险，并提出了包括 BadDiffusion 在内的一系列攻击方法。这些工作表明，扩散模型能够学习攻击者植入的触发模式，并在推理阶段产生攻击者指定的目标输出。然而，这些研究几乎全部建立在二维图像扩散模型之上，其攻击方式通常依赖于图像网格结构以及扩散状态中的触发器注入策略。由于点云数据具有无序性、稀疏性和显式三维几何结构等特点，点云扩散模型不仅具有不同的数据表示方式，也采用了不同的生成架构。因此，现有图像扩散模型中的后门攻击是否能够自然迁移到点云扩散模型，目前仍缺乏系统研究。
+
+更进一步，点云扩散模型内部存在不同的生成架构，不同模型所提供的触发器注入接口也存在本质区别。例如，条件式点云扩散模型能够通过输入点云持续提供条件信息，而直接点空间扩散模型则通常只能通过扩散状态进行扰动。目前尚不清楚，这些架构差异以及触发器注入路径是否会影响后门攻击的建立过程；同时，也缺乏对于不同生成架构下攻击行为差异的系统分析。因此，第一个需要回答的问题是：
+
+RQ1：点云扩散生成模型能够成功地被植入固定目标后门吗？进一步地，攻击是否受到生成架构以及触发器注入路径的影响？
+
+另一方面，现有后门攻击研究大多将攻击成功率（Attack Success Rate）作为主要评价指标，而较少关注模型究竟学习了什么样的触发模式。对于点云这种具有显式几何结构的数据而言，一个几何触发器可能同时包含局部形状、点分布以及空间位置信息，因此，仅仅证明攻击成功并不足以理解模型真正建立了怎样的后门关联。例如，模型究竟依赖于点索引、训练样本记忆，还是依赖于真实几何结构？局部几何是否具有冗余性？空间位置是否同样参与了后门关联的建立？这些问题目前仍缺乏系统分析。因此，第二个需要回答的问题是：
+
+RQ2：成功植入的输入空间 Trigger 究竟学习了什么样的触发模式？进一步地，该模式是否依赖于点索引或训练样本记忆、局部几何结构以及绝对空间位置等因素？
+
+针对上述问题，本文以输入条件点云扩散模型为主要研究对象，设计了一种简单且可控的几何触发器，对点云扩散模型中的固定目标后门攻击进行了系统研究。首先，我们验证了不同生成架构和不同触发器注入路径下后门攻击的可行性；随后，通过一系列泛化性、鲁棒性及行为分析实验，进一步研究模型实际学习到的触发模式及其影响因素。我们的研究不仅验证了点云扩散模型面临的后门安全风险，也揭示了生成架构、触发器注入路径以及触发模式之间的关系，为后续点云生成模型的攻击与防御研究提供了新的经验性认识。
+
+
+\section{Related Work}
+
+\subsection{Backdoor Attacks}
+目前，针对点云扩散生成模型（Point Cloud Diffusion Models）的后门攻击研究仍处于空白状态。现有相关研究主要沿着两条相对独立的技术路线展开。
+
+第一类工作关注点云分类模型（Point Cloud Discriminative Models）的后门攻击。这类方法主要针对点云分类等感知任务，通过设计几何扰动、点云变形或局部触发器等方式，在保持模型正常分类性能的同时，实现攻击者预设目标类别的恶意预测。例如，PointBA、PointNCBW、PointCAT等工作分别从几何触发器设计、对抗优化以及隐蔽性等角度，对点云分类模型中的后门攻击进行了深入研究。然而，这些方法均建立在判别模型之上，其攻击目标和学习机制与点云生成模型存在本质区别，因此难以直接迁移到点云扩散生成模型。
+
+第二类工作关注生成模型，尤其是扩散模型（Diffusion Models）的后门攻击。随着扩散模型在图像生成领域取得成功，BadDiffusion、TrojDiff等工作进一步证明了图像扩散模型同样存在后门安全风险，并提出了通过扩散状态注入触发器等攻击策略，实现对生成结果的恶意控制。然而，这些工作主要围绕二维图像扩散模型展开，其触发器设计和攻击方式均依赖于图像生成流程，尚未验证其是否能够迁移到具有完全不同数据表示和生成架构的点云扩散模型。
+
+综上所述，现有研究已经分别探索了点云判别模型的后门攻击以及图像扩散模型的后门攻击，但对于二者交叉形成的点云扩散生成模型后门攻击仍缺乏系统研究。特别是，不同生成架构以及不同触发器注入路径是否会影响后门攻击的建立过程，目前仍有待进一步研究。
+\subsection{Point Cloud Diffusion Models}
+近年来，扩散模型凭借其优异的生成质量和稳定的训练特性，逐渐成为点云生成领域的重要技术路线。相比于GAN、Normalizing Flow等传统生成模型，扩散模型能够更加准确地学习复杂三维几何分布，因此在点云补全、点云生成以及三维重建等任务中得到了广泛应用。近年来，Diffusion-Point-Cloud、Point-E、Point Voxel Diffusion（PVD）等一系列工作进一步推动了点云扩散生成模型的发展。
+
+现有点云扩散生成模型根据生成流程的不同，可以概括为两类具有代表性的生成范式。第一类模型通过编码器首先提取输入点云的隐表示（latent representation），并将该隐表示作为条件信息持续参与整个扩散去噪过程。典型代表包括Diffusion-Point-Cloud等工作。这类方法通过编码器获得输入点云的全局几何特征，在每一个去噪阶段均利用隐表示指导噪声预测，从而实现对点云分布的条件建模。
+
+另一类模型则直接在点空间（point space）建立扩散过程，而不依赖任何外部隐表示作为条件信息。以Point Voxel Diffusion（PVD）为代表，这类方法直接学习点云分布的扩散与逆扩散过程，其噪声预测仅依赖于当前扩散状态和时间步，而不需要编码器提供额外的几何条件。因此，相比于前一类模型，两种生成范式在信息流（information flow）以及去噪过程中可利用的信息来源方面存在本质区别。
+
+尽管现有研究围绕不同点云扩散生成架构提出了大量模型设计，并主要关注生成质量、生成效率以及几何表达能力等问题，但对于这些不同生成范式所带来的安全影响仍缺乏系统研究。特别是，不同生成架构由于具有不同的信息注入机制（information injection mechanism），其是否会影响后门攻击的建立过程及攻击行为，目前仍然是一个尚未回答的问题。
+\section{Problem Formulation}
+
+\subsection{Point Cloud Diffusion Generative Models}
+
+% Define the point-cloud diffusion generative models studied in this work.
+
+\subsubsection{Forward Diffusion}
+
+\subsubsection{Reverse Diffusion}
+
+\subsubsection{Two Generation Paradigms}
+
+\subsection{Threat Model}
+
+% Define the attacker's capabilities and constraints.
+
+\subsubsection{Attacker's Goal}
+攻击者希望在保持模型正常生成能力的同时，使带有Trigger的输入稳定生成攻击者指定的Target Point Cloud。
+
+\subsubsection{Attacker's Capability}
+
+
+访问数据集
+可以访问预训练模型
+对数据集中的一小部分数据进行污染
+利用中毒数据集对整个扩散生成模型进行微调
+
+
+
+\subsubsection{Attack Scenario}
+\subsubsubsection{Input-space Trigger Injection}
+攻击者在训练和推理阶段都是只修改输入点云
+
+\subsubsubsection{Diffusion-state Trigger Injection}
+
+攻击者并不在输入点云中注入trigger而是在训练阶段diffusion前向加噪过程中和推理阶段初始噪声上加入trigger
+
+
+\subsection{Attack Objective}
+
+% Define the desired clean and backdoor behaviors.
+
+\subsection{Evaluation Metrics}
+
+\section{Proposed Attack}
+
+\section{Experimental Setup}
+
+\section{Main Attack Results}
+
+\section{Reliability Analysis}
+
+\section{Cross-Architecture Study}
+
+\section{Discussion}
+
+\section{Limitations}
+
+\section{Conclusion}
+
+\end{document}

@@ -1,0 +1,25 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Related Work}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Backdoor Attacks}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Point Cloud Diffusion Models}{4}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Problem Formulation}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Point Cloud Diffusion Generative Models}{5}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Forward Diffusion}{5}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Reverse Diffusion}{5}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}Two Generation Paradigms}{5}{subsubsection.3.1.3}%
+\contentsline {subsection}{\numberline {3.2}Threat Model}{5}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Attacker's Goal}{5}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Attacker's Capability}{5}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Attack Scenario}{5}{subsubsection.3.2.3}%
+\contentsline {paragraph}{Input-space Trigger Injection}{5}{paragraph*.2}%
+\contentsline {paragraph}{Diffusion-state Trigger Injection}{5}{paragraph*.3}%
+\contentsline {subsection}{\numberline {3.3}Attack Objective}{6}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Evaluation Metrics}{6}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Proposed Attack}{6}{section.4}%
+\contentsline {section}{\numberline {5}Experimental Setup}{6}{section.5}%
+\contentsline {section}{\numberline {6}Main Attack Results}{6}{section.6}%
+\contentsline {section}{\numberline {7}Reliability Analysis}{6}{section.7}%
+\contentsline {section}{\numberline {8}Cross-Architecture Study}{6}{section.8}%
+\contentsline {section}{\numberline {9}Discussion}{6}{section.9}%
+\contentsline {section}{\numberline {10}Limitations}{6}{section.10}%
+\contentsline {section}{\numberline {11}Conclusion}{6}{section.11}%
