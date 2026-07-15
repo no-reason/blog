@@ -69,6 +69,24 @@ Derive a recursive formula for $Q_{n+1}(x)$ using $Q_n(x)$ and $Q_{n-1}(x)$.
 
 $
 \begin{aligned}
-&
+&本题考查内容就是Guass积分\\
+&(a)\\
+&\int _{0}^{1}P_1(x)ln\frac{1}{x}dx=0\\
+&设P_1(x)=x+c\\
+&\int _{0}^{1}(x+c)ln\frac{1}{x}dx=0\\
+&\Rightarrow \\
+&\frac{1}{2}[lnx(x+c)^2-(\frac{1}{2}x^2+2cx+c^2lnx)]_{0}^{1}=0\\
+&\Rightarrow c=-\frac{1}{4}\\
+&\\
+&x_1^1为P_1(x)的根=\frac{1}{4}\\
+&\int _{0}^{1}f(x)ln(\frac{1}{x})dx=w_{1}^{1}f(x_1)\\
+&上述数值积分的代数精度为2\times 1-1=1\\
+&故知令f(x)=x\\
+&则易知w_{1}^{1}=1\\
+&\\\\
+&(b)\\
+&由Guass积分的性质可知\\
+&P_{n+1},P_{n},P_{n-1}必然存在三项递推关系\\
+&\\
 \end{aligned}
 $
