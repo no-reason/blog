@@ -66,6 +66,8 @@ $$ \|P_n\| = \sqrt{ P_n(x)^2 \log(1/x) dx }. $$
 
 Derive a recursive formula for $Q_{n+1}(x)$ using $Q_n(x)$ and $Q_{n-1}(x)$.
 
+(d) Use the above recursive formula to show that $x = \lambda$ is a node of the 4-point Gaussian quadrature if and only if it is an eigenvalue of a symmetric, tridiagonal matrix. Write out the form of the symmetric and tridiagonal matrix explicitly.
+
 
 $
 \begin{aligned}
@@ -85,8 +87,155 @@ $
 &则易知w_{1}^{1}=1\\
 &\\\\
 &(b)\\
+&本问就是Guass积分的经典理论\\
 &由Guass积分的性质可知\\
 &P_{n+1},P_{n},P_{n-1}必然存在三项递推关系\\
+&设P_{n+1}(x)=(x-\alpha _{n})P_{n}-\beta_{n}P_{n-1}(x)\\
+&其中a_{n}=\frac{<xP_{n},P_{n}>}{<P_{n},P_{n}>},b_{n}=\frac{<P_{n},P_{n}>}{<P_{n-1},P_{n-1}>}\\
+&令Q_{n}(x)=P_{n}(x)/\|P_{n}\|\\
+&\\\\
+&(c)\\
+&Q_{n}(x)=(x-a_{n})\frac{P_{n}(x)}{||P_{n+1}(x)||}-b_{n}\frac{P_{n-1}(x)}{||P_{n+1}(x)||}\\
+&\Rightarrow \\
+&Q_{n+1}(x)=\frac{x-a_{n}}{\sqrt{b_{n+1}}}Q_{n}(x)-\sqrt{\frac{b_{n}}{b_{n+1}}}Q_{n-1}(x)(*)\\
+&其中\sqrt{b_{n}}=\frac{||P_{n}||}{||P_{n-1}||}\\
+&(d)\\
 &\\
+&为解决(d)\\
+&我们需要对(c)中的递推式进行一些代数变形\\
+&(*)\iff \\
+&xQ_{n}(x)=\sqrt{b_{n+1}}Q_{n+1}(x)+a_{n}Q_{n}(x)+\sqrt{b_{n}}Q_{n-1}(x)\\
+&故知\\
+&xQ_0(x)=b_1Q_1(x)+a_0Q_0(x)\\
+&xQ_1(x)=b_2Q_2(x)+a_1Q_1(x)+b_0Q_0(x)\\
+&xQ_2(x)=b_3Q_3(x)+a_2Q_2(x)+b_1Q_1(x)\\
+&xQ_3(x)=b_4Q_4(x)+a_3Q_3(x)+b_2Q_2(x)\\
+&\Rightarrow \\
+&x\begin{pmatrix}
+Q_0(x)\\
+Q_1(x)\\
+Q_2(x)\\
+Q_3(x)\\
+\end{pmatrix}=\begin{pmatrix}
+a_{0}&b_{0}\\
+b_{0}&a_{1}&b_{1}\\
+&b_{1}&a_{2}&b_{2}\\
+&&b_{2}&a_{3}
+\end{pmatrix}\begin{pmatrix}
+Q_0(x)\\
+Q_1(x)\\
+Q_2(x)\\
+Q_3(x)\\
+\end{pmatrix}+\begin{pmatrix}
+0\\
+0\\
+0\\
+b_{4}Q_{4}(x)
+\end{pmatrix}\\
+&\forall x,s.t.Q_{4}(x)=0\\
+&有 x\begin{pmatrix}
+Q_0(x)\\
+Q_1(x)\\
+Q_2(x)\\
+Q_3(x)\\
+\end{pmatrix}=\begin{pmatrix}
+a_{0}&b_{0}\\
+b_{0}&a_{1}&b_{1}\\
+&b_{1}&a_{2}&b_{2}\\
+&&b_{2}&a_{3}
+\end{pmatrix}\begin{pmatrix}
+Q_0(x)\\
+Q_1(x)\\
+Q_2(x)\\
+Q_3(x)\\
+\end{pmatrix}\\
+&\Rightarrow (\begin{pmatrix}
+a_{0}&b_{0}\\
+b_{0}&a_{1}&b_{1}\\
+&b_{1}&a_{2}&b_{2}\\
+&&b_{2}&a_{3}
+\end{pmatrix}-xE)\begin{pmatrix}
+Q_0(x)\\
+Q_1(x)\\
+Q_2(x)\\
+Q_3(x)\\
+\end{pmatrix}=0\\
+&\Rightarrow \\
+&det(\begin{pmatrix}
+a_{0}&b_{0}\\
+b_{0}&a_{1}&b_{1}\\
+&b_{1}&a_{2}&b_{2}\\
+&&b_{2}&a_{3}
+\end{pmatrix}-xE)=0\\
+&\\
+&故知x是矩阵\begin{pmatrix}
+a_{0}&b_{0}\\
+b_{0}&a_{1}&b_{1}\\
+&b_{1}&a_{2}&b_{2}\\
+&&b_{2}&a_{3}
+\end{pmatrix}的特征值\\
+&\\
+&故知原命题成立\\
+\end{aligned}
+$
+
+
+## P3
+
+3. Let $A$ be a real $n \times n$ matrix with distinct eigenvalues such that
+$$|\lambda_1| > |\lambda_2| \ge |\lambda_3| \ge \cdots \ge |\lambda_n| \ge 0,$$
+with corresponding eigenvectors $\{v_j\}_{j=1}^n$.
+
+(a) Show that the power iteration
+$$z_m = \frac{A^m z_0}{\|A^m z_0\|_\infty} \to \pm \frac{v_1}{\|v_1\|_\infty}, \quad \forall z_0 \in \mathbb{R}^n.$$
+
+(b) Consider the following iteration with initial guess $x_0 = y_0 = 1$,
+$$x_{n+1} = x_n + y_n, \quad y_{n+1} = x_{n+1} + x_n.$$
+Show that $y_n/x_n \to \sqrt{2}$ as $n \to \infty$.
+
+
+$
+\begin{aligned}
+&本题考察的是幂法\\
+&由A由n个互不相同的特征值可知\\
+&v_1,\cdots ,v_{n}线性无关\\
+&故知z_{0}=a_1v_1+\cdots +a_{n}v_{n}\\
+&故知A^{m}z_{0}=a_1A^{m}v_1+\cdots +a_{n}A^{m}v_{n}\\
+&=a_1\lambda_1^mv_1\cdots +a_{n}\lambda_n^mv_n\\
+&=\lambda _1^{m}(a_1v_1+\cdots +a_{n}(\frac{\lambda _{n}}{\lambda _1})^{m}v_{n})\\
+&由\lambda _1 >\lambda _{i},\forall i\ne 1\\
+&故知\\
+&\lim_{m\to \infty}\frac{A^{m}z_0}{||A^{m}z_{0}||}=\pm \frac{v_1}{\|v_1\|}\\
+&\\\\
+&\begin{pmatrix}
+x_{n+1}\\
+y_{n+1}\\
+\end{pmatrix}=\begin{pmatrix}
+1&1\\
+2&1\\
+\end{pmatrix}\begin{pmatrix}
+x_{n}\\
+y_{n}\\
+\end{pmatrix}\\
+&det(\begin{pmatrix}
+1&1\\
+2&1\\
+\end{pmatrix}-\lambda E)=0\\
+&\Rightarrow \lambda =1\pm \sqrt{2}\\
+&故知\lim_{n\to \infty}\frac{(\begin{pmatrix}
+1&1\\
+2&1\\
+\end{pmatrix})^{n}\begin{pmatrix}
+x_0\\
+y_0\\
+\end{pmatrix}}{\|(\begin{pmatrix}
+1&1\\
+2&1\\
+\end{pmatrix})^{n}\begin{pmatrix}
+x_0\\
+y_0\\
+\end{pmatrix}\|}=1+\sqrt{2}对应的特征向量v_1\\
+&易知v_1=(1,\sqrt{2})^{T}\\
+&
 \end{aligned}
 $
