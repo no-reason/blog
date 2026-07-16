@@ -268,6 +268,48 @@ $
 &故知\lim_{h\to 0}\frac{y(t_{n+1})-y_{n+1}}{h}=(1-a-b)f(t_n,y_n)\\
 &故知上述单步方法一致\iff \\
 &a+b=1\\
+&下面考虑证明上述单步法的阶数至多是2\\
+&我们只需证明\\
+&对于一个光滑的f,其阶数为2即可\\
+&\\
+&我们对y(t_{n+1})进行Taylor展开\\
+&y(t_{n+1})=y(t_{n}+h)=y(t_{n})+y'(t_{n})h+\frac{1}{2}y''(t_{n})h^2+O(h^3)\\
+&=y(t_{n})+f(t_{n},y_{n})h+\frac{1}{2}[f_{x}(t_{n},y_{n})+f_{y}(t_{n},y_{n})f(t_{n},y_{n})]h^2+O(h^3)\\
+&\\
+&y_{n+1}=y(t_{n})+ahf(t_n,y_n)+bhf(t_n+rh,y_n+rhf(t_n,y_n))\\
+&=y(t_{n})+ahf(t_{n},y_{n})+bh(f(t_{n},y_{n})+rhf_{x}(t_{n},y_{n})+rhf(t_{n},y_{n})f_{y}(t_{n},y_{n})+O(h^2))\\
+&\Rightarrow \\
+&其阶数最大\iff \\
+&\begin{cases}
+a+b=1\\
+br=\frac{1}{2}\\
+\end{cases}\\
+&故知(a)成立\\
+&\\\\
+&(b)\\
+&若题述单步方法阶数为2\\
+&则a+b=1,rh=\frac{1}{2}\\
+&\Rightarrow \\
+&y_{n+1}=y_{n}+ahf(t_n,y_n)+bhf(t_n+rh,y_n+rhf(t_n,y_n))\\
+&=y_{n}-ah\lambda y_{n}-bh\lambda (y_{n}+rhf(t_{n},y_{n}))\\
+&=y_{n}-ah\lambda y_{n}-bh\lambda (y_{n}-rh\lambda y_{n})\\
+&=y_{n}-\lambda hy_{n}+\frac{1}{2}\lambda ^2h^2y_{n}\\
+&=y_{n}(1-\lambda h+\frac{1}{2}\lambda ^2h^2)\\
+&=(1-\lambda h+\frac{1}{2}\lambda ^2h^2)^{n}\\
+&\\\\
+&易知y_{n}有界\iff h\leq  \frac{2}{\lambda}\\
+&\\
+&考虑\frac{dy}{dt}=-\lambda y\\
+&\Rightarrow y=e^{-\lambda t}\\
+&\\\\
+&|y(t_{n})-y_{n}|=|e^{-\lambda nh}-(1-\lambda h+\frac{1}{2}\lambda ^2h^2)^{n}|\\
+&记e^{-\lambda h}=a,(1-\lambda h+\frac{1}{2}\lambda ^2h^2)=b\\
+&则a-b\leq \frac{1}{6}(\lambda h)^3\\
+&a\leq 1,b\leq 1\\
+&故知\\
+&|a^{n}-b^{n}|\leq |a-b||\sum _{i=0}^{n-1}a^{i}b^{n-1-i}|\leq \frac{1}{6}(\lambda h)^3n=\frac{1}{6}\lambda^3 h^2t_n\\
+&故知原命题成立\\
+&\\\\
 &
 \end{aligned}
 $
