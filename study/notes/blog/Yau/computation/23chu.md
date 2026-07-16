@@ -236,6 +236,41 @@ x_0\\
 y_0\\
 \end{pmatrix}\|}=1+\sqrt{2}对应的特征向量v_1\\
 &易知v_1=(1,\sqrt{2})^{T}\\
+&故知\lim_{n\to \infty}\frac{y_n}{x_n}=\sqrt{2}\\
+&\\\\
 &
 \end{aligned}
 $
+
+
+## P4
+Consider the initial value problem$$y' = f(t,y), \quad 0 < t \le T. \qquad (3)$$$$y(0) = y_0. \qquad (4)$$Assume $f$ is continuous and Lipschitz in $y$ in $[0,T] \times (-\infty, \infty)$. Denote $y_n \approx y(t_n)$, $t_n = nh$, and $h = T/N$, with $N$ a positive integer, and consider the one-step method$$y_{n+1} = y_n + \alpha h f(t_n, y_n) + \beta h f(t_n + \gamma h, y_n + \gamma h f(t_n, y_n)),$$where $\alpha$, $\beta$ and $\gamma$ are real parameters.(a) Prove that the method is consistent if and only if $\alpha + \beta = 1$, and the order of the method can not exceed 2.
+(b) Suppose that a second-order method of the above form is applied to $f(t,y) = -\lambda y$ with $\lambda > 0$, and the initial condition $y_0 = 1$. Show that the sequence $(y_n)_{n \ge 0}$ is bounded if and only if $h \le \frac{2}{\lambda}$. Show further that for such $h$,$$\vert{}y(t_n) - y_n\vert{} \le \frac{1}{6}\lambda^3 h^2 t_n, \quad n \ge 0.$$
+
+
+$
+\begin{aligned}
+&(a)\\
+&我们只需计算\\
+&\lim_{h\to 0}\frac{y(t_{n+1})-y_{n+1}}{h}\\
+&=\lim_{h\to 0}\frac{y(t_{n+1})-y(t_{n})-(ahf(t_n,h_n)+bhf(t_n+rh,y_n+rhf(t_n,y_n)))}{h}\\
+&=y'(t_{n})-(\lim_{h\to 0}af(t_n,y_n)+bf(t_n+rh,y_n+rhf(t_n,y_n)))\\
+&=f(t_n,y_n)-af(t_n,y_n)-\lim_{h\to 0}bf(t_n+rh,y_n+rhf(t_n,y_n))\\
+&\\
+&现在考虑\\
+&\lim_{h\to 0}|f(t_n+rh,y_n+rhf(t_n,y_n))-f(t_n+rh,y_n)+f(t_n+rh,y_n)-f(t_n,y_n)|\\
+&\leq \lim_{h\to 0}|f(t_n+rh,y_n+rhf(t_n,y_n))-f(t_n+rh,y_n)|+|f(t_n+rh,y_n)-f(t_n,y_n)|\\
+&由f(t,y)连续\\
+&故知\lim_{h\to 0}|f(t_n+rh,y_n)-f(t_n,y_n)|=0\\
+&由f(t,y)关于yLipschitz连续\\
+&故\lim_{h\to 0}|f(t_n+rh,y_n+rhf(t_n,y_n))-f(t_n+rh,y_n)|\leq \\
+&\lim_{h\to 0}rhf(t_n,y_n)=0\\
+&故知\lim_{h\to 0}\frac{y(t_{n+1})-y_{n+1}}{h}=(1-a-b)f(t_n,y_n)\\
+&故知上述单步方法一致\iff \\
+&a+b=1\\
+&
+\end{aligned}
+$
+
+
+## P5
