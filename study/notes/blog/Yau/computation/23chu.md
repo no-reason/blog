@@ -316,3 +316,131 @@ $
 
 
 ## P5
+
+Let $u(t,x)$ be the solution of the initial-boundary value problem$$u_t = D u_{xx}, \quad 0 < x < L, \quad 0 < t \le T, \qquad (5)$$$$u(0,x) = f(x) \qquad (6)$$$$u(t,0) = u(t,L) = 0, \qquad (7)$$where $L > 0$ and $D > 0$. Consider the finite difference scheme$$\frac{u_j^{n+1} - u_j^n}{\Delta t} = D \frac{u_{j+1}^n - 2u_j^n + u_{j-1}^n}{(\Delta x)^2}, \quad j = 1, \dots, M-1, \quad n = 0, 1, \dots, N-1 \qquad (8)$$with $u_0^n = u_M^n = 0$ for all $n$ and $u_j^0 = f(j\Delta x)$, $j = 0, \dots, M$. Here $\Delta t = T/N$ and $\Delta x = L/M$ and $u_j^n \approx u(n\Delta t, j\Delta x)$.
+(a) Prove that (8) is consistent with (5).
+(b) Prove that if $\Delta t \le \frac{1}{2D}(\Delta x)^2$ the finite difference scheme (8) is stable under the $l^\infty$ norm.
+(c) Prove that if $\Delta t \le \frac{1}{2D}(\Delta x)^2$ the finite difference scheme (8) converges in the $l^\infty$ norm to the exact solution of (5)-(7).
+
+
+$
+\begin{aligned}
+&本题实际上是Lax等价定理:\\
+&对于一个适定的线性初值问题，如果给定的有限差分格式是相容的，\\&那么该格式收敛的充分必要条件是它是稳定的\\
+&(a)\\
+&LHS=u_{t}+O(\Delta t)\\
+&RHS=D(u_{xx}+O(\Delta x))\\
+&当\Delta t,\Delta x \to 0时\\
+&由u_{t}=Du_{xx}\\
+&可知上述有限差分格式相容\\
+&\\\\
+&(b)\\
+&u_{j}^{n+1}=u_{j}^{n}+\frac{D\Delta t}{(\Delta x)^2}(u_{j+1}^{n}-2u_{j}^{n}+u_{j-1}^{n})\\
+&令\frac{D\Delta t}{(\Delta x)^2}=r\\
+&则u_{j}^{n+1}=ru_{j-1}^{n}+(1-2r)u_{j}^{n}+ru_{j+1}^{n}\\
+&当r\leq \frac{1}{2}时\\
+&(1-2r)\geq 0\\
+&故知|u_{j}^{n+1}|\leq max_{j}|u_{j}^{n}|\\
+&即|u_{j}^{n+1}|\leq |u^{n}|_{\infty}\\
+&其中|u^{n}|_{\infty}表示\forall j,max|u_{j}^{n}|\\
+&故知|u^{n+1}|_{\infty}\leq |u^{n}|_{\infty}\leq |u^{0}|_{\infty}\\
+&故知(b)成立\\
+&\\\\
+&(c)\\
+&第三问即为Lax等价定理\\
+&我们设u(n\Delta t,j\Delta x)为原PDE的真实解\\
+&则由(a)可知\\
+&u((n+1)\Delta t,j\Delta x)=ru(n\Delta t,(j-1)\Delta x)+(1-2r)u(n\Delta t,j\Delta x)+ru(n\Delta t,(j+1)\Delta x)+\Delta t \tau _{j}^{n}\\
+&其中\tau _{j}^{n}为截断误差\sim (O(\Delta t)+O(\Delta x))\\
+&考虑到u_{j}^{n+1}=ru_{j-1}^{n}+(1-2r)u_{j}^{n}+ru_{j+1}^{n}\\
+&将上述两式做差即有\\
+&e_{j}^{n+1}=re_{j-1}^{n}+(1-2r)e_{j}^{n}+re_{j+1}^{n}+\Delta t\tau _{j}^{n}\\
+&其中e_{j}^{n}=u(n\Delta t,j\Delta x)-u_{j}^{n}\\
+&其中e_{j}^{0}=f(x)-u_{j}^{0}=0\\
+&\Rightarrow |e^{n+1}|_{\infty}\leq |e^{n}|_{\infty}+\Delta t|\tau ^{n}|_{\infty}\\
+&\Rightarrow \\
+&|e^{n}|_{\infty}\leq |e^{0}|_{\infty}+n\Delta t|\tau ^{n}|_{\infty}\\
+&=n\Delta t|\tau ^{n}|_{\infty}\\
+&=T|\tau ^{n}|_{\infty}\\
+&令\Delta x,\Delta t\to 0,可知\tau ^{n}\to 0\\
+&故知此时|e^{n}|_{\infty}\to 0\\
+&故知原命题成立\\
+&\\\\
+&
+\end{aligned}
+$
+
+## P6
+
+Let $\psi^\varepsilon(t,x)$ be the solution to the following Schrödinger equation:
+
+$$
+\mathrm{i}\varepsilon \frac{\partial \psi^\varepsilon}{\partial t}
+=
+-\frac{\varepsilon^2}{2}\nabla_x^2\psi^\varepsilon
++
+V(x)\psi^\varepsilon,
+\qquad
+x=(x_1,\ldots,x_n)^{\mathrm T}\in\mathbb{R}^n.
+$$
+
+where
+
+$$
+\mathrm{i}=\sqrt{-1},
+$$ 
+
+$\varepsilon\ll 1$ is a small positive real number (rescaled Planck constant),
+
+$$
+\nabla_x^2=\sum_{j=1}^n \partial_{x_j}^2,
+$$
+
+and
+
+$$
+V(x)\in C^\infty(\mathbb{R}^n)
+$$
+
+is the potential function.
+
+Consider the WKB expansion
+
+$$
+\psi^\varepsilon(t,x)
+=
+A(t,x)\mathrm{e}^{\frac{\mathrm{i}S(t,x)}{\varepsilon}}.
+$$
+
+#### (a)
+
+Derive equations for $A(t,x)$ and $S(t,x)$ by asymptotic expansion.
+
+Here, both $A(t,x)$ and $S(t,x)$ are real-valued functions and do not depend on $\varepsilon$.
+
+#### (b)
+
+Define
+
+$$
+u(t,x):=\nabla_x S(t,x)\in\mathbb{R}^n.
+$$
+
+Derive an equation for $u(t,x)$.
+
+Suppose
+
+$$
+u(0,x)\in C^\infty(\mathbb{R}^n).
+$$
+
+Will $u(t,x)$ always belong to $C^\infty(\mathbb{R}^n)$ for all $t>0$? Explain why.
+
+---
+
+
+$
+\begin{aligned}
+&
+\end{aligned}
+$
