@@ -458,16 +458,38 @@ $
 &\frac{\partial \psi^\varepsilon(t,x)}{\partial t}=A_{t}e^{\frac{iS}{\epsilon }}+\frac{i}{\epsilon }Ae^{\frac{iS}{\epsilon }}S_{t}\\
 &\nabla_x^2\psi^\varepsilon=2\frac{i}{\epsilon }e^{\frac{iS}{\epsilon }}(\nabla S\cdot \nabla A)+e^{\frac{iS}{\epsilon }}\Delta A+(\frac{i}{\epsilon })^{2}Ae^{\frac{iS}{\epsilon }}|\nabla S|^{2}+A\frac{i}{\epsilon }e^{\frac{iS}{\epsilon }}\Delta S\\
 &\Rightarrow \\
-&i\epsilon A_{t}-AS_{t}=-\epsilon i(\nabla S\cdot \nabla A)-\frac{\epsilon ^2}{2}\Delta A+\frac{1}{2}|\Delta S|^{2}-\frac{\epsilon i}{2}A\Delta S+VA\\
+&i\epsilon A_{t}-AS_{t}=-\epsilon i(\nabla S\cdot \nabla A)-\frac{\epsilon ^2}{2}\Delta A+\frac{1}{2}A|\nabla S|^{2}-\frac{\epsilon i}{2}A\Delta S+VA\\
 &\Rightarrow \\
 &\begin{cases}
 &A_{t}+(\nabla S\cdot \nabla A)+\frac{1}{2}A\Delta S=0(1)\\
-&AS_{t}+\frac{1}{2}|\Delta S|^{2}+VA=0(2)\\
+&AS_{t}+\frac{1}{2}A|\nabla S|^{2}+VA=0(2)\\
 \end{cases}\\
+&\Rightarrow \\
+&\begin{cases}
+&A_{t}+(\nabla S\cdot \nabla A)+\frac{1}{2}A\Delta S=0(1)\\
+&S_{t}+\frac{1}{2}|\nabla S|^{2}+V=0(2)\\
+\end{cases}
 &\\\\
 &(b)\\
 &考虑到(1)是关于A和S的混合方程\\
 &而题述要求只要求关于S梯度的方程\\
-&故我们考虑对(2)关于S
+&故我们考虑对(2)关于x求梯度\\
+&\nabla S_{t}+\frac{1}{2}\nabla |\nabla S|^{2}+\nabla V=0\\
+&\Rightarrow \\
+&u_{t}+(u\cdot \nabla )u+\nabla V=0\\
+&\\\\
+&对于关于u是否一定光滑的问题\\
+&我们考虑直接构造反例\\
+&令V(x)=0\\
+&令u(x,t)中x维数为1\\
+&则u_{t}+uu_{x}=0\\
+&取u(0,x)=-x\\
+&则当t<1时\\
+&原方程的解为\\
+&u(t,x)=\frac{-x}{1-t}\\
+&\Rightarrow u_{x}(t,x)=\frac{-1}{1-t}\\
+&当t\to 1时有\\
+&u_{x}(t,x)\to \infty\\
+&故u未必在整个域上光滑\\
 \end{aligned}
 $
