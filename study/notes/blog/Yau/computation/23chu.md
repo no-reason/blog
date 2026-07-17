@@ -441,6 +441,33 @@ Will $u(t,x)$ always belong to $C^\infty(\mathbb{R}^n)$ for all $t>0$? Explain w
 
 $
 \begin{aligned}
-&
+&(a)\\
+&所谓的WKB展开是指:\\
+&对于Schrodinger方程而言\\
+&当\epsilon 非常小时,其解通常回快速震荡\\
+&此时将\psi^\varepsilon(t,x)当作一个平滑函数来分析会比较复杂\\
+&WKB的想法是将解拆成如下两部分:\\
+&\psi^\varepsilon(t,x)=A(t,x)e^{\frac{iS(t,x)}{\varepsilon}}\\
+&将其带回原Schorodinger方程后\\
+&考虑\epsilon \to 0的渐进估计\\
+&(比较\epsilon 不同次数的系数)\\
+&(让其系数全部为零)\\
+&在本题中\\
+&我们直接将\psi^\varepsilon(t,x)=A(t,x)e^{\frac{iS(t,x)}{\varepsilon}}代入到题述PDE中\\
+&\\
+&\frac{\partial \psi^\varepsilon(t,x)}{\partial t}=A_{t}e^{\frac{iS}{\epsilon }}+\frac{i}{\epsilon }Ae^{\frac{iS}{\epsilon }}S_{t}\\
+&\nabla_x^2\psi^\varepsilon=2\frac{i}{\epsilon }e^{\frac{iS}{\epsilon }}(\nabla S\cdot \nabla A)+e^{\frac{iS}{\epsilon }}\Delta A+(\frac{i}{\epsilon })^{2}Ae^{\frac{iS}{\epsilon }}|\nabla S|^{2}+A\frac{i}{\epsilon }e^{\frac{iS}{\epsilon }}\Delta S\\
+&\Rightarrow \\
+&i\epsilon A_{t}-AS_{t}=-\epsilon i(\nabla S\cdot \nabla A)-\frac{\epsilon ^2}{2}\Delta A+\frac{1}{2}|\Delta S|^{2}-\frac{\epsilon i}{2}A\Delta S+VA\\
+&\Rightarrow \\
+&\begin{cases}
+&A_{t}+(\nabla S\cdot \nabla A)+\frac{1}{2}A\Delta S=0(1)\\
+&AS_{t}+\frac{1}{2}|\Delta S|^{2}+VA=0(2)\\
+\end{cases}\\
+&\\\\
+&(b)\\
+&考虑到(1)是关于A和S的混合方程\\
+&而题述要求只要求关于S梯度的方程\\
+&故我们考虑对(2)关于S
 \end{aligned}
 $
