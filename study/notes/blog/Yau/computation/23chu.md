@@ -450,8 +450,9 @@ $
 &\psi^\varepsilon(t,x)=A(t,x)e^{\frac{iS(t,x)}{\varepsilon}}\\
 &将其带回原Schorodinger方程后\\
 &考虑\epsilon \to 0的渐进估计\\
-&(比较\epsilon 不同次数的系数)\\
-&(让其系数全部为零)\\
+&(按照 ε 的阶数比较，保留 O(1) 和 O(ε) 项，\\
+&并忽略高阶的 O(ε^{2}
+) 项。)\\
 &在本题中\\
 &我们直接将\psi^\varepsilon(t,x)=A(t,x)e^{\frac{iS(t,x)}{\varepsilon}}代入到题述PDE中\\
 &\\
