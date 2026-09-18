@@ -108,7 +108,7 @@ $
 &不妨设[0,1]\subseteq \cup_{j=1}^{N}B(r_{j},\delta )\\
 &\forall t\in [0,1],\exists j_{0},s.t. |t-r_{j_{0}}|<\delta\\
 &针对j_{1},\cdots ,j_{N}\\
-&\exsits K>0\\
+&\exists K>0\\
 &当k>K时\\
 &|f_{n_{k}}(r_{j_{0}})-f_{n_{k+m}}(r_{j_{0}})|<\epsilon\\
 &\Rightarrow |f_{n_{k}}(t)-f_{n_{k+m}}(t)|<\epsilon\\
