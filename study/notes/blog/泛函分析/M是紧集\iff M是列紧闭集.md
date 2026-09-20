@@ -114,10 +114,67 @@ $
 &\Rightarrow |f_{n_{k}}(t)-f_{n_{k+m}}(t)|<\epsilon\\
 &\Rightarrow \{f_{n_{k}}\}是Cauchy列\\
 &\Rightarrow \{f_{n}\}有收敛子列\\
+&\\\\\\
+&Arzela-Ascoli定理更一般的形式是:\\
+&K是紧度量空间\\
+&\mathcal {F}\in C(K)\\
+&若\mathcal {F}一致有界并同等连续\\
+&则\mathcal {F}是列紧集\\
 \end{aligned}
 $
 
+
+
 同等连续:\epsilon 的选取不与\epsilon 和f相关
 
+## 
+
+$
+\begin{aligned}
+&\{f_{n}(z)\}\subset H(D_{3}一致有界)\\
+&证明:\{f_{n}(z)\}同等连续on D_{1}\\
+&证明就是如果导数一致有界就一定同等连续\\
+&所以只需要说明导数一致有界就可以\\
+&用Cauchy积分公式表示一下导数就可以了\\
+\end{aligned}
+$
+
+
+Montel定理
+
+$
+\begin{aligned}
+&设\{f_{n}(z)\}是区域\Omega上一致有界的全纯函数列\\
+&则于任何完全位于\Omega内的有界区域D\\
+&恒有f_{n}(z)的子序列在D上一致收敛\\
+\end{aligned}
+$
+
+
+# 赋范线性空间
+
+$
+\begin{aligned}
+&(X,\|\cdot\|)是赋范线性空间\\
+&(1)\|x\|\geq 0,\|x\|=0\iff x=0\\
+&(2)\|ax\|=|a|\|x\|\\
+&(3)\|x+y\|\leq \|x\|+\|y\|\\
+&\\
+&齐次性、正定性、三角不等式\\
+&若第一条不能保证范数为零可以推出x=0\\
+&那么就称为半范数\\
+&\\
+&例:\\
+&L^{p},\ell^{p}都是赋范线性空间\\
+&(\Omega ,\mu),\sigma 有限测度空间\\
+&(整个空间可以被可数个有限测度集合覆盖)\\
+&\\
+&d(x,y)=\|x-y\|\\
+&则(X,d)是距离线性空间\\
+&\\\\
+&线性算子:\\
+&
+\end{aligned}
+$
 
 
