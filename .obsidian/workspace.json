@@ -79,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 308.5078125
   },
   "right": {
     "id": "1725fb34f13c2b92",
@@ -188,7 +188,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -206,7 +207,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "40fbc7bc7c95edb6",
+  "active": "9c04ae3577aafdfc",
   "lastOpenFiles": [
     "从算两次到Bell数和第二类Stirling数.md",
     "2025Yau'sP2的完全解决.md",
