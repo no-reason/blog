@@ -275,4 +275,28 @@ $$
 
 
 
+**定理 2.2：** 每个非零的 Hilbert 空间都有正规正交基。
 
+**证：** 设 $H$ 是一个非零的 Hilbert 空间，考虑 $H$ 中一切正规正交集构成的族 $\mathcal{J}$。$\mathcal{J}$ 是非空的，因为任取 $x \neq 0$，$\left\{\dfrac{x}{\|x\|}\right\}$ 便是 $\mathcal{J}$ 中的一个元。对 $S_1, S_2 \in \mathcal{J}$，定义 $S_1 \prec S_2$，当 $S_1 \subset S_2$。则 $\mathcal{J}$ 按"$\prec$"成为一个部分有序集。若 $\{S_\alpha\}_{\alpha \in \mathcal{A}}$ 是 $\mathcal{J}$ 中的完全有序子集，则 $\displaystyle\bigcup_{\alpha \in \mathcal{A}} S_\alpha \in \mathcal{J}$，而且是 $\{S_\alpha\}_{\alpha \in \mathcal{A}}$ 的上界。根据 Zorn 引理，$\mathcal{J}$ 中存在极大元 $S_M$，则 $S_M$ 便是 $H$ 的一个正规正交基。证毕。
+
+**定理 2.3：** 设 $S = \{x_\alpha\}_{\alpha \in \mathcal{A}}$ 是 $H$ 的一个正规正交基，则对任何的 $x \in H$，都有
+
+$$
+x = \sum_{\alpha \in \mathcal{A}} (x, x_\alpha) x_\alpha,
+$$
+
+$$
+\|x\|^2 = \sum_{\alpha \in \mathcal{A}} |(x, x_\alpha)|^2,
+$$
+
+这里 $\displaystyle\sum_{\alpha \in \mathcal{A}} z_\alpha$ 表示最多只有可数多个 $z_\alpha \neq 0$，而且级数无条件收敛。
+
+特别，当 $H$ 是可分的 Hilbert 空间，$\{x_n\}_{n=1}^\infty$ 是 $H$ 的正规正交基，则对任何的 $x \in H$ 都有
+
+$$
+\|x\|^2 = \sum_{n=1}^\infty |(x, x_n)|^2. \tag{2.3}
+$$
+
+式 (2.3) 通常被称为 **Parseval 公式**。
+
+**任何一个Hilbert空间都与$\ell^{2}$同构**
