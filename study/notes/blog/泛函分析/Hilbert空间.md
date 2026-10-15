@@ -300,3 +300,585 @@ $$
 式 (2.3) 通常被称为 **Parseval 公式**。
 
 **任何一个Hilbert空间都与$\ell^{2}$同构**
+
+
+## 考试会有很多判断题
+
+
+**定理 3.1（射影定理）** 设 $M$ 是 Hilbert 空间 $H$ 的闭子空间(这里需要强调闭)，则每个 $x \in H$ 都可以唯一地表成
+
+$$
+x = y + z,\quad y \in M,\quad z \in M^{\perp}.
+$$
+
+人们称这个由 $x$ 与 $M$ 唯一确定的 $y$ 为 $x$ 在 $M$ 上的**正交射影**。
+
+**闭性不可省略：反例。** 令
+
+$$
+H=\ell^2,\qquad M=c_{00}:=\{(\xi_n)\in\ell^2:\text{只有有限多个 }\xi_n\neq0\}.
+$$
+
+则 $M$ 是 $\ell^2$ 的线性子空间，但不是闭子空间。事实上，令
+
+$$
+x=\left(1,\frac12,\frac13,\ldots\right)\in\ell^2,
+\qquad
+x^{(N)}=\left(1,\frac12,\ldots,\frac1N,0,0,\ldots\right)\in M.
+$$
+
+有
+
+$$
+\|x^{(N)}-x\|_2^2=\sum_{n=N+1}^{\infty}\frac1{n^2}\longrightarrow0,
+$$
+
+故 $x^{(N)}\to x$；但 $x\notin M$，从而 $M$ 不闭。
+
+另一方面，若 $z=(z_n)\in M^\perp$，由于每个标准单位向量 $e_n\in M$，便有
+
+$$
+(z,e_n)=z_n=0,\qquad \forall n.
+$$
+
+所以 $z=0$，即
+
+$$
+M^\perp=\{0\}.
+$$
+
+若射影定理对这个非闭子空间仍成立，则上面的 $x$ 应可写为 $x=y+z$，其中 $y\in M$、$z\in M^\perp=\{0\}$。这将推出 $x=y\in M$，与 $x\notin M$ 矛盾。因此，非闭子空间上未必存在正交射影，定理中的“闭”是必要条件。
+
+对任意（未必闭）线性子空间，正确结论是
+
+$$
+H=\overline{M}\oplus M^\perp,
+\qquad
+M^{\perp\perp}=\overline{M}.
+$$
+
+**命题 3.1（任意集合的双正交补）：** 设 $\Omega\subset H$ 是任意集合，不要求 $\Omega$ 是线性子空间。定义
+
+$$
+\Omega^\perp:=\{x\in H:(x,\omega)=0,\ \forall\omega\in\Omega\}.
+$$
+
+则
+
+$$
+\boxed{\ \Omega^{\perp\perp}=\overline{\operatorname{span}(\Omega)}\ }.
+$$
+
+其中 $\operatorname{span}(\Omega)$ 是由 $\Omega$ 中元素的有限线性组合构成的线性子空间，$\overline{\operatorname{span}(\Omega)}$ 称为 $\Omega$ 的**闭线性包**（或闭线性张成）。
+
+**证：** 先证
+
+$$
+\Omega^\perp=(\operatorname{span}(\Omega))^\perp.
+$$
+
+一方面，$\Omega\subset\operatorname{span}(\Omega)$，故
+
+$$
+(\operatorname{span}(\Omega))^\perp\subset\Omega^\perp.
+$$
+
+另一方面，若 $x\in\Omega^\perp$，且
+
+$$
+u=\sum_{k=1}^n a_k\omega_k\in\operatorname{span}(\Omega),
+\qquad \omega_k\in\Omega,
+$$
+
+则由内积对第一个分量线性、对第二个分量共轭线性，
+
+$$
+(x,u)=\sum_{k=1}^n\overline{a_k}(x,\omega_k)=0.
+$$
+
+故 $x\in(\operatorname{span}(\Omega))^\perp$，从而等式成立。
+
+再令 $N=\operatorname{span}(\Omega)$。由于内积连续，$x\perp N$ 当且仅当 $x\perp\overline N$，即
+
+$$
+N^\perp=(\overline N)^\perp.
+$$
+
+而 $\overline N$ 是闭线性子空间，由上面的结论
+
+$$
+(\overline N)^{\perp\perp}=\overline N.
+$$
+
+因此
+
+$$
+\Omega^{\perp\perp}
+=(\operatorname{span}(\Omega))^{\perp\perp}
+=(\overline{\operatorname{span}(\Omega)})^{\perp\perp}
+=\overline{\operatorname{span}(\Omega)}.
+$$
+
+证毕。
+
+例如，取 $H=\ell^2$、$\Omega=\{e_1,e_2,\ldots\}$，则
+
+$$
+\operatorname{span}(\Omega)=c_{00},
+\qquad
+\overline{\operatorname{span}(\Omega)}=\ell^2.
+$$
+
+又 $\Omega^\perp=\{0\}$，故
+
+$$
+\Omega^{\perp\perp}=\ell^2.
+$$
+
+这说明双正交补不仅包含 $\Omega$ 的有限线性组合，也包含这些有限线性组合在范数意义下的所有极限。
+
+取M的正规正交基$\{e_{\alpha}\}$
+
+$
+\begin{aligned}
+&\|x\|^{2}\geq\sum |<x,e_{\alpha}>|^{2}\\
+&定义m=\sum<x,e_{\alpha}>e_{\alpha}\\
+\end{aligned}
+$
+
+
+证：注意 $M$ 也是 Hilbert 空间，根据定理 2.2，$M$ 有一个正规正交基 $\{y_\alpha\}_{\alpha \in \mathcal{A}}$。任给 $x \in H$，由定理 2.3 证明第一段可知，最多只有可数多个 $(x, y_\alpha) \neq 0$。设它们是 $\{(x, y_{\alpha_j})\}_{j=1}^{\infty}$，则对 $\alpha \in \mathcal{A},\ \alpha \neq \alpha_j,\ j=1,2,\cdots,\ (x, y_\alpha)=0$。令
+
+$$
+y = \sum_{j=1}^{\infty} (x, y_{\alpha_j}) y_{\alpha_j}.
+$$
+
+如定理 2.3 一样可以证明，上式右端级数是收敛的。因 $M$ 是闭的，故 $y \in M$。
+
+令 $z = x - y$，则对 $k = 1, 2, \cdots$，有
+
+$$
+\begin{aligned}
+(z, y_{\alpha_k}) &= (x, y_{\alpha_k}) - (y, y_{\alpha_k}) \\
+&= (x, y_{\alpha_k}) - \left( \sum_{j=1}^{\infty} (x, y_{\alpha_j}) y_{\alpha_j}, y_{\alpha_k} \right) \\
+&= (x, y_{\alpha_k}) - \sum_{j=1}^{\infty} (x, y_{\alpha_j}) (y_{\alpha_j}, y_{\alpha_k}) \\
+&= (x, y_{\alpha_k}) - (x, y_{\alpha_k}) \\
+&= 0.
+\end{aligned}
+$$
+
+又当 $\alpha \in \mathcal{A}$，且 $\alpha \neq \alpha_k,\ k=1,2,\cdots$，
+
+$$
+\begin{aligned}
+(z, y_\alpha) &= (x, y_\alpha) - (y, y_\alpha) \\
+&= (x, y_\alpha) - \left( \sum_{j=1}^{\infty} (x, y_{\alpha_j}) y_{\alpha_j}, y_\alpha \right) = 0.
+\end{aligned}
+$$
+
+总之，
+
+$$
+(z, y_\alpha) = 0,\quad \text{当}\ \alpha \in \mathcal{A}.
+$$
+
+根据定理 2.3，$M$ 中每个 $u$ 都可表成 $\sum_{\alpha \in \mathcal{A}} (u, y_\alpha) y_\alpha$，可见 $(z, u) = 0,\ \forall u \in M$，即 $z \in M^\perp$。因此
+
+$$
+x = y + z,\quad y \in M,\quad z \in M^\perp.
+$$
+
+至于唯一性，可由 $M \cap M^\perp = \{0\}$ 得出。证毕。
+
+应该指出，这个定理也可以看作是 Schmidt 正规正交法的推广。因为对于任何子空间 $M$，若 $x_0 \notin M$，根据射影定理，便有
+
+$$
+x_0 = y_0 + z_0,\quad y_0 \in M,\quad z_0 \in M^\perp.
+$$
+
+显然 $z_0 \neq 0$，$z_0$ 是新的与 $M$ 中一切元都正交的元。为什么说是推广呢？因为现在的 $\dim M$ 不限于有限的。
+
+区别于一般 Banach 空间，Hilbert 空间是几何性质最丰富的空间，理由之一就在于它有射影定理。早在 20 世纪 30 年代，人们就已举出反例，即使对前述的 $L^p(p \neq 2)$ 空间，也不能有类似射影定理那样美好的性质。关于这个反例可参见 [36]。
+
+
+**命题 3.1** 设 $M$ 是 $H$ 的线性流形，则 $\overline{M} = (M^{\perp})^{\perp}$。
+
+**证** 设 $x \in (M^{\perp})^{\perp}$，因为 $\overline{M}$ 是 $H$ 的子空间，根据射影定理，
+
+$$
+x = y + z,\quad y \in \overline{M},\quad z \in (\overline{M})^{\perp}.
+$$
+
+不难证明 $(\overline{M})^{\perp} = M^{\perp}$。于是，用 $z$ 与上述表达式作内积有
+
+$$
+0 = (x, z) = (z, z),
+$$
+
+故 $z = 0$，从而 $x = y \in \overline{M}$。可见 $(M^{\perp})^{\perp} \subset \overline{M}$。
+
+另一方面，由正交补定义有 $M \subset (M^{\perp})^{\perp}$，又因 $(M^{\perp})^{\perp}$ 是闭的，故 $\overline{M} \subset (M^{\perp})^{\perp}$。证毕。
+
+
+# 不可分 Hilbert 空间中的正规正交基展开
+
+设 $H$ 是 Hilbert 空间，$\{e_\alpha\}_{\alpha\in A}$ 是 $H$ 的正规正交基，其中指标集 $A$ 可以是不可数集。
+
+这里的“正规正交基”指：
+
+1. $\|e_\alpha\|=1$；
+2. $\alpha\neq\beta$ 时 $(e_\alpha,e_\beta)=0$；
+3.
+   $$
+   \overline{\operatorname{span}\{e_\alpha:\alpha\in A\}}=H.
+   $$
+
+即使 $A$ 不可数，对任意 $x\in H$，仍然有 Fourier 展开
+
+$$
+\boxed{
+x=\sum_{\alpha\in A}(x,e_\alpha)e_\alpha.
+}
+$$
+
+不过需要注意：对于每个固定的 $x$，其中非零的 Fourier 系数实际上至多只有可数个。
+
+---
+
+## 1. Bessel 不等式
+
+对任意有限子集 $F\subset A$，都有
+
+$$
+\boxed{
+\sum_{\alpha\in F}|(x,e_\alpha)|^2\le \|x\|^2.
+}
+$$
+
+证明思路：
+
+令
+
+$$
+y=\sum_{\alpha\in F}(x,e_\alpha)e_\alpha.
+$$
+
+由正规正交性，
+
+$$
+\|y\|^2
+=
+\sum_{\alpha\in F}|(x,e_\alpha)|^2.
+$$
+
+并且 $x-y$ 与 $y$ 正交，因此
+
+$$
+\|x\|^2
+=
+\|x-y\|^2+\|y\|^2
+\ge
+\|y\|^2.
+$$
+
+于是得到 Bessel 不等式。
+
+---
+
+## 2. 每个向量只有至多可数个非零 Fourier 系数
+
+设
+
+$$
+c_\alpha=(x,e_\alpha).
+$$
+
+定义
+
+$$
+A_n=
+\left\{
+\alpha\in A:
+|c_\alpha|\ge\frac1n
+\right\}.
+$$
+
+则每个 $A_n$ 都是有限集。
+
+证明：
+
+若 $A_n$ 无限，则可以从中任取含 $N$ 个元素的有限集合 $F$。由 Bessel 不等式，
+
+$$
+\|x\|^2
+\ge
+\sum_{\alpha\in F}|c_\alpha|^2
+\ge
+\frac{N}{n^2}.
+$$
+
+因此
+
+$$
+N\le n^2\|x\|^2.
+$$
+
+但若 $A_n$ 无限，可以取得任意大的 $N$，矛盾。
+
+所以 $A_n$ 有限。
+
+另一方面，
+
+$$
+\{\alpha:c_\alpha\neq0\}
+=
+\bigcup_{n=1}^\infty A_n.
+$$
+
+因为任意 $c_\alpha\neq0$，总可以取充分大的 $n$ 使
+
+$$
+|c_\alpha|\ge\frac1n.
+$$
+
+于是非零系数集合是可数个有限集之并，因此至多可数：
+
+$$
+\boxed{
+\#\{\alpha:(x,e_\alpha)\neq0\}\le\aleph_0.
+}
+$$
+
+这说明：
+
+> Hilbert 空间虽然可能有不可数正规正交基，但每个具体向量只需要其中至多可数多个基向量。
+
+---
+
+## 3. 不可数正规正交基下的 Fourier 展开
+
+设
+
+$$
+\{\alpha:(x,e_\alpha)\neq0\}
+=
+\{\alpha_1,\alpha_2,\ldots\}.
+$$
+
+则实际上
+
+$$
+\boxed{
+x=
+\sum_{n=1}^\infty
+(x,e_{\alpha_n})e_{\alpha_n}.
+}
+$$
+
+证明思路：
+
+定义部分和
+
+$$
+S_N=
+\sum_{n=1}^N
+(x,e_{\alpha_n})e_{\alpha_n}.
+$$
+
+由于正规正交基是完备的，Parseval 恒等式成立：
+
+$$
+\boxed{
+\|x\|^2
+=
+\sum_{\alpha\in A}|(x,e_\alpha)|^2.
+}
+$$
+
+而非零项只有可数个，所以
+
+$$
+\|x\|^2
+=
+\sum_{n=1}^\infty
+|(x,e_{\alpha_n})|^2.
+$$
+
+又由正交性，
+
+$$
+\|x-S_N\|^2
+=
+\|x\|^2
+-
+\sum_{n=1}^N
+|(x,e_{\alpha_n})|^2.
+$$
+
+令 $N\to\infty$，右端趋于 $0$，故
+
+$$
+S_N\to x.
+$$
+
+因此
+
+$$
+x=
+\sum_{n=1}^\infty
+(x,e_{\alpha_n})e_{\alpha_n}.
+$$
+
+---
+
+## 4. Parseval 恒等式在不可分 Hilbert 空间中仍成立
+
+若 $\{e_\alpha\}_{\alpha\in A}$ 是正规正交基，则对任意 $x\in H$，
+
+$$
+\boxed{
+\|x\|^2
+=
+\sum_{\alpha\in A}|(x,e_\alpha)|^2.
+}
+$$
+
+这里不可数求和可定义为
+
+$$
+\sum_{\alpha\in A}a_\alpha
+:=
+\sup_{F\subset A,\ F\text{ 有限}}
+\sum_{\alpha\in F}a_\alpha,
+\qquad a_\alpha\ge0.
+$$
+
+但在 Hilbert 空间的 Fourier 系数情形中，由于非零项至多可数，因此最终仍退化成普通的可数级数。
+
+---
+
+## 5. 典型例子：$\ell^2(I)$
+
+设 $I$ 是不可数集合，定义
+
+$$
+\ell^2(I)
+=
+\left\{
+x=(x_i)_{i\in I}:
+\sum_{i\in I}|x_i|^2<\infty
+\right\}.
+$$
+
+对每个 $i\in I$，令 $e_i$ 为第 $i$ 个坐标为 $1$、其余坐标为 $0$ 的向量。
+
+则
+
+$$
+\{e_i\}_{i\in I}
+$$
+
+是 $\ell^2(I)$ 的不可数正规正交基，因此 $\ell^2(I)$ 不可分。
+
+但任意
+
+$$
+x=(x_i)_{i\in I}\in\ell^2(I)
+$$
+
+都只有至多可数个非零坐标。
+
+因此
+
+$$
+x=\sum_{i\in I}x_i e_i
+$$
+
+实际上仍是一个可数级数。
+
+---
+
+## 6. 与 Hamel 基的区别
+
+Hilbert 空间中的正规正交基与线性代数中的 Hamel 基不同。
+
+### Hamel 基
+
+要求任意向量都能表示成有限线性组合：
+
+$$
+x=\sum_{k=1}^N c_k e_k.
+$$
+
+### Hilbert 正规正交基
+
+允许范数意义下的无穷级数：
+
+$$
+x=
+\sum_{n=1}^\infty
+(x,e_n)e_n.
+$$
+
+因此：
+
+$$
+\boxed{
+\text{Hamel 基：有限线性组合}
+}
+$$
+
+而
+
+$$
+\boxed{
+\text{Hilbert 正规正交基：允许范数收敛的可数级数}
+}
+$$
+
+---
+
+## 7. 核心结论
+
+设 $\{e_\alpha\}_{\alpha\in A}$ 是任意 Hilbert 空间 $H$ 的正规正交基，则对每个 $x\in H$：
+
+1. 非零 Fourier 系数至多可数：
+   $$
+   \{\alpha:(x,e_\alpha)\neq0\}
+   \text{ 至多可数};
+   $$
+
+2. 存在可数指标 $\alpha_1,\alpha_2,\ldots$ 使
+   $$
+   x=
+   \sum_{n=1}^\infty
+   (x,e_{\alpha_n})e_{\alpha_n};
+   $$
+
+3. Parseval 恒等式成立：
+   $$
+   \|x\|^2=
+   \sum_{\alpha\in A}
+   |(x,e_\alpha)|^2.
+   $$
+
+因此可以概括为
+
+$$
+\boxed{
+\text{不可数 ONB}
+\Longrightarrow
+\text{每个向量的 Fourier 支撑至多可数}
+\Longrightarrow
+\text{仍可作通常的 Fourier 展开}.
+}
+$$
+
+# Riesz表示定理
+
+$
+\begin{aligned}
+&X'表示X上所有的连续线性泛函\\
+&
+\end{aligned}
+$
