@@ -874,11 +874,51 @@ $$
 }
 $$
 
-# Riesz表示定理
+# Riesz表示定理(Frechet-Riesz表示定理)
 
 $
 \begin{aligned}
 &X'表示X上所有的连续线性泛函\\
-&
+&设f\in H^{*},则恰存在唯一的z_{f}\in H,\\
+&s.t. f(x)=(x,z_{f}),\forall x\in H\\
+&并且\|f\|_{H^{*}}=\|z_{f}\|_{H}\\
+&\\
+&证明:\\
+&若f\equiv 0\\
+&则\forall x\in H,0=f(x)=(x,0)\\
+&取z_{f}=0即可\\
+&若f\not\equiv 0\\
+&则\exists a\in H,s.t. f(a)\ne 0\\
+&令z_{0}=P_{ker(f)^{\perp}}(a)\\
+&则f(z_{0})\ne 0\\
+&取z_{f}=\frac{\bar{f(z_{0})}}{\|z_{0}\|^{2}}z_{0}\\
+&(这里的本质上利用了dim Imf =1,所以就有正交补的维数也是1)\\
+&(这个命题也可以根据\|f\|_{H^{*}}的定义来证明)\\
+&(直接取对应内积最大的z_{f})即可\\
+&\\\\
+&th3.3:\\
+&\phi是有界共轭双线性泛函\\
+&则存在唯一的算子B\in L(K,H),s.t. \\
+&\phi(x,y)=(x,By)\\
+&\\
+&证明:\\
+&\forall y\in K\\
+&定义f_{y}:H\to C\\
+&~~~~~f_{y}(x)=\phi(x,y),\forall x\in H\\
+&则f_{y}\in H^{*}\\
+&|f_{y}(x)|=|\phi(x,y)|\leq M\|y\|\|x\|\\
+&\\
+&由Frechlet表示定理知:\\
+&\exists! z_{f_y}\in H,s.t. f_{y}(x)=(x,z_{f_y}),\forall x\in H\\
+&B:K\to H\\
+&~~~~~y\mapsto z_{f_y}\\
 \end{aligned}
 $
+
+
+
+## Hilbert共轭
+
+
+
+
