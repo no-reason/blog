@@ -922,3 +922,215 @@ $
 
 
 
+## 1. Hilbert 共轭算子
+
+设 $H_1, H_2$ 都是 Hilbert 空间，$T$ 是从 $H_1$ 到 $H_2$ 的有界线性算子。对 $H_2$ 中每个固定元 $y$，设
+$$
+f(x) = (Tx, y), \quad \text{当 } x \in H_1,
+$$
+则 $f(x)$ 是 $H_1$ 上以 $x$ 为变元的连续线性泛函。由 **Fréchet-Riesz 表现定理**，恰有一个 $\hat{y} \in H_1$，使
+$$
+f(x) = (x, \hat{y}), \quad \text{当 } x \in H_1.
+$$
+
+这个 $\hat{y}$ 是由 $f$，从而由 $y$ 唯一确定的。人们定义
+$$
+T^* y = \hat{y}.
+$$
+容易验证 $T^*$ 是从 $H_2$ 到 $H_1$ 的有界线性算子。称 $T^*$ 为 $T$ 的 **Hilbert 共轭算子**，通常也称为 $T$ 的**伴随算子**。
+
+由 $T^*$ 的定义可见
+$$
+(Tx, y) = (x, T^* y), \quad \forall x \in H_1, y \in H_2. \tag{4.1}
+$$
+
+总之，对每个从 $H_1$ 到 $H_2$ 的有界线性算子 $T$，总存在一个从 $H_2$ 到 $H_1$ 的有界线性算子 $T^*$ 使 (4.1) 式成立。显然 $T^*$ 是由 $T$ 唯一确定的。
+
+
+**定理 4.1** 设 $S, T \in \mathcal{L}(H)$，则
+
+1. $(S + T)^* = S^* + T^*$；
+2. $(ST)^* = T^* S^*$；
+3. $(T^*)^* = T$；
+4. 对常数 $\alpha \in \mathbb{C}$，$(\alpha T)^* = \bar{\alpha} T^*$；
+5. 若 $T$ 有界可逆，则 $T^*$ 亦有界可逆，且
+$$
+(T^*)^{-1} = (T^{-1})^*;
+$$
+6. $\| T^* \| = \| T \|$。
+
+
+### 例：核积分算子
+
+取 $H=L^2[0,1]$，其内积为
+
+$$
+(f,g)=\int_0^1 f(t)\overline{g(t)}\,dt.
+$$
+
+设核函数 $k\in L^2([0,1]^2)$，定义积分算子 $T:H\to H$：
+
+$$
+(Tf)(t)=\int_0^1 k(s,t)f(s)\,ds.
+$$
+
+这个例子说明如何将抽象的有界算子、算子范数与 Hilbert 共轭算子落实到具体的积分变换上。
+
+**1. $T$ 是有界线性算子。**
+
+线性性由积分的线性性直接得到。对几乎处处的 $t\in[0,1]$，由 Schwarz 不等式，
+
+$$
+\begin{aligned}
+|(Tf)(t)|^2
+&=\left|\int_0^1 k(s,t)f(s)\,ds\right|^2 \\
+&\leq \left(\int_0^1|k(s,t)|^2\,ds\right)
+\left(\int_0^1|f(s)|^2\,ds\right) \\
+&=\left(\int_0^1|k(s,t)|^2\,ds\right)\|f\|_2^2.
+\end{aligned}
+$$
+
+再对 $t$ 积分，得到
+
+$$
+\begin{aligned}
+\|Tf\|_2^2
+&\leq \int_0^1\int_0^1|k(s,t)|^2\,ds\,dt\ \|f\|_2^2 \\
+&=\|k\|_{L^2([0,1]^2)}^2\|f\|_2^2.
+\end{aligned}
+$$
+
+因此
+
+$$
+\|Tf\|_2\leq\|k\|_{L^2([0,1]^2)}\|f\|_2,
+$$
+
+从而
+
+$$
+\boxed{\ \|T\|\leq\|k\|_{L^2([0,1]^2)}\ }.
+$$
+
+注意：这里得到的是算子范数的上界；一般未必有 $\|T\|=\|k\|_{L^2([0,1]^2)}$。
+
+**2. 计算 $T$ 的 Hilbert 共轭。**
+
+任取 $f,g\in L^2[0,1]$，交换积分次序可得
+
+$$
+\begin{aligned}
+(Tf,g)
+&=\int_0^1\left(\int_0^1k(s,t)f(s)\,ds\right)\overline{g(t)}\,dt \\
+&=\int_0^1f(s)\left(\int_0^1k(s,t)\overline{g(t)}\,dt\right)\,ds \\
+&=\int_0^1f(s)\overline{\left(\int_0^1\overline{k(s,t)}g(t)\,dt\right)}\,ds.
+\end{aligned}
+$$
+
+由 $(Tf,g)=(f,T^*g)$，可知
+
+$$
+(T^*g)(s)=\int_0^1\overline{k(s,t)}g(t)\,dt.
+$$
+
+若将输出变量重新记作 $t$，则
+
+$$
+\boxed{
+(T^*g)(t)=\int_0^1\overline{k(t,s)}g(s)\,ds.
+}
+$$
+
+因此，伴随算子对应的核函数是
+
+$$
+k^*(s,t)=\overline{k(t,s)}.
+$$
+
+这正是有限维情形中矩阵取“共轭转置”的无限维版本：交换两个变量，再取复共轭。
+
+**3. 自伴情形。**
+
+若
+
+$$
+k(s,t)=\overline{k(t,s)},
+$$
+
+则 $k^*=k$，故
+
+$$
+T^*=T.
+$$
+
+特别地，若 $k$ 是实值且满足 $k(s,t)=k(t,s)$，则 $T$ 是自伴算子。
+
+
+
+**定理 4.2** 在上述假设下，
+
+$$
+\operatorname{Ker}(A) = \operatorname{Im}(A^*)^{\perp}, \quad \operatorname{Ker}(A^*) = \operatorname{Im}(A)^{\perp},
+$$
+
+$$
+\overline{\operatorname{Im}(A)} = \operatorname{Ker}(A^*)^{\perp}, \quad \overline{\operatorname{Im}(A^*)} = \operatorname{Ker}(A)^{\perp}.
+$$
+
+**证** 设 $x \in N(A)$，则 $Ax = 0$。从而对任意 $y \in H_2$，
+
+$$
+(x, A^* y) = (Ax, y) = 0.
+$$
+
+这说明，$x \in R(A^*)^{\perp}$。
+
+如果 $x \in R(A^*)^{\perp}$，则对任意 $y \in H_2$，
+
+$$
+(Ax, y) = (x, A^* y) = 0.
+$$
+
+故 $Ax = 0$，即 $x \in N(A)$。总之
+
+$$
+N(A) = R(A^*)^{\perp}.
+$$
+
+根据命题 3.1，
+
+$$
+\overline{R(A^*)} = (R(A^*)^{\perp})^{\perp} = N(A)^{\perp}.
+$$
+
+其他两个等式可以类似证明。
+
+
+## 2. Lax - Milgram 定理
+
+**定理 4.3（Lax - Milgram 定理, 1954）** 设 $B(f, g)$ 是 Hilbert 空间 $H$ 上有界的共轭双线性泛函，且有正的常数 $r$，使
+$$
+\left| B(f, f) \right| \geq r \| f \|^2, \quad \text{当 } f \in H. \tag{4.3}
+$$
+则于 $H$ 上任给的有界线性泛函 $\ell$，恰有一个 $g_0 \in H$，使
+$$
+\ell(f) = B(f, g_0), \quad \forall f \in H,
+$$
+且
+$$
+\| g_0 \| \leq \frac{1}{r} \| \ell \|.
+$$
+
+
+**推论（Lax - Milgram）** 设 $A$ 是 $H$ 上有界线性算子，
+$$
+a(u, v) = (Au, v), \quad u, v \in H,
+$$
+满足
+$$
+|a(u, u)| \geq r \| u \|^2, \quad \forall u \in H, \tag{4.5}
+$$
+其中 $r$ 是正的常数，则 $A$ 是有界可逆的。
+
+**一个算子是下方有界的$\Rightarrow$ 单射且闭值域**
+
