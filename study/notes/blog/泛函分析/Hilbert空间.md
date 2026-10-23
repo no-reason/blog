@@ -1134,3 +1134,145 @@ $$
 
 **一个算子是下方有界的$\Rightarrow$ 单射且闭值域**
 
+## 例：连续算子的像空间未必闭
+
+令 $H=\ell^2$，定义对角算子 $T:H\to H$：
+
+$$
+T(x_1,x_2,\ldots)=\left(x_1,\frac{x_2}{2},\frac{x_3}{3},\ldots\right).
+$$
+
+这个例子说明：**有界（等价于连续）线性算子不一定有闭值域。**
+
+### 1. $T$ 是有界线性算子
+
+线性性显然。对任意 $x=(x_n)\in\ell^2$，有
+
+$$
+\|Tx\|_2^2
+=\sum_{n=1}^{\infty}\left|\frac{x_n}{n}\right|^2
+\leq\sum_{n=1}^{\infty}|x_n|^2
+=\|x\|_2^2.
+$$
+
+故
+
+$$
+\|Tx\|_2\leq\|x\|_2,
+$$
+
+从而 $T$ 有界，特别地 $T$ 连续，且 $\|T\|=1$（取 $x=e_1$ 即知等号成立）。
+
+### 2. 写出 $\operatorname{Im}T$
+
+对 $y=(y_n)\in\ell^2$，存在 $x\in\ell^2$ 使 $Tx=y$，当且仅当
+
+$$
+x_n=ny_n\quad(n\geq1)
+$$
+
+所定义的数列仍属于 $\ell^2$。因此
+
+$$
+\operatorname{Im}T
+=
+\left\{
+ y=(y_n)\in\ell^2:
+ (ny_n)_{n=1}^{\infty}\in\ell^2
+\right\}.
+$$
+
+### 3. $\operatorname{Im}T$ 不是闭集
+
+考虑数列
+
+$$
+y=\left(1,\frac12,\frac13,\ldots\right).
+$$
+
+因为
+
+$$
+\sum_{n=1}^{\infty}\left|\frac1n\right|^2<\infty,
+$$
+
+故 $y\in\ell^2$。但若 $y\in\operatorname{Im}T$，则必有
+
+$$
+x_n=ny_n=1,\qquad n=1,2,\ldots,
+$$
+
+即 $x=(1,1,1,\ldots)$。然而
+
+$$
+\sum_{n=1}^{\infty}|1|^2=\infty,
+$$
+
+所以 $x\notin\ell^2$，从而
+
+$$
+y\notin\operatorname{Im}T.
+$$
+
+另一方面，对每个 $N\in\mathbb N$，令
+
+$$
+y^{(N)}=\left(1,\frac12,\ldots,\frac1N,0,0,\ldots\right).
+$$
+
+令
+
+$$
+x^{(N)}=(\underbrace{1,1,\ldots,1}_{N\text{ 个}},0,0,\ldots)\in\ell^2,
+$$
+
+则 $Tx^{(N)}=y^{(N)}$，所以 $y^{(N)}\in\operatorname{Im}T$。又
+
+$$
+\|y^{(N)}-y\|_2^2
+=\sum_{n=N+1}^{\infty}\frac1{n^2}
+\longrightarrow0.
+$$
+
+故 $y^{(N)}\to y$，但 $y\notin\operatorname{Im}T$。于是
+
+$$
+\boxed{\operatorname{Im}T\text{ 不是闭子空间。}}
+$$
+
+### 4. 与伴随算子和值域闭包公式的联系
+
+该算子是自伴的：对任意 $x,z\in\ell^2$，
+
+$$
+(Tx,z)
+=\sum_{n=1}^{\infty}\frac{x_n}{n}\overline{z_n}
+=(x,Tz),
+$$
+
+故 $T^*=T$。同时，$Tx=0$ 蕴含 $x_n/n=0$ 对所有 $n$ 成立，故
+
+$$
+\ker T^*=\ker T=\{0\}.
+$$
+
+由
+
+$$
+\overline{\operatorname{Im}T}=(\ker T^*)^\perp
+$$
+
+立刻得到
+
+$$
+\overline{\operatorname{Im}T}=\ell^2.
+$$
+
+所以 $\operatorname{Im}T$ 在 $\ell^2$ 中稠密，却是一个真子空间（例如上面的 $y$ 不属于它）。这正说明一般只能写
+
+$$
+\overline{\operatorname{Im}T}=(\ker T^*)^\perp,
+$$
+
+而不能去掉左边的闭包。
+
