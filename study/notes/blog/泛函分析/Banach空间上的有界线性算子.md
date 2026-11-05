@@ -319,8 +319,9 @@ r_0 &\geq \frac{1}{\lambda} \left[ p(\lambda x_0 + x) - f(x) \right] \\
 
 总之，条件 (2.4) 相当于
 \[
-- p(-x_0 + x'') + f(x'') \leq r_0 \leq p(x_0 + x') - f(x'), \quad x', x'' \in G. \tag{2.5}
+p(-x_0 + x'') + f(x'') \leq r_0 \leq p(x_0 + x') - f(x'), \quad x', x'' \in G. \tag{2.5}
 \]
+
 要想这样的 $ r_0 $ 存在必须且只须 (2.5) 式右端恒不小于左端，即
 \[
 f(x') + f(x'') \leq p(x_0 + x') + p(-x_0 + x''), \quad \forall x', x'' \in G.
@@ -380,3 +381,227 @@ F(x) = f(x), \quad \text{当 } x \in G,
 \[
 |F(x)| \leq p(x), \quad \text{当 } x \in X.
 \]
+
+
+**证** 设 $ f(x) $ 的实部为 $ f_1(x) $，虚部为 $ f_2(x) $，即
+
+\[
+f_1(x) = \frac{f(x) + \overline{f(x)}}{2},
+\]
+
+\[
+f_2(x) = \frac{f(x) - \overline{f(x)}}{2\mathrm{i}}.
+\]
+
+则
+
+\[
+f(x) = f_1(x) + \mathrm{i} f_2(x),
+\]
+
+而且 $ f_1(x), f_2(x) $ 都是 $ G $ 上的实线性泛函。注意 $ f(x) $ 是复线性空间上线性泛函，因此
+
+\[
+\begin{aligned}
+\mathrm{i}\left[ f_1(x) + \mathrm{i} f_2(x) \right] &= \mathrm{i} f(x) = f(\mathrm{i}x) \\
+&= f_1(\mathrm{i}x) + \mathrm{i} f_2(\mathrm{i}x), \quad x \in G.
+\end{aligned}
+\]
+
+比较两端的实部，便有
+
+\[
+f_1(\mathrm{i}x) = -f_2(x), \quad x \in G.
+\]
+
+从而
+
+\[
+f(x) = f_1(x) - \mathrm{i} f_1(\mathrm{i}x), \quad x \in G.
+\]
+
+这说明 $ f $ 可以由其实部唯一确定。
+
+因为复线性空间也可以看作实线性空间，故 $ f_1 $ 可视为实线性流形 $ G $ 上的实线性泛函，而且
+
+\[
+f_1(x) \leq |f(x)| \leq p(x), \quad \text{当 } x \in G.
+\]
+
+由定理 2.1，$ f_1 $ 可以扩张成线性空间 $ X $ 上的实线性泛函 $ F_1 $，且
+
+\[
+F_1(x) = f_1(x), \quad \text{当 } x \in G,
+\]
+
+\[
+F_1(x) \leq p(x), \quad \text{当 } x \in X.
+\]
+
+令
+
+\[
+F(x) = F_1(x) - \mathrm{i} F_1(\mathrm{i}x), \quad x \in X.
+\]
+
+显然，$ \forall x, y \in X $，$ F(x + y) = F(x) + F(y) $，且当 $ t $ 是实数时，
+
+\[
+F(tx) = tF(x).
+\]
+
+又
+
+\[
+\begin{aligned}
+F(\mathrm{i}x) &= F_1(\mathrm{i}x) - \mathrm{i} F_1(-x) = F_1(ix)-i(-F_1(x))=F_1(ix)+iF_1(x)\\
+&=\mathrm{i} F_1(x) + F_1(\mathrm{i}x) \\
+&= \mathrm{i}\left( F_1(x) - \mathrm{i} F_1(\mathrm{i}x) \right) = \mathrm{i} F(x).
+\end{aligned}
+\]
+
+故 $ F(x) $ 是复线性空间 $ X $ 上线性泛函。
+
+当 $ x \in G $，也有 $ \mathrm{i}x \in G $，从而
+
+\[
+F(x) = F_1(x) - \mathrm{i} F_1(\mathrm{i}x) = f_1(x) - \mathrm{i} f_1(\mathrm{i}x) = f(x).
+\]
+
+当 $ x \in X $，如果 $ F(x) \neq 0 $，令 $ \theta = \arg F(x) $，则
+
+\[
+\begin{aligned}
+|F(x)| &= F(x)\mathrm{e}^{-\mathrm{i}\theta} = F\left( \mathrm{e}^{-\mathrm{i}\theta} x \right) \\
+&= \operatorname{Re} F\left( \mathrm{e}^{-\mathrm{i}\theta} x \right) = F_1\left( \mathrm{e}^{-\mathrm{i}\theta} x \right) \\
+&\leq p\left( \mathrm{e}^{-\mathrm{i}\theta} x \right) = p(x).
+\end{aligned}
+\]
+
+如果 $ F(x) = 0 $，不等式显然成立。证毕。
+
+**定理 2.3（Hahn–Banach，1927）** 对于赋范线性空间 $ X $ 之线性流形 $ G $ 上的连续线性泛函 $ f(x) $，恒有 $ X $ 上的连续线性泛函 $ F(x) $，使
+
+(1) $ F(x) = f(x) $，当 $ x \in G $，
+
+(2) $ \| F \| = \| f \|_G $。
+
+这里 $ \| f \|_G $ 表示 $ f $ 作为 $ G $ 上连续线性泛函的范数，下同。
+
+**证** 令
+
+\[
+p(x) = \| f \|_G \| x \|, \quad \text{当 } x \in X.
+\]
+
+不难验证 $ f, p $ 满足定理 2.2 的条件，于是存在 $ X $ 上线性泛函 $ F(x) $，使
+
+\[
+F(x) = f(x), \quad \text{当 } x \in G,
+\]
+
+且
+
+\[
+|F(x)| \leq p(x) = \| f \|_G \| x \|, \quad \text{当 } x \in X.
+\]
+
+因此 $ F $ 是 $ X $ 上有界线性泛函，而且
+
+\[
+\| F \| \leq \| f \|_G.
+\]
+
+但 $ F $ 是 $ f $ 的扩张，因而 $ F $ 的范数不会小于 $ f $ 的范数，即 $ \| F \| \geq \| f \|_G $。总之
+
+\[
+\| F \| = \| f \|_G.
+\]
+
+证毕。
+
+
+**命题 2.1** 设 $ X $ 是赋范线性空间，任给非零的 $ x_0 \in X $，总存在 $ X $ 上的连续线性泛函 $ f $ 满足
+
+(1) $ \| f \| = 1 $,
+
+(2) $ f(x_0) = \| x_0 \| $.
+
+**证** 取 $ G = \{ \alpha x_0 : \alpha \in \mathbb{C} \} $，定义
+
+\[
+f_1(\alpha x_0) = \alpha \| x_0 \|, \quad \alpha \in \mathbb{C}.
+\]
+
+则 $ G $ 是 $ X $ 中线性流形，$ f_1 $ 是 $ G $ 上连续线性泛函，$ \| f_1 \|_G = 1 $，$ f_1(x_0) = \| x_0 \| $。根据定理 2.3 可见命题为真。证毕。
+
+这个命题说明在非零的赋范线性空间上，总存在非零的连续线性泛函。但是对一般的距离线性空间，这可不一定成立。试看第一章 §8 中例 4 所说的距离线性空间 $ S[0,1] $。
+
+**命题 2.2分离定理** 
+
+设 $ X $ 是赋范线性空间，$ E $ 是 $ X $ 的闭子空间，$ x_0 \in X \setminus E $，则存在 $ X $ 上有界线性泛函 $ f $ 满足
+
+(1) $ f(x) = 0 $，当 $ x \in E $，
+
+(2) $ f(x_0) = 1 $，
+
+(3) $ \| f \| = \dfrac{1}{d} $，
+
+这里 $ d = \operatorname{dist}(x_0, E) > 0 $。
+
+
+**证** 取 $ G = \{ \alpha x_0 + x : \alpha \in \mathbb{C}, x \in E \} $，定义
+
+\[
+f_1(\alpha x_0 + x) = \alpha, \quad \text{当 } \alpha x_0 + x \in G.
+\]
+
+易见 $ G $ 是 $ X $ 中包含 $ E $ 与 $ x_0 $ 的线性流形，$ f_1 $ 是 $ G $ 上线性泛函。往证 $ f_1 $ 是有界的，且 $ \| f_1 \|_G = \dfrac{1}{d} $。
+
+首先，对任意的 $ \alpha x_0 + x \in G $，只要 $ \alpha \neq 0 $，
+
+\[
+\| \alpha x_0 + x \| = |\alpha| \left\| x_0 + \frac{x}{\alpha} \right\| \geq |\alpha| d.
+\]
+
+故
+
+\[
+|f_1(\alpha x_0 + x)| = |\alpha| \leq \frac{\| \alpha x_0 + x \|}{d}.
+\]
+
+当 $ \alpha = 0 $ 时，上述不等式显然成立。由此可知，$ f_1 $ 是有界的，且
+
+\[
+\| f_1 \|_G \leq \frac{1}{d}.
+\]
+
+另一方面，任给 $ \varepsilon > 0 $，存在 $ x_1 \in E $，使
+
+\[
+\| x_0 - x_1 \| < d + \varepsilon,
+\]
+
+于是，对任意的 $ \alpha \in \mathbb{C} $，
+
+\[
+\| \alpha x_0 - \alpha x_1 \| = |\alpha| \| x_0 - x_1 \| < |\alpha|(d + \varepsilon),
+\]
+
+故
+
+\[
+|f_1(\alpha x_0 - \alpha x_1)| = |\alpha| \geq \frac{\| \alpha x_0 - \alpha x_1 \|}{d + \varepsilon}.
+\]
+
+从而
+
+\[
+\| f_1 \|_G \geq \frac{1}{d + \varepsilon}.
+\]
+
+$ \varepsilon > 0 $ 是任意的，故 $ \| f_1 \|_G \geq \dfrac{1}{d} $。总之，$ \| f_1 \|_G = \dfrac{1}{d} $。
+
+最后，对 $ G, f_1 $ 应用定理 2.3 便知命题为真。证毕。
+
+
