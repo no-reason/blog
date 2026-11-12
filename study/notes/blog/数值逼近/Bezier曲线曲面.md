@@ -384,3 +384,216 @@ H=0代表着此处面积取极小值，曲率处处为零的曲面为极小曲�
 
 # Bezier曲线
 
+Bezier曲线是参数曲线,所以可能会有自交点
+
+
+## Bézier曲线的定义
+
+> **定义**
+>
+> 称参数曲线段
+>
+> \[
+> \mathbf{P}(t) = \sum_{i=0}^{n} \mathbf{P}_i B_i^n(t), \quad t \in [0, 1],
+> \]
+>
+> 为一条 $ n $ 次 **Bézier 曲线**，其中 $ B_i^n(t) $ 为 $ n $ 次 Bernstein 基函数，空间向量 $ \mathbf{P}_i \in \mathbb{R}^3 $ 称为**控制顶点**。依次用直线段连接相邻两个控制顶点所得的 $ n $ 边折线多边形称为**控制多边形**（或 Bézier 多边形）。
+
+## Bézier曲线的性质
+
+### (1) 端点插值性质
+
+Bézier 曲线插值于首末两个控制顶点，即
+
+\[
+\mathbf{P}(0) = \mathbf{P}_0, \qquad \mathbf{P}(1) = \mathbf{P}_n.
+\]
+
+### (2) 几何不变性与仿射不变性
+
+对 Bézier 曲线进行仿射变换，即采用线性变换 $ M $ 和平移 $ \mathbf{c} $ 作用，得到的新曲线为
+
+\[
+\begin{aligned}
+\mathbf{P}^*(t) &= M\mathbf{P}(t) + \mathbf{c} = M\sum_{i=0}^{n} \mathbf{P}_i B_i^n(t) + \mathbf{c}\sum_{i=0}^{n} B_i^n(t) \\
+&= \sum_{i=0}^{n} (M\mathbf{P}_i + \mathbf{c}) B_i^n(t) = \sum_{i=0}^{n} \mathbf{P}_i^* B_i^n(t),
+\end{aligned}
+\]
+
+即 $ \mathbf{P}^*(t) $ 是由原控制顶点经相同的仿射变换后得到的新的控制顶点所构造的 Bézier 曲线。这说明，**Bézier 曲线的形状仅取决于控制顶点，而与坐标系的选取无关**，它是几何与仿射不变的。
+
+### (3) 对称性质
+
+如果颠倒控制顶点次序，即令 $ \mathbf{P}_i^* = \mathbf{P}_{n-i}\ (i = 0, 1, \cdots, n) $，那么这些新控制顶点定义的 Bézier 曲线为
+
+\[
+\begin{aligned}
+\mathbf{P}^*(t) &= \sum_{i=0}^{n} \mathbf{P}_i^* B_i^n(t) = \sum_{i=0}^{n} \mathbf{P}_{n-i} B_i^n(t) \\
+&= \sum_{i=0}^{n} \mathbf{P}_i B_{n-i}^n(t) = \sum_{i=0}^{n} \mathbf{P}_i B_i^n(1 - t) \\
+&= \mathbf{P}(1 - t).
+\end{aligned}
+\]
+
+这说明，这两条曲线的**形状完全相同但是参数化不同，曲线的方向相反**。这一性质也说明了由同一控制多边形定义的 Bézier 曲线是唯一的。
+
+### (4) 凸包性质
+
+对 $ n $ 次 Bézier 曲线
+
+\[
+\mathbf{P}(t) = \sum_{i=0}^{n} \mathbf{P}_i B_i^n(t), \quad t \in [0, 1],
+\]
+
+从 Bernstein 基函数的**非负性**和**单位分解性**可知，Bézier 曲线上的每一点 $ \mathbf{P}(t) $ 都是控制顶点 $ \mathbf{P}_i\ (i = 0, 1, \cdots, n) $ 的凸组合，而组合系数就是控制顶点对应的 Bernstein 基函数。在几何意义上：**Bézier 曲线完全落在由其控制多边形确定的凸包中**。
+
+### (5) 导矢性质
+
+利用 Bernstein 基函数求导公式，可得 $ n $ 次 Bézier 曲线的一阶导矢曲线（也称为一阶速端曲线）为
+
+\[
+\mathbf{P}'(t) = n \sum_{i=0}^{n-1} (\mathbf{P}_{i+1} - \mathbf{P}_i) B_i^{n-1}(t),
+\]
+
+这说明 $ \mathbf{P}'(t) $ 是一条 $ n - 1 $ 次 Bézier 曲线，其控制顶点是原控制多边形边矢量（或控制顶点的一阶差分）。进一步，$ n $ 次 Bézier 曲线的 $ r $ 阶导矢曲线（也称为 $ r $ 阶速端曲线）为
+
+\[
+\mathbf{P}^{(r)}(t) = \frac{n!}{(n-r)!} \sum_{i=0}^{n-r} \Delta^r \mathbf{P}_i B_i^{n-r}(t) = \frac{n!}{(n-r)!} \sum_{i=0}^{n-r} \nabla^r \mathbf{P}_{i+r} B_i^{n-r}(t),
+\]
+
+这说明 $ \mathbf{P}^{(r)}(t) $ 是一条 $ n - r $ 次 Bézier 曲线，其控制顶点是由原控制顶点 $ r $ 阶差分所确定。
+
+### 端点导矢与曲率
+
+在曲线端点处
+
+\[
+\mathbf{P}'(0) = n(\mathbf{P}_1 - \mathbf{P}_0), \qquad \mathbf{P}'(1) = n(\mathbf{P}_n - \mathbf{P}_{n-1}).
+\]
+
+这说明控制多边形的首尾两边 $ \mathbf{P}_1 - \mathbf{P}_0 $ 和 $ \mathbf{P}_n - \mathbf{P}_{n-1} $ 为曲线 $ \mathbf{P}(t) $ 在首末端点的切方向。
+
+而
+
+\[
+\mathbf{P}^{(r)}(0) = \frac{n!}{(n-r)!}\Delta^r \mathbf{P}_0, \qquad \mathbf{P}^{(r)}(1) = \frac{n!}{(n-r)!}\nabla^r \mathbf{P}_n,
+\]
+
+这说明曲线 $ \mathbf{P}(t) $ 在首末端点处的 $ r $ 阶导矢分别由其前、后 $ r + 1 $ 个控制顶点所确定。
+
+由一般参数化下曲线的曲率公式
+
+\[
+k = \frac{|\dot{\mathbf{p}} \times \ddot{\mathbf{p}}|}{|\dot{\mathbf{p}}|^3},
+\]
+
+曲线 $ \mathbf{P}(t) $ 在两个端点处的曲率分别为
+
+\[
+k(0) = \frac{(n-1)\left|\Delta \mathbf{P}_0 \times \Delta \mathbf{P}_1\right|}{n\left|\Delta \mathbf{P}_0\right|^3},
+\]
+
+\[
+k(1) = \frac{(n-1)\left|\nabla \mathbf{P}_{n-1} \times \nabla \mathbf{P}_n\right|}{n\left|\nabla \mathbf{P}_n\right|^3}.
+\]
+
+### (6) 升阶性质
+
+利用 Bernstein 基函数的升阶公式，一条 $ n $ 次 Bézier 曲线可以形式上升阶为 $ n + 1 $ 次的 Bézier 曲线
+
+\[
+\mathbf{P}(t) = \sum_{i=0}^{n} \mathbf{P}_i B_i^n(t) = \sum_{i=0}^{n+1} \mathbf{Q}_i B_i^{n+1}(t),
+\]
+
+升阶过程曲线保持不变，新的控制顶点满足
+
+\[
+\mathbf{Q}_i = \frac{i}{n+1}\mathbf{P}_{i-1} + \left(1 - \frac{i}{n+1}\right)\mathbf{P}_i, \quad i = 0, 1, \cdots, n+1, \qquad \mathbf{P}_{-1} = \mathbf{P}_{n+1} = \mathbf{0}.
+\]
+
+由于 $ \mathbf{Q}_0 = \mathbf{P}_0,\ \mathbf{Q}_{n+1} = \mathbf{P}_n $，因此升阶过程中两端的新控制顶点与原来相同。而当 $ 0 < i < n+1 $ 时，新控制顶点 $ \mathbf{Q}_i $ 是为控制多边形边 $ \mathbf{P}_{i-1}\mathbf{P}_i $ 上的一点，具体位置与 $ i $ 有关。几何上，新的控制多边形可以看做原控制多边形的一个“割角”过程。
+
+设
+
+\[
+\mathbf{p}^{(0)} = (\mathbf{P}_0, \mathbf{P}_1, \cdots, \mathbf{P}_n)^T, \qquad \mathbf{p}^{(1)} = (\mathbf{Q}_0, \mathbf{Q}_1, \cdots, \mathbf{Q}_{n+1})^T.
+\]
+
+上升阶过程中控制顶点的关系可以表示为
+
+\[
+\mathbf{p}^{(1)} = T_{n+1}\mathbf{p}^{(0)},
+\]
+
+其中 $ T_{n+1} $ 称为**升阶算子**，它是一个 $ (n+2) \times (n+1) $ 阶矩阵
+
+\[
+T_{n+1} = \frac{1}{n+1}
+\begin{pmatrix}
+n+1 & 0 & 0 & \cdots & 0 & 0 \\
+1 & n & 0 & \cdots & 0 & 0 \\
+0 & 2 & n-1 & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & \cdots & 2 & 0 \\
+0 & 0 & 0 & \cdots & n & 1 \\
+0 & 0 & 0 & \cdots & 0 & n+1
+\end{pmatrix}.
+\]
+
+升阶 $ m $ 次后，$ n $ 次 Bézier 曲线形式上表示为 $ n + m $ 次 Bézier 曲线，新的控制顶点向量为
+
+\[
+\mathbf{p}^{(m)} = T_{n+m} \cdots T_{n+2} T_{n+1} \mathbf{p}^{(0)}.
+\]
+
+升阶过程不断进行下去，当 $ m \to \infty $ 时，控制多边形 $ \mathbf{p}^{(m)} $ 就收敛到原 Bézier 曲线。
+
+在几何上：如果一条 Bézier 曲线的控制多边形按照升阶公式规则不断“割角”后，控制多边形收敛到此曲线。
+
+
+### (7) 变差缩减性质（VD 性质）
+
+对平面上的 Bézier 曲线，任一平面上的直线与 Bézier 曲线的交点个数不多于该直线与其控制多边形的交点个数。
+
+### (8) 保凸性质
+
+对平面上的 Bézier 曲线，如其控制多边形是凸的（指连接首末顶点构成的封闭多边形为凸的，相重边情况除外），则该 Bézier 曲线也是凸的。
+
+### (9) 控制顶点的局部影响
+
+移动 $ n $ 次 Bézier 曲线的控制顶点 $ \mathbf{P}_i $，将对整条曲线形状产生影响，且对参数 $ t = \frac{i}{n} $ 对应的点 $ \mathbf{P}\left(\frac{i}{n}\right) $ 影响最大。
+
+## de Casteljau 算法
+
+**目的：** 对 $ n $ 次 Bézier 曲线，对参数域中的某个参数 $ t \in [0, 1] $，希望给出简单、高效、几何特征明显的计算点 $ \mathbf{P}(t) $ 的方法。利用 Bernstein 基函数的递推公式，可知
+
+$$
+\begin{aligned}
+\mathbf{P}(t) &= \sum_{i=0}^{n} \mathbf{P}_i B_i^n(t) \\
+&= \mathbf{P}_0 (1 - t) B_0^{n-1}(t) + \sum_{i=1}^{n-1} \mathbf{P}_i \left[ (1 - t) B_i^{n-1}(t) + t B_{i-1}^{n-1}(t) \right] + \mathbf{P}_n t B_{n-1}^{n-1}(t) \\
+&= \sum_{i=0}^{n-1} \left[ (1 - t)\mathbf{P}_i + t\mathbf{P}_{i+1} \right] B_i^{n-1}(t) \\
+&= \sum_{i=0}^{n-1} \mathbf{P}_i^{(1)} B_i^{n-1}(t).
+\end{aligned}
+$$
+
+如上公式说明，一条 $ n $ 次 Bézier 曲线从形式上“降阶”为 $ n - 1 $ 次 Bézier 曲线，新的控制顶点 $ \mathbf{P}_i^{(1)} $ 落在原控制多边形的边 $ \mathbf{P}_i\mathbf{P}_{i+1} $ 上，且将边都按比例 $ t : 1 - t $ 进行分割。
+
+一直这样“降阶”下去，
+
+\[
+\mathbf{P}(t) = \sum_{i=0}^{n-1} \mathbf{P}_i^{(1)}(t) B_i^{n-1}(t) = \cdots = \sum_{i=0}^{n-k} \mathbf{P}_i^{(k)}(t) B_i^{n-k}(t) = \cdots = \mathbf{P}_0^{(n)}(t),
+\]
+
+最后 $ n $ 次 Bézier 曲线从形式上“降阶”为 $ 0 $ 次 Bézier 曲线（即一点）$ \mathbf{P}_0^{(n)}(t) $，这就是我们要求的曲线上的点 $ \mathbf{P}(t) $。
+
+这就是 Bézier 曲线的 **de Casteljau 算法**，总结为如下递归求值算法：
+
+$$
+\begin{cases}
+\mathbf{P}_i^{(0)}(t) \equiv \mathbf{P}_i^{(0)} = \mathbf{P}_i, & i = 0, 1, \cdots, n, \\[4pt]
+\mathbf{P}_i^{(k)}(t) = (1 - t)\mathbf{P}_i^{(k-1)}(t) + t\mathbf{P}_{i+1}^{(k-1)}(t), & i = 0, 1, \cdots, n - k;\ k = 1, 2, \cdots, n.
+\end{cases}
+$$
+
+在几何意义上：利用参数 $ t $，de Casteljau 算法就是在每一步的控制多边形的每一条边上，都按照比例 $ t : 1 - t $ 选择控制顶点而形成新的控制多边形，每做一级递推，控制多边形减少一条边，最后在只剩一条边的控制多边形上按照比例 $ t : 1 - t $ 选择的点就是所求点。
+
+对 $ n $ 次 Bézier 曲线而言，进行 $ n $ 级递推后将得到所求结果。
