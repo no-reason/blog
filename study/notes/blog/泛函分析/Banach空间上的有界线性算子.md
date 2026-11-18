@@ -835,5 +835,97 @@ $$
 (th2.5和2.6感觉讲的很快也没有讲证明感觉应该不是核心知识脉络的内容)
 
 
+# Baire纲定理
 
+
+$
+\begin{aligned}
+&设X,Y是赋范线性空间\\
+&则线性算子T:X\to Y是有界的充要条件是\\
+&T^{-1}\{y\in Y:\|y\|\leq 1\}的内部为非空集\\
+&证明:\\
+&\Rightarrow \\
+&T有界\Rightarrow T连续\\
+&0_X\in T^{-1}\{y\in Y:\|y\|<1\}\subset T^{-1}\{y\in Y:\|y\|\leq 1\}\\
+&且T^{-1}\{y:\|y\|<1\}为开集,故0_X是A的内点\\
+&\Leftarrow \\
+&\exists x_{0}\in X,\epsilon >0,s.t. \\
+&B(x_{0},\epsilon)\subset T^{-1}\{y\in Y:\|y\|\leq 1\}\\
+&i.e. B(x_{0},\epsilon)\subset \{x\in X:\|Tx\|\leq 1\}\\
+&(关键:非空内点\Rightarrow 0附近小扰动有一致界)\\
+&记A=\{x\in X:\|Tx\|\leq 1\},C=1+\|Tx_0\|\\
+&\forall h,\|h\|<\epsilon: x_0+h\in A\Rightarrow \|T(x_0+h)\|\leq 1\\
+&\|Th\|=\|T(x_0+h)-Tx_0\|\leq \|T(x_0+h)\|+\|Tx_0\|\leq C\\
+&\\
+&(路线一:直接证有界,再推出连续)\\
+&\forall x\neq 0, 取z=\frac{\epsilon}{2}\frac{x}{\|x\|}\in B(0,\epsilon)\\
+&\left\|T(\frac{\epsilon}{2}\frac{x}{\|x\|})\right\|\leq C
+\Rightarrow \frac{\epsilon}{2\|x\|}\|Tx\|\leq C
+\Rightarrow \|Tx\|\leq \frac{2C}{\epsilon}\|x\|\\
+&故T有界(即存在M=\frac{2C}{\epsilon}使\|Tx\|\leq M\|x\|),从而T在0连续\\
+&\\
+&(路线二:老师的\varepsilon-\delta证法,直接证在0连续)\\
+&\forall \eta>0, 取\delta=\frac{\epsilon\eta}{2C}\\
+&若\|x\|<\delta, 令h=\frac{2C}{\eta}x,则\|h\|<\epsilon\\
+&由上面的关键估计\|Th\|\leq C,即\frac{2C}{\eta}\|Tx\|\leq C\\
+&\Rightarrow \|Tx\|\leq \frac{\eta}{2}<\eta\\
+&故T在0处连续\\
+&\\
+&def 3.1\\
+&设X是距离空间,S\subset X,如果\overline{S}的内部是空集\\
+&则称S是无处稠密的\\
+&\\\\
+&def 3.2\\
+&在距离空间X中,若\Omega =\cup_{n=1}^{\infty}S_{n},\\
+&S_{n}都是无处稠密集\\
+&则称点集\Omega为第一纲的,否则称为第二纲的\\
+&\\\\
+&\\\\
+&Baire纲定理:\\
+&完备的距离空间X必是第二纲的\\
+&\\
+&证明:\\
+&反证:\\
+&若X是第一纲的\\
+&X=\cup_{n=1}^{\infty}\overline{S_{n}},int S_{n}=\emptyset,且S_{n}闭\\
+&\\
+&\forall x_{1}\in X,B(x_{1},1)\not \subset S_{1}\\
+&\Rightarrow B(x_{1},1)\cap S_{1}^{c}\ne \emptyset\\
+&\Rightarrow \exists B(x_{2},r_{2})\subset B(x_{1},1)\cap S_{1}^{c},(r_{2}<\frac{1}{2})\\
+&显然B(x_{2},r_{2})\not \subset S_{2}\\
+&\Rightarrow B(x_{2},r_{2})\cap S_{2}^{c}\ne \emptyset\\
+&\Rightarrow \exists B(x_{3},r_{3})\subset B(x_{2},r_{2})\cap S_{2}^{c},(r_{3}<\frac{1}{4})\\
+&\cdots\\
+&依次可得球套:\\
+&B(x_{n},r_{n})\subset B(x_{n-1},r_{n-1})\cap S_{n-1}^{c},(r_{n}<\frac{1}{2^{n}})\\
+&\Rightarrow d(x_{n},d_{x+p})<\frac{1}{2^{n}}\\
+&\Rightarrow x\notin S_{n}\\
+&矛盾\\
+&e.g.\\
+&R在R中是第二纲\\
+&(这个就是Baire纲定理)\\
+&R在C中是第一纲\\
+&(这个是直接按照定义来证明就可以)\\
+&R/Q在R中是二纲的\\
+&(二纲/一纲=二纲)\\
+&\\\\
+&e.g.1\\
+&在I=[0,1]上存在处处连续但处处不可微的函数\\
+&(Baire纲对于这类问题给出了不依赖直接构造的证明方法)\\
+&C[0,1]是二纲的\\
+&\Omega =\{f\in C[0,1]|f处处不可导\}二纲\\
+&\\
+&C[0,1]/\Omega=\{f\in C[0,1]|\exists x_{0},s.t.f'(x_0)存在\} I纲\\
+&N_{n}=\{f\in C[0,1]|\exists x_{0}\in (0,1),s.t. \frac{f(x_0+h)-f(x_0)}{h}<n,\forall h\}\\
+&\\
+&C[0,1]/ \Omega\subset \cup_{n=1}^{\infty}N_{n}\\
+&下面往证:\cup_{n=1}^{\infty}N_{n}是一纲的\\
+&I纲只需证明:\\
+&N_{n}无处稠密,N_{n}闭\\
+&(一)\forall n\in N,N_{n}是E中的闭集\\
+&homework:\\
+&这一章作业全做\\
+&(会发到学习通里面)\\
+\end{aligned}
+$
 
