@@ -597,3 +597,368 @@ $$
 在几何意义上：利用参数 $ t $，de Casteljau 算法就是在每一步的控制多边形的每一条边上，都按照比例 $ t : 1 - t $ 选择控制顶点而形成新的控制多边形，每做一级递推，控制多边形减少一条边，最后在只剩一条边的控制多边形上按照比例 $ t : 1 - t $ 选择的点就是所求点。
 
 对 $ n $ 次 Bézier 曲线而言，进行 $ n $ 级递推后将得到所求结果。
+
+## de Casteljau 算法的矩阵形式
+
+设
+
+$$
+\mathbf{P}^{(0)} = (\mathbf{P}_0, \mathbf{P}_1, \cdots, \mathbf{P}_n)^T, \quad \mathbf{P}^{(k)}(t) = (\mathbf{P}_0^{(k)}, \mathbf{P}_1^{(k)}, \cdots, \mathbf{P}_{n-k}^{(k)})^T,
+$$
+
+则 de Casteljau 算法可表示为矩阵形式
+
+$$
+\mathbf{P}^{(k)}(t) = M_k(t) \cdots M_2(t) M_1(t) \mathbf{P}^{(0)},
+$$
+
+其中 $(n-k+1) \times (n-k+2)$ 阶矩阵 $M_k(t)$ 为
+
+$$
+M_k(t) =
+\begin{pmatrix}
+1-t & t & 0 & \cdots & 0 & 0 \\
+0 & 1-t & t & \cdots & 0 & 0 \\
+\vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+0 & 0 & \cdots & 1-t & t & 0 \\
+0 & 0 & \cdots & 0 & 1-t & t
+\end{pmatrix},
+$$
+
+## Bézier 曲线的分割方法
+
+de Casteljau 算法也给出了 Bézier 曲线的分割方法。利用 de Casteljau 算法，计算 Bézier 曲线 $\mathbf{P}(t)$ 上的点 $\mathbf{P}(\tilde{t})$，该点把曲线分割为两条 $n$ 次 Bézier 曲线段：
+
+1. 第一条曲线 $\mathbf{P}(t)$ 对应的参数域为 $t \in [0, \tilde{t}]$，其控制顶点是 Casteljau 算法对应三角阵列（金字塔算法）公式中上面边上的所有点
+
+$$
+\mathbf{P}_0^{(0)}, \mathbf{P}_0^{(1)}(\tilde{t}), \cdots, \mathbf{P}_0^{(n-1)}(\tilde{t}), \mathbf{P}_0^{(n)}(\tilde{t}).
+$$
+
+2. 第二条曲线 $\mathbf{P}(t)$ 对应的参数域为 $t \in [\tilde{t}, 1]$，其控制顶点是 Casteljau 算法对应三角阵列（金字塔算法）公式中下面边上的所有点
+
+$$
+\mathbf{P}_0^{(n)}(\tilde{t}), \mathbf{P}_1^{(n-1)}(\tilde{t}), \cdots, \mathbf{P}_{n-1}^{(1)}(\tilde{t}), \mathbf{P}_n^{(0)}.
+$$
+
+## Bézier 曲线的参数连续拼接
+
+设 $n$ 次 Bézier 曲线 $\mathbf{P}(t)$ 和 $m$ 次 Bézier 曲线 $\mathbf{Q}(\hat{t})$ 分别定义为
+
+$$
+\mathbf{P}(t) = \sum_{i=0}^{n} \mathbf{P}_i B_i^n(t), \quad t \in [0, 1]
+$$
+
+$$
+\mathbf{Q}(\hat{t}) = \sum_{i=0}^{m} \mathbf{Q}_i B_i^m(\hat{t}), \quad \hat{t} \in [0, 1].
+$$
+
+考虑曲线 $\mathbf{P}(t)$ 在 $t=1$ 处和曲线 $\mathbf{Q}(\hat{t})$ 在 $\hat{t}=0$ 处参数连续拼接的条件：
+
+1. $C^0$ 连续条件：$\mathbf{P}_n = \mathbf{Q}_0$。
+2. $C^1$ 连续条件：$C^0$ 连续且 $n(\mathbf{P}_n - \mathbf{P}_{n-1}) = m(\mathbf{Q}_1 - \mathbf{Q}_0)$。
+3. $C^2$ 连续条件：$C^1$ 连续且
+
+$$
+n(n-1)(\mathbf{P}_n - 2\mathbf{P}_{n-1} + \mathbf{P}_{n-2}) = m(m-1)(\mathbf{Q}_2 - 2\mathbf{Q}_1 + \mathbf{Q}_0).
+$$
+
+## Bézier 曲线的几何连续拼接
+
+1. $G^0$ 连续条件：$\mathbf{P}_n = \mathbf{Q}_0$，这与 $C^0$ 连续条件相同。
+2. $G^1$ 连续条件：$G^0$ 连续且在连接点处具有同向的切向量，即存在正数 $\alpha > 0$，使得
+
+$$
+\Delta\mathbf{Q}_0 = \alpha \nabla\mathbf{P}_n.
+$$
+
+3. $G^2$ 连续条件：$G^1$ 连续且在连接点处具有相同的曲率矢，即满足两个条件：a) 密切平面重合或副法向量同向；b) 曲率相等。
+
+## 张量积型 Bernstein 基函数的定义
+
+对 $m$ 与 $n$ 次的一元 Bernstein 基函数
+
+$$
+\{B_i^m(u)\}_{i=0}^{m}, \quad \{B_j^n(v)\}_{j=0}^{n},
+$$
+
+张量积型 $m \times n$ 次二元 Bernstein 基函数为
+
+$$
+B_{i,j}^{m,n}(u, v) = B_i^m(u) B_j^n(v), \quad i = 0, 1, \cdots, m, \ j = 0, 1, \cdots, n.
+$$
+
+这 $(m+1) \times (n+1)$ 个多项式线性无关，从而构成二元多项式空间 $\mathbb{P}_{m,n}^{(2)}$ 的一组基。
+## 张量积型 Bernstein 基函数的性质
+
+1. **非负性.** $B_{i,j}^{m,n}(u, v) \ge 0, \quad (u, v) \in [0, 1] \times [0, 1]$.
+
+2. **单位分解性.**
+
+$$
+\sum_{i=0}^{m} \sum_{j=0}^{n} B_{i,j}^{m,n}(u, v) = \sum_{i=0}^{m} B_i^m(u) \sum_{j=0}^{n} B_j^n(v) \equiv 1.
+$$
+
+3. **角点性质.** 在参数域 $[0,1] \times [0,1]$ 的四个角点，分别只有一个基函数取值为 $1$，其余全部为 $0$，即
+
+$$
+B_{i,j}^{m,n}(0,0) =
+\begin{cases}
+1, & i = j = 0 \\
+0, & i \ne 0 \text{ 或 } j \ne 0,
+\end{cases}
+\qquad
+B_{i,j}^{m,n}(1,0) =
+\begin{cases}
+1, & i = m,\ j = 0 \\
+0, & i \ne m \text{ 或 } j \ne 0,
+\end{cases}
+$$
+
+$$
+B_{i,j}^{m,n}(0,1) =
+\begin{cases}
+1, & i = 0,\ j = n \\
+0, & i \ne 0 \text{ 或 } j \ne n,
+\end{cases}
+\qquad
+B_{i,j}^{m,n}(1,1) =
+\begin{cases}
+1, & i = m,\ j = n \\
+0, & i \ne m \text{ 或 } j \ne n.
+\end{cases}
+$$
+
+4. **递推公式.** 对 $i = 0, 1, \cdots, m,\ j = 0, 1, \cdots, n$，
+
+$$
+\begin{aligned}
+B_{i,j}^{m,n}(u, v) &= \left[ (1 - u)B_i^{m-1}(u) + uB_{i-1}^{m-1}(u) \right] B_j^n(v), \\
+B_{i,j}^{m,n}(u, v) &= B_i^m(u) \left[ (1 - v)B_j^{n-1}(v) + vB_{j-1}^{n-1}(v) \right], \\
+B_{i,j}^{m,n}(u, v) &= \left[ (1 - u)B_i^{m-1}(u) + uB_{i-1}^{m-1}(u) \right] \cdot \\
+&\quad \left[ (1 - v)B_j^{n-1}(v) + vB_{j-1}^{n-1}(v) \right].
+\end{aligned}
+$$
+
+5. **升阶公式.** 对 $i = 0, 1, \cdots, m,\ j = 0, 1, \cdots, n$，
+
+$$
+\begin{aligned}
+B_{i,j}^{m,n}(u, v) &= \left[ \frac{i+1}{m+1} B_{i+1}^{m+1}(u) + \left( 1 - \frac{i}{m+1} \right) B_i^{m+1}(u) \right] B_j^n(v), \\
+B_{i,j}^{m,n}(u, v) &= B_i^m(u) \left[ \frac{j+1}{n+1} B_{j+1}^{n+1}(v) + \left( 1 - \frac{j}{n+1} \right) B_j^{n+1}(v) \right], \\
+B_{i,j}^{m,n}(u, v) &= \left[ \frac{i+1}{m+1} B_{i+1}^{m+1}(u) + \left( 1 - \frac{i}{m+1} \right) B_i^{m+1}(u) \right] \cdot \\
+&\quad \left[ \frac{j+1}{n+1} B_{j+1}^{n+1}(v) + \left( 1 - \frac{j}{n+1} \right) B_j^{n+1}(v) \right].
+\end{aligned}
+$$
+
+6. **导函数递推公式.** 对 $i = 0, 1, \cdots, m,\ j = 0, 1, \cdots, n$，
+
+$$
+\frac{\partial}{\partial u} B_{i,j}^{m,n}(u, v) = (B_i^m(u))' B_j^n(v) = m \left[ B_{i-1}^{m-1}(u) - B_i^{m-1}(u) \right] B_j^n(v),
+$$
+
+$$
+\frac{\partial}{\partial v} B_{i,j}^{m,n}(u, v) = B_i^m(u) (B_j^n(v))' = n B_i^m(u) \left[ B_{j-1}^{n-1}(v) - B_j^{n-1}(v) \right].
+$$
+
+而
+
+$$
+\frac{\partial^{k+r}}{\partial u^k \partial v^r} B_{i,j}^{m,n}(u, v) = (B_i^m(u))^{(k)} (B_j^n(v))^{(r)}
+$$
+
+可以由如上两个公式逐步推出。
+
+7. **积分等值性.** 对 $i = 0, 1, \cdots, m,\ j = 0, 1, \cdots, n$，
+
+$$
+\int_0^1 \int_0^1 B_{i,j}^{m,n}(u, v) \, du \, dv = \frac{1}{(m+1)(n+1)}.
+$$
+
+## 张量积型 Bézier 曲面
+
+### 定义
+
+称参数曲面
+
+$$
+\mathbf{P}(u, v) = \sum_{i=0}^{m} \sum_{j=0}^{n} \mathbf{P}_{i,j} B_{i,j}^{m,n}(u, v), \quad (u, v) \in [0, 1] \times [0, 1], \tag{4.1}
+$$
+
+为 $m \times n$ 次 **Bézier 曲面**，其中 $B_{i,j}^{m,n}(u, v) = B_i^m(u) B_j^n(v)$ 为张量积型 Bernstein 基函数，空间向量 $\mathbf{P}_{i,j} \in \mathbb{R}^3$ 称为**控制顶点**，$i = 0, 1, \cdots, m,\ j = 0, 1, \cdots, n$。依次用直线段连接同行同列相邻两个控制顶点所得的 $m \times n$ 边折线网格称为**控制网格**（或 **Bézier 网**）。
+**(这里的图是什么意思，这里没有看明白)**
+**切矢可以直接拿线性组合算是什么意思**
+
+角点的切平面只和自己和相邻的两个切有关而且就是这三个围成的平面?
+### 性质 
+
+1. **角点插值性质.** Bézier 曲面插值其控制网格的四个角点，即
+
+$$
+\mathbf{P}(0, 0) = \mathbf{P}_{0,0}, \quad \mathbf{P}(0, 1) = \mathbf{P}_{0,n}, \quad \mathbf{P}(1, 0) = \mathbf{P}_{m,0}, \quad \mathbf{P}(1, 1) = \mathbf{P}_{m,n}.
+$$
+
+2. **几何不变性和仿射不变性.** 由张量积型 Bernstein 基函数的单位分解性可知。
+
+3. **凸包性质.** 由张量积型 Bernstein 基函数的非负性和单位分解性，可知张量积型 Bézier 曲面位于其控制顶点的凸包内。
+
+4. **等参线性质与边界性质.** 当参数取为等参线 $v = v^*$ 和 $u = u^*$ 时，曲面分别是 $m$ 次和 $n$ 次 Bézier 曲线，即
+
+$$
+\mathbf{P}(u, v^*) = \sum_{i=0}^{m} \left( \sum_{j=0}^{n} \mathbf{P}_{i,j} B_j^n(v^*) \right) B_i^m(u), \quad u \in [0, 1],
+$$
+
+$$
+\mathbf{P}(u^*, v) = \sum_{j=0}^{n} \left( \sum_{i=0}^{m} \mathbf{P}_{i,j} B_i^m(u^*) \right) B_j^n(v), \quad v \in [0, 1].
+$$
+
+当取为参数域的四条边界 $u = 0, u = 1, v = 0, v = 1$ 时，Bézier 曲面的边界恰好是由控制网格的四条边界控制多边形所决定的四条 Bézier 曲线，即
+
+$$
+\mathbf{P}(u, 0) = \sum_{i=0}^{m} \mathbf{P}_{i,0} B_i^m(u), \qquad \mathbf{P}(u, 1) = \sum_{i=0}^{m} \mathbf{P}_{i,n} B_i^m(u),
+$$
+
+$$
+\mathbf{P}(0, v) = \sum_{j=0}^{n} \mathbf{P}_{0,j} B_j^n(v), \qquad \mathbf{P}(1, v) = \sum_{j=0}^{n} \mathbf{P}_{m,j} B_j^n(v).
+$$
+
+5. **导矢性质.** 张量积型 Bézier 曲面的 $(k, l)$ 阶导矢为
+
+$$
+\begin{aligned}
+\frac{\partial^{k+l}}{\partial u^k \partial v^l} \mathbf{P}(u, v) &= \sum_{i=0}^{m} \sum_{j=0}^{n} \mathbf{P}_{i,j} (B_i^m(u))^{(k)} (B_j^n(v))^{(l)} \\
+&= \frac{m! \, n!}{(m-k)! \, (n-l)!} \sum_{i=0}^{m-k} \sum_{j=0}^{n-l} \Delta^{k,l} \mathbf{P}_{i,j} B_i^{m-k}(u) B_j^{n-l}(v),
+\end{aligned}
+$$
+
+特别地，曲面关于单参数的偏导矢为
+
+$$
+\frac{\partial^k}{\partial u^k} \mathbf{P}(u, v) = \frac{m!}{(m-k)!} \sum_{i=0}^{m-k} \sum_{j=0}^{n} \Delta^{k,0} \mathbf{P}_{i,j} B_i^{m-k}(u) B_j^n(v),
+$$
+
+$$
+\frac{\partial^l}{\partial v^l} \mathbf{P}(u, v) = \frac{n!}{(n-l)!} \sum_{i=0}^{m} \sum_{j=0}^{n-l} \Delta^{0,l} \mathbf{P}_{i,j} B_i^m(u) B_j^{n-l}(v).
+$$
+
+6. **边界与角点切矢性质.** 曲面在 $u = 0$、$v = 0$ 两条边界上的切矢为
+
+$$
+\frac{\partial}{\partial u}\mathbf{P}(0, v) = m \sum_{j=0}^{n} (\mathbf{P}_{1,j} - \mathbf{P}_{0,j}) B_j^n(v),
+$$
+
+$$
+\frac{\partial}{\partial v}\mathbf{P}(u, 0) = n \sum_{i=0}^{m} (\mathbf{P}_{i,1} - \mathbf{P}_{i,0}) B_i^m(u),
+$$
+
+在其它边界上的切矢 $\frac{\partial}{\partial u}\mathbf{P}(u, 0)$、$\frac{\partial}{\partial v}\mathbf{P}(0, v)$ 可以类似推出，在此不再一一列出。
+
+曲面在角点上的切矢分别为
+
+$$
+\mathbf{P}_u(0, 0) = m(\mathbf{P}_{1,0} - \mathbf{P}_{0,0}), \quad \mathbf{P}_u(1, 0) = m(\mathbf{P}_{m,0} - \mathbf{P}_{m-1,0}),
+$$
+
+$$
+\mathbf{P}_u(0, 1) = m(\mathbf{P}_{1,n} - \mathbf{P}_{0,n}), \quad \mathbf{P}_u(1, 1) = m(\mathbf{P}_{m,n} - \mathbf{P}_{m-1,n}),
+$$
+
+$$
+\mathbf{P}_v(0, 0) = n(\mathbf{P}_{0,1} - \mathbf{P}_{0,0}), \quad \mathbf{P}_v(1, 0) = n(\mathbf{P}_{m,1} - \mathbf{P}_{m,0}),
+$$
+
+$$
+\mathbf{P}_v(0, 1) = n(\mathbf{P}_{0,n} - \mathbf{P}_{0,n-1}), \quad \mathbf{P}_v(1, 1) = n(\mathbf{P}_{m,n} - \mathbf{P}_{m,n-1}),
+$$
+
+$$
+\mathbf{P}_{uv}(0, 0) = mn(\mathbf{P}_{1,1} - \mathbf{P}_{1,0} - \mathbf{P}_{0,1} + \mathbf{P}_{0,0}),
+$$
+
+$$
+\mathbf{P}_{uv}(1, 0) = mn(\mathbf{P}_{m,1} - \mathbf{P}_{m,0} - \mathbf{P}_{m-1,1} + \mathbf{P}_{m-1,0}),
+$$
+
+$$
+\mathbf{P}_{uv}(0, 1) = mn(\mathbf{P}_{1,n} - \mathbf{P}_{1,n-1} - \mathbf{P}_{0,n} + \mathbf{P}_{0,n-1}),
+$$
+
+$$
+\mathbf{P}_{uv}(1, 1) = mn(\mathbf{P}_{m,n} - \mathbf{P}_{m,n-1} - \mathbf{P}_{m-1,n} + \mathbf{P}_{m-1,n-1}).
+$$
+
+由曲面在一点处的单位法向量公式，
+
+$$
+\mathbf{e}(u, v) = \frac{\mathbf{P}_u(u, v) \times \mathbf{P}_v(u, v)}{\left| \mathbf{P}_u(u, v) \times \mathbf{P}_v(u, v) \right|},
+$$
+
+张量积型 Bézier 曲面在四个角点处的法向量（即为切平面的法向量）仅与该控制顶点在两个方向的一阶差分有关。
+
+例如，曲面在 $\mathbf{P}(0,0)$ 点处的法向量垂直于向量 $\mathbf{P}_{1,0} - \mathbf{P}_{0,0}$ 与 $\mathbf{P}_{0,1} - \mathbf{P}_{0,0}$，其切平面是 $\mathbf{P}_{0,0}$、$\mathbf{P}_{1,0}$、$\mathbf{P}_{0,1}$ 三点所决定的平面。在其它三个角点结论类似。
+
+7. **升阶性质.** $m \times n$ 次 Bézier 曲面可在形式上升阶为 $(m+1) \times n$ 次、$m \times (n+1)$ 次或 $(m+1) \times (n+1)$ 次曲面
+
+$$
+\begin{aligned}
+\mathbf{P}(u, v) &= \sum_{i=0}^{m} \sum_{j=0}^{n} \mathbf{P}_{i,j} B_i^m(u) B_j^n(v) \\
+&= \sum_{i=0}^{m+1} \sum_{j=0}^{n} \left( \alpha_i \mathbf{P}_{i-1,j} + (1 - \alpha_i)\mathbf{P}_{i,j} \right) B_i^{m+1}(u) B_j^n(v) \\
+&= \sum_{i=0}^{m} \sum_{j=0}^{n+1} \left( \beta_j \mathbf{P}_{i,j-1} + (1 - \beta_j)\mathbf{P}_{i,j} \right) B_i^m(u) B_j^{n+1}(v) \\
+&= \sum_{i=0}^{m+1} \sum_{j=0}^{n+1} \mathbf{P}_{i,j}^{*} B_i^{m+1}(u) B_j^{n+1}(v),
+\end{aligned}
+$$
+
+其中对 $i = 0, 1, \cdots, m+1,\ j = 0, 1, \cdots, n+1$
+
+$$
+\begin{aligned}
+\mathbf{P}_{i,j}^{*} &= \alpha_i \beta_j \mathbf{P}_{i-1,j-1} + \alpha_i (1 - \beta_j)\mathbf{P}_{i-1,j} \\
+&\quad + (1 - \alpha_i)\beta_j \mathbf{P}_{i,j-1} + (1 - \alpha_i)(1 - \beta_j)\mathbf{P}_{i,j}, \\
+\alpha_i &= \frac{i}{m+1}, \quad \beta_j = \frac{j}{n+1},
+\end{aligned}
+$$
+
+升阶公式说明，张量积型 Bézier 曲面升阶可采取“张量积”的方式进行，可对参数 $u$ 和 $v$ 分别进行，而且升阶结果与升阶两个参数的顺序无关。
+
+类似地，可以得到升多阶的公式。当两个方向次数都升阶趋于无穷时，控制网格收敛到原 Bézier 曲面。
+
+
+7. **de Casteleljau 算法.** 利用张量积型 Bernstein 基函数的递推公式，计算张量积 Bézier 曲面上一点 $\mathbf{P}(u, v)$ 也可由递归方法计算
+
+$$
+\begin{aligned}
+\mathbf{P}(u, v) &= \sum_{i=0}^{m} \sum_{j=0}^{n} \mathbf{P}_{i,j} B_i^m(u) B_j^n(v) \\
+&= \sum_{i=0}^{m} \sum_{j=0}^{n} \mathbf{P}_{i,j} \left[ (1 - u)B_i^{m-1}(u) + uB_{i-1}^{m-1}(u) \right] \left[ (1 - v)B_j^{n-1}(v) + vB_{j-1}^{n-1}(v) \right] \\
+&= \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} \left[ (1 - u)(1 - v)\mathbf{P}_{i,j} + (1 - u)v\mathbf{P}_{i,j+1} + u(1 - v)\mathbf{P}_{i+1,j} \right. \\
+&\qquad \left. + uv\mathbf{P}_{i+1,j+1} \right] B_i^{m-1}(u) B_j^{n-1}(v) \\
+&= \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} \mathbf{P}_{i,j}^{(1,1)}(u, v) B_i^{m-1}(u) B_j^{n-1}(v),
+\end{aligned}
+$$
+
+这样 $m \times n$ 次 Bézier 曲面从形式上“降阶”为 $(m-1) \times (n-1)$ 次 Bézier 曲面，新的控制顶点由原控制网格中的空间四边形的四个顶点线性组合而成，且对每一个空间四边形网格，组合系数是相同的。
+
+一直进行下去，有
+
+$$
+\begin{aligned}
+\mathbf{P}(u, v) &= \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} \mathbf{P}_{i,j}^{(1,1)}(u, v) B_i^{m-1}(u) B_j^{n-1}(v) \\
+&= \cdots \\
+&= \sum_{i=0}^{m-r} \sum_{j=0}^{n-s} \mathbf{P}_{i,j}^{(r,s)}(u, v) B_i^{m-r}(u) B_j^{n-s}(v) \\
+&= \cdots \\
+&= \mathbf{P}_{0,0}^{(m,n)}(u, v),
+\end{aligned}
+$$
+
+即 $m \times n$ 次 Bézier 曲面从形式上“降阶”为 $0 \times 0$ 次曲面（即一点）$\mathbf{P}_{0,0}^{(m,n)}(u, v)$，这就是我们要求的点 $\mathbf{P}(u, v)$。
+
+这就是张量积 Bézier 曲面的 **de Casteljau 算法**，总结如下：
+
+$$
+\begin{cases}
+\mathbf{P}_{i,j}^{(0,0)}(u, v) = \mathbf{P}_{i,j}^{(0,0)} = \mathbf{P}_{i,j}, & i = 0, 1, \cdots, m,\ j = 0, 1, \cdots, n, \\[4pt]
+\mathbf{P}_{i,j}^{(r,s)}(u, v) = (1 - u)(1 - v)\mathbf{P}_{i,j}^{(r-1,s-1)}(u, v) + (1 - u)v\mathbf{P}_{i,j+1}^{(r-1,s-1)}(u, v) \\
+\qquad\qquad\qquad + u(1 - v)\mathbf{P}_{i+1,j}^{(r-1,s-1)}(u, v) + uv\mathbf{P}_{i+1,j+1}^{(r-1,s-1)}(u, v), \\
+\qquad\qquad\qquad r = 1, 2, \cdots, m, \quad s = 1, 2, \cdots, n, \\
+\qquad\qquad\qquad i = 0, 1, \cdots, m - r, \quad j = 0, 1, \cdots, n - s.
+\end{cases}
+$$

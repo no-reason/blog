@@ -926,6 +926,88 @@ $
 &homework:\\
 &这一章作业全做\\
 &(会发到学习通里面)\\
+&\\
+&(整数集能不能考虑某种距离线性空间让它是非无处稠密集)\\
+&
 \end{aligned}
 $
 
+# 一致有界原理(共鸣定理)
+
+$
+\begin{aligned}
+&从逐点到局部到全局\\
+&设X是Banach空间,Y是赋范线性空间\\
+&\{T_{\tau}\}_{\tau \in \mathcal{A}}是L(X,Y)中的一族元素\\
+&若\sup_{\tau \in\mathcal {A}}\|T_{\tau}x\|<\infty,\forall x\in X\\
+&则\sup_{\tau \in\mathcal {A}}\|T_{\tau}\|<\infty\\
+&\\
+&首先考虑能不能在局部上证明出来\\
+&i.e.\\
+&是否\exists B(x_{0},\epsilon),s.t. \sup_{\tau}\frac{\|T_{\tau}x\|}{\|x\|}\leq M\\
+&N_{n}=\{x\in X|\frac{\|T_{\tau}x\|}{\|x\|}\leq n,\forall \tau\}\\
+&则X=\cup_{n=1}^{\infty}N_{n}\\
+&\\
+&由于每个T_{\tau}是连续的,故N_{n}是闭集\\
+&\\
+&而由Baire纲定理可知\\
+&X是第二纲的\\
+&故\exists N_{N}\ne \emptyset,int N_{N}\ne \emptyset\\
+&即\exists B(x_{0},\epsilon)\subset N_{N}\\
+&\\
+&针对x_{0},\exists \alpha >0,s.t. sup_{\tau}\|T_{\tau}x_{0}\|\leq \alpha \\
+&\forall y\in X,\|y\|<\epsilon\\
+&\|T_{\tau}y\|\leq \|T_{\tau}(y+x_{0})\|+\|T_{\tau}(x_{0})\|\leq N\|y+x_{0}\|+N\|x_{0}\|\leq 2N(\|y\|+\|x_{0}\|)\\
+&(至此即成功转化到了0附近的开球)\\
+&之后我们利用齐次性构造一下就可以了\\
+&\\\\
+&e.g.2(这个是Fourier级数的例子,这个没有细讲)\\
+&(但是这也是一个现代分析学促进古典分析学的一个例子)\\
+&\\\\
+&(Hellinger-Toeplitz定理)A:H\to H,dom (A)=H线性\\
+&<Ax,y>=<x,Ay>,\forall x,y\in H\\
+&则A是有界的\\
+&(这个东西在课本上是用闭图形定理来证明的)\\
+&(但是现在老师调整了一下讲课顺序)\\
+&(现在老师要用一致有界原理来证明这个定理)\\
+&(Helliger-Toeplitz定理的重要意义在于:)\\
+&(不存在定义在整理Hilbert空间上的无界对称线性算子)\\
+&\\\\
+&证明:\\
+&\forall y\in H\\
+&定义f_{y}:f_{y}(x)=\langle x , Ay \rangle\\
+&|f_{y}(x)|\leq \|Ay\|\cdot \|x\|\\
+& \Rightarrow f_{y}\in H^{*}\\
+&\|f_{y}\|=\|Ay\|\\
+&|f_{y}(x)|=\langle x,Ay\rangle =\langle Ax,y\rangle 
+&\\\\
+&下面回过头来学习开映射定理\\
+&(虽然课本讲th3.5称为开映射定理,但开映射定理的核心其实是th3.4)\\
+&th3.4\\
+&T\in \mathcal {L}(X,Y)\\
+&R(T)二纲\\
+&\\
+&则\forall \epsilon >0,\exists \eta >0\\
+&s.t.\{x\in X:\|x\|<\epsilon\}在映射T下的像包含开球\{y\in Y:\|y\|<\eta \}\\
+&\\
+&\\
+&(这个定理不证了,但是要求结果需要记住)\\
+&\\\\
+&(过会回讲R(T)二纲\iff T满)\\
+&\\
+&th3.5\\
+&设T\in L(X,Y),如果R(T)是二纲的\\
+&则映射T将X中开集映为Y中开集\\
+&(这个也不证了,老师觉得很简单)\\
+&\\
+&\\
+&(开映射定理很重要,在优化和控制的面试中都很重要)\\
+&\\
+&th3.6(Banach逆算子定理)\\
+&设X,Y都是Banach空间,T\in L(X,Y)\\
+&若T既单又满,则T^{-1}是连续的\\
+&\\\\
+&(这里需要和命题1.5联系来思考一下)\\
+&这个T^{-1}有界还等价于T下方有界\\
+\end{aligned}
+$
