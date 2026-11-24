@@ -199,13 +199,13 @@ k = \frac{|\dot{\mathbf{p}} \times \ddot{\mathbf{p}}|}{|\dot{\mathbf{p}}|^{3}},
 
 ## 曲线的参数连续性
 
-> **定义**
->
-> 参数曲线 $ \mathbf{p}(t) $ 在 $ t = t_0 $ 处为 **$ k $ 阶参数连续**（即 $ C^k $ 连续）当且仅当 $ \mathbf{p}(t) $ 的每个分量函数在 $ t = t_0 $ 处是 $ C^k $ 连续的，即
->
-> \[
-> \lim_{t \to t_0^+} \overset{(i)}{\mathbf{p}}(t) = \lim_{t \to t_0^-} \overset{(i)}{\mathbf{p}}(t), \quad i = 0, 1, \cdots, k, \tag{1.3}
-> \]
+**定义**
+
+参数曲线 $ \mathbf{p}(t) $ 在 $ t = t_0 $ 处为 **$ k $ 阶参数连续**（即 $ C^k $ 连续）当且仅当 $ \mathbf{p}(t) $ 的每个分量函数在 $ t = t_0 $ 处是 $ C^k $ 连续的，即
+
+\[
+\lim_{t \to t_0^+} \overset{(i)}{\mathbf{p}}(t) = \lim_{t \to t_0^-} \overset{(i)}{\mathbf{p}}(t), \quad i = 0, 1, \cdots, k, \tag{1.3}
+\]
 
 其中 $ \overset{(i)}{\mathbf{p}}(t) $ 表示 $ \mathbf{p}(t) $ 关于参数 $ t $ 的 $ i $ 阶导数。如果对所有的 $ t \in [a, b] $，曲线 $ \mathbf{p}(t) $ 均 $ C^k $ 连续，则称它为关于参数 $ t $ 的 **$ C^k $ 连续曲线**。
 
@@ -217,9 +217,9 @@ k = \frac{|\dot{\mathbf{p}} \times \ddot{\mathbf{p}}|}{|\dot{\mathbf{p}}|^{3}},
 
 由于每一段曲线通常是按照局部参数定义的 $ C^k $ 连续曲线，按如上定义，我们要构造参数连续的组合曲线，即满足一定参数连续的分段曲线，那么需要组合曲线找到一个合适的整体参数，使得组合曲线关于整体参数是连续的。但是满足要求的整体参数往往很难找到。因此选择与参数化无关的连续性条件有时是十分必要的，而几何连续性恰好满足这种要求。
 
-> **定义**
->
-> 如果参数曲线 $ \mathbf{p}(t) $ 在弧长参数化下曲线是 $ C^k $ 的，或者曲线存在一个局部正则的 $ C^k $ 参数表示，则称曲线 $ \mathbf{p}(t) $ 是 **$ k $ 阶几何连续**（即 **$ G^k $** 或 **$ GC^k $** 连续）的。
+**定义**
+
+如果参数曲线 $ \mathbf{p}(t) $ 在弧长参数化下曲线是 $ C^k $ 的，或者曲线存在一个局部正则的 $ C^k $ 参数表示，则称曲线 $ \mathbf{p}(t) $ 是 **$ k $ 阶几何连续**（即 **$ G^k $** 或 **$ GC^k $** 连续）的。
 
 ## 常用的低阶几何连续性条件
 
@@ -341,27 +341,27 @@ H=0代表着此处面积取极小值，曲率处处为零的曲面为极小曲�
 
 ## 曲面的参数连续性
 
-> **定义**
->
-> 如果参数曲面 $ \mathbf{p}(u, v),\ (u, v) \in [u_0, u_1] \times [v_0, v_1] $ 与 $ \mathbf{q}(u, v),\ (u, v) \in [u_0, u_1] \times [v_1, v_2] $ 在公共边界 $ \mathbf{p}(u, v_1) = \mathbf{q}(u, v_1) $ 上满足
->
-> \[
-> \frac{\partial^{i+j}}{\partial u^i \partial v^j} \mathbf{p}(u, v_1-) = \frac{\partial^{i+j}}{\partial u^i \partial v^j} \mathbf{q}(u, v_1+), \quad i + j = 0, 1, \cdots, k,
-> \]
->
-> 则称它们在公共边界上具有 **$ k $ 阶参数连续性**（即 $ C^k $ 连续）。
+**定义**
+
+如果参数曲面 $ \mathbf{p}(u, v),\ (u, v) \in [u_0, u_1] \times [v_0, v_1] $ 与 $ \mathbf{q}(u, v),\ (u, v) \in [u_0, u_1] \times [v_1, v_2] $ 在公共边界 $ \mathbf{p}(u, v_1) = \mathbf{q}(u, v_1) $ 上满足
+
+\[
+\frac{\partial^{i+j}}{\partial u^i \partial v^j} \mathbf{p}(u, v_1-) = \frac{\partial^{i+j}}{\partial u^i \partial v^j} \mathbf{q}(u, v_1+), \quad i + j = 0, 1, \cdots, k,
+\]
+
+则称它们在公共边界上具有 **$ k $ 阶参数连续性**（即 $ C^k $ 连续）。
 
 ## 曲面的几何连续性
 
-> **定义**
->
-> 对两个参数曲面，
->
-> 1. 如果它们有公共的连续边界，则称它们在公共边界上具有 **$ 0 $ 阶几何连续**（即 $ G^0 $ 连续）；
->
-> 2. 如果它们在公共边界上 $ G^0 $ 连续，并且它们在公共边界线上处处具有相同的切平面（或相同的曲面法线），则称它们沿公共边界具有 **$ 1 $ 阶几何连续性**（即 $ G^1 $ 连续）；
->
-> 3. 如果它们在公共边界上 $ G^1 $ 连续，并且具有公共的主曲率，及在两个主曲率相等时具有公共的主方向，则称它们沿公共边界具有 **$ 2 $ 阶几何连续性**（即 $ G^2 $ 连续）。
+**定义**
+
+对两个参数曲面，
+
+1. 如果它们有公共的连续边界，则称它们在公共边界上具有 **$ 0 $ 阶几何连续**（即 $ G^0 $ 连续）；
+
+2. 如果它们在公共边界上 $ G^0 $ 连续，并且它们在公共边界线上处处具有相同的切平面（或相同的曲面法线），则称它们沿公共边界具有 **$ 1 $ 阶几何连续性**（即 $ G^1 $ 连续）；
+
+3. 如果它们在公共边界上 $ G^1 $ 连续，并且具有公共的主曲率，及在两个主曲率相等时具有公共的主方向，则称它们沿公共边界具有 **$ 2 $ 阶几何连续性**（即 $ G^2 $ 连续）。
 ## 曲线曲面的常用参数表示方式
 
 一般情况下，参数曲线曲面也可表示为如下形式
@@ -389,15 +389,15 @@ Bezier曲线是参数曲线,所以可能会有自交点
 
 ## Bézier曲线的定义
 
-> **定义**
->
-> 称参数曲线段
->
-> \[
-> \mathbf{P}(t) = \sum_{i=0}^{n} \mathbf{P}_i B_i^n(t), \quad t \in [0, 1],
-> \]
->
-> 为一条 $ n $ 次 **Bézier 曲线**，其中 $ B_i^n(t) $ 为 $ n $ 次 Bernstein 基函数，空间向量 $ \mathbf{P}_i \in \mathbb{R}^3 $ 称为**控制顶点**。依次用直线段连接相邻两个控制顶点所得的 $ n $ 边折线多边形称为**控制多边形**（或 Bézier 多边形）。
+**定义**
+
+称参数曲线段
+
+\[
+\mathbf{P}(t) = \sum_{i=0}^{n} \mathbf{P}_i B_i^n(t), \quad t \in [0, 1],
+\]
+
+为一条 $ n $ 次 **Bézier 曲线**，其中 $ B_i^n(t) $ 为 $ n $ 次 Bernstein 基函数，空间向量 $ \mathbf{P}_i \in \mathbb{R}^3 $ 称为**控制顶点**。依次用直线段连接相邻两个控制顶点所得的 $ n $ 边折线多边形称为**控制多边形**（或 Bézier 多边形）。
 
 ## Bézier曲线的性质
 
@@ -961,4 +961,312 @@ $$
 \qquad\qquad\qquad r = 1, 2, \cdots, m, \quad s = 1, 2, \cdots, n, \\
 \qquad\qquad\qquad i = 0, 1, \cdots, m - r, \quad j = 0, 1, \cdots, n - s.
 \end{cases}
+
+# Bezier 三角形曲面片
+
+## 三角域上的 Bernstein 基函数
+
+设 $\tau_1 + \tau_2 + \tau_3 = 1$，定义二元 $n$ 次 Bernstein 基函数由 $(\tau_1 + \tau_2 + \tau_3)^n$ 的展开式的各项组成，即
+
 $$
+(\tau_1 + \tau_2 + \tau_3)^n = \sum_{\lambda_1 + \lambda_2 + \lambda_3 = n} B_{\lambda_1, \lambda_2, \lambda_3}^{n}(\tau_1, \tau_2, \tau_3),
+$$
+
+其中 $\lambda_1, \lambda_2, \lambda_3$ 为非负整数。
+
+$\tau_1, \tau_2, \tau_3$ 都满足非负时，等式 $\tau_1 + \tau_2 + \tau_3 = 1$ 决定了参数坐标系中的一个由 $(0,0), (0,1), (1,0)$ 点所确定的三角域，记为 $T$。这也是这类基函数称为**三角域**（或三角形、单纯形）上 Bernstein 基函数的原因。
+
+记
+
+$$
+\lambda = (\lambda_1, \lambda_2, \lambda_3), \quad \tau = (\tau_1, \tau_2, \tau_3),
+$$
+
+$$
+|\lambda| = \lambda_1 + \lambda_2 + \lambda_3 = n, \quad |\tau| = \tau_1 + \tau_2 + \tau_3 = 1,
+$$
+
+$$
+\tau^\lambda = \tau_1^{\lambda_1} \tau_2^{\lambda_2} \tau_3^{\lambda_3}, \quad \lambda! = \lambda_1! \lambda_2! \lambda_3!.
+$$
+
+则三角域上的 $n$ 次 Bernstein 基函数为
+
+$$
+B_\lambda^n(\tau) = \frac{n!}{\lambda!} \tau^\lambda = \frac{n!}{\lambda_1! \lambda_2! \lambda_3!} \tau_1^{\lambda_1} \tau_2^{\lambda_2} \tau_3^{\lambda_3}, \quad \tau \in T. \tag{5.1}
+$$
+
+三角域上的 $n$ 次 Bernstein 基函数共有 $\frac{1}{2}(n+1)(n+2)$ 个，这些函数线性无关，因此构成二元多项式空间 $\mathbb{P}_n^{(2)}$ 的一组基。
+
+### 三角域上 Bernstein 基函数的性质
+
+1. **非负性.** $B_\lambda^n(\tau) \ge 0, \tau \in T$
+
+2. **单位分解性.**
+
+$$
+\sum_{|\lambda| = n} B_\lambda^n(\tau) = (\tau_1 + \tau_2 + \tau_3)^n \equiv 1.
+$$
+
+3. **角点性质.** 在三角域 $T$ 的 3 个角点上，分别只有一个基函数取值为 $1$，其余基函数取值为 $0$，即
+
+$$
+\begin{cases}
+B_{n,0,0}^n(1, 0, 0) = 1, \\
+B_{\lambda_1, \lambda_2, \lambda_3}^n(1, 0, 0) = 0, & \lambda_1 < n,
+\end{cases}
+$$
+
+$$
+\begin{cases}
+B_{0,n,0}^n(0, 1, 0) = 1, \\
+B_{\lambda_1, \lambda_2, \lambda_3}^n(0, 1, 0) = 0, & \lambda_2 < n,
+\end{cases}
+$$
+
+$$
+\begin{cases}
+B_{0,0,n}^n(0, 0, 1) = 1, \\
+B_{\lambda_1, \lambda_2, \lambda_3}^n(0, 0, 1) = 0, & \lambda_3 < n.
+\end{cases}
+$$
+
+4. **对称性.**
+
+$$
+\begin{aligned}
+B_{\lambda_1, \lambda_2, \lambda_3}^n(\tau_1, \tau_2, \tau_3)
+&= B_{\lambda_2, \lambda_1, \lambda_3}^n(\tau_2, \tau_1, \tau_3)
+= B_{\lambda_2, \lambda_3, \lambda_1}^n(\tau_2, \tau_3, \tau_1) \\
+&= B_{\lambda_3, \lambda_1, \lambda_2}^n(\tau_3, \tau_1, \tau_2)
+= B_{\lambda_1, \lambda_3, \lambda_2}^n(\tau_1, \tau_3, \tau_2).
+\end{aligned}
+$$
+
+5. **边界性质.** 在三角域 $T$ 的三条边界 $\tau_1 = 0, \tau_2 = 0, \tau_3 = 0$ 上，Bernstein 基函数 $B_\lambda^n(\tau)$ 退化为相应的一元 Bernstein 基函数。
+
+6. **递推公式.** 每一个 $n$ 次 Bernstein 基函数都可以表示为三个 $n-1$ 次 Bernstein 基函数的组合形式
+
+$$
+\begin{cases}
+B_{\lambda_1, \lambda_2, \lambda_3}^n(\tau) = \tau_1 B_{\lambda_1-1, \lambda_2, \lambda_3}^{n-1}(\tau) + \tau_2 B_{\lambda_1, \lambda_2-1, \lambda_3}^{n-1}(\tau) + \tau_3 B_{\lambda_1, \lambda_2, \lambda_3-1}^{n-1}(\tau), \\[4pt]
+B_{\lambda_1, \lambda_2, \lambda_3}^n(\tau) = \frac{\lambda_1+1}{n+1} B_{\lambda_1+1, \lambda_2, \lambda_3}^{n+1}(\tau) + \frac{\lambda_2+1}{n+1} B_{\lambda_1, \lambda_2+1, \lambda_3}^{n+1}(\tau) + \frac{\lambda_3+1}{n+1} B_{\lambda_1, \lambda_2, \lambda_3+1}^{n+1}(\tau).
+\end{cases}
+$$
+
+7. **导函数递推式.**
+
+$$
+\frac{\partial}{\partial \tau_1} B_{\lambda_1, \lambda_2, \lambda_3}^n(\tau) = \frac{n!}{(\lambda_1 - 1)! \lambda_2! \lambda_3!} \tau_1^{\lambda_1 - 1} \tau_2^{\lambda_2} \tau_3^{\lambda_3} = n B_{\lambda_1-1, \lambda_2, \lambda_3}^{n-1}(\tau),
+$$
+
+$$
+\frac{\partial}{\partial \tau_2} B_{\lambda_1, \lambda_2, \lambda_3}^n(\tau) = \frac{n!}{\lambda_1! (\lambda_2 - 1)! \lambda_3!} \tau_1^{\lambda_1} \tau_2^{\lambda_2 - 1} \tau_3^{\lambda_3} = n B_{\lambda_1, \lambda_2-1, \lambda_3}^{n-1}(\tau),
+$$
+
+$$
+\frac{\partial}{\partial \tau_3} B_{\lambda_1, \lambda_2, \lambda_3}^n(\tau) = \frac{n!}{\lambda_1! \lambda_2! (\lambda_3 - 1)!} \tau_1^{\lambda_1} \tau_2^{\lambda_2} \tau_3^{\lambda_3 - 1} = n B_{\lambda_1, \lambda_2, \lambda_3-1}^{n-1}(\tau).
+$$
+
+令 $\mu = (\mu_1, \mu_2, \mu_3)$，$r = |\mu|$，对函数 $f(\tau)$ 的偏导数记为
+
+$$
+D^\mu f(\tau) = \frac{\partial^r}{\partial \tau_1^{\mu_1} \partial \tau_2^{\mu_2} \partial \tau_3^{\mu_3}} f(\tau),
+$$
+
+那么 Bernstein 基函数的偏导数为
+
+$$
+\begin{aligned}
+D^\mu B_\lambda^n(\tau) &= \frac{\partial^r}{\partial \tau_1^{\mu_1} \partial \tau_2^{\mu_2} \partial \tau_3^{\mu_3}} \frac{n!}{\lambda_1! \lambda_2! \lambda_3!} \tau_1^{\lambda_1} \tau_2^{\lambda_2} \tau_3^{\lambda_3} \\[4pt]
+&= \frac{n!}{(\lambda_1 - \mu_1)! (\lambda_2 - \mu_2)! (\lambda_3 - \mu_3)!} \tau_1^{\lambda_1 - \mu_1} \tau_2^{\lambda_2 - \mu_2} \tau_3^{\lambda_3 - \mu_3} \\[4pt]
+&= \frac{n!}{(n - r)!} B_{\lambda - \mu}^{n-r}(\tau).
+\end{aligned}
+$$
+
+8. **最大值.** 当 $n \ge 1$ 时，$B_\lambda^n(\tau)$ 在 $\tau = \frac{\lambda}{n}$ 处达到最大值。
+
+9. **积分等值性.** 所有 $n$ 次 Bernstein 基函数在 $T$ 上的积分值相同
+
+$$
+\int_T B_\lambda^n(\tau) d s = \frac{1}{(n+1)(n+2)}.
+$$
+
+(这里老师讲了一种三角形Bezier曲面片拼接的充分条件,就是相对应的部分是同一个平面(这个我还没完全搞懂,课下再研究一下))
+
+这里记录的“相对应部分共面”就是下面 $G^1$ 拼接条件中：四点共面且两个外侧控制顶点位于公共边两侧的充分条件。
+
+## Bezier 三角曲面片
+
+**定义**
+
+称参数曲面
+
+$$
+\mathbf{P}(u, v, w) = \sum_{i+j+k=n} \mathbf{P}_{i,j,k} B_{i,j,k}^n(u, v, w), \quad (u, v, w) \in T, \tag{5.2}
+$$
+
+为 $n$ 次 **Bernstein-Bézier 参数曲面片**（B-B 曲面片），简称 **Bézier 三角曲面片**，其中 $B_{i,j,k}^n(u, v, w)$ 为三角域上的 Bernstein 基函数，空间向量 $\mathbf{P}_{i,j,k} \in \mathbb{R}^3$ 称为**控制顶点**，$i, j, k$ 为非负整数且满足 $i + j + k = n$，$T$ 是由 $u \ge 0, v \ge 0, w \ge 0$ 且 $u + v + w = 1$ 确定的**三角参数域**。把任意三个控制顶点 $\mathbf{P}_{i,j,k}, \mathbf{P}_{i-1,j+1,k}, \mathbf{P}_{i-1,j,k+1}$ 用直线段两两相连所得到的由 $n^2$ 个三角形组成的三角形网格称为曲面的**控制网格**（或 Bézier 网，B 网）。
+
+### Bezier 三角片的性质
+
+1. **角点插值性质.** Bézier 三角片插值于其控制网格的三个角点，即
+
+$$
+\mathbf{P}(1, 0, 0) = \mathbf{P}_{n,0,0}, \quad \mathbf{P}(0, 1, 0) = \mathbf{P}_{0,n,0}, \quad \mathbf{P}(0, 0, 1) = \mathbf{P}_{0,0,n}.
+$$
+
+2. **几何不变性和仿射不变性.** 由三角域上 Bernstein 基函数的单位分解性可知.
+
+3. **凸包性质.** 由三角域上 Bernstein 基函数的非负性和单位分解性，可知 Bézier 三角片位于其控制网格的凸包内.
+
+4. **边界性质.** 当参数取为参数域 $T$ 的三条边界线 $u = 0, v = 0$ 和 $w = 0$ 时，Bézier 三角片的边界曲线恰好是其控制网格的三条边界控制多边形所决定的三条 $n$ 次 Bézier 曲线. 例如，当 $w = 0$ 时，有
+
+$$
+\begin{aligned}
+\mathbf{P}(u, v, 0) &= \sum_{i+j+k=n} \mathbf{P}_{i,j,k} B_{i,j,k}^n(u, v, 0) = \sum_{i+j=n} \mathbf{P}_{i,j,0} \frac{n!}{i! j!} u^i v^j \\[4pt]
+&= \sum_{i=0}^{n} \mathbf{P}_{i,n-i,0} B_i^n(u).
+\end{aligned}
+$$
+
+5. **切平面性质.** Bézier 三角片在 $(u, v, w) \in T$ 上沿三角域 $T$ 三边的方向导矢为
+
+$$
+D_{(1,-1,0)} \mathbf{P}(u, v, w) = n \sum_{i+j+k=n-1} (\mathbf{P}_{i+1,j,k} - \mathbf{P}_{i,j+1,k}) B_{i,j,k}^{n-1}(u, v, w),
+$$
+
+$$
+D_{(0,1,-1)} \mathbf{P}(u, v, w) = n \sum_{i+j+k=n-1} (\mathbf{P}_{i,j+1,k} - \mathbf{P}_{i,j,k+1}) B_{i,j,k}^{n-1}(u, v, w),
+$$
+
+$$
+D_{(-1,0,1)} \mathbf{P}(u, v, w) = n \sum_{i+j+k=n-1} (\mathbf{P}_{i,j,k+1} - \mathbf{P}_{i+1,j,k}) B_{i,j,k}^{n-1}(u, v, w).
+$$
+
+点 $(u, v, w)$ 处的切平面为 $\mathbf{T}\mathbf{P}(u, v, w)$，则可以“形式地”表示为
+
+$$
+\mathbf{P}_T(u, v, w) = \sum_{i+j+k=n-1} \Delta \mathbf{P}_{i+1,j,k} \mathbf{P}_{i,j+1,k} \mathbf{P}_{i,j,k+1} B_{i,j,0}^{n-1}(u, v, w),
+$$
+
+其中系数为 $\mathbf{P}_{i+1,j,k}, \mathbf{P}_{i,j+1,k}, \mathbf{P}_{i,j,k+1}$ 组成的三角形. 几何意义是，曲面上一点处切平面的法向量为这些三角形法向量的组合，组合系数为相应的 $n-1$ 次 Bernstein 基函数.
+
+\*\*\*\*\*
+
+#### 曲面边界点上的方向导矢与切平面
+
+在边界 $w = 0$ 上，三角片的各方向导矢为
+
+$$
+D_{(1,-1,0)} \mathbf{P}(u, v, 0) = n \sum_{i=0}^{n-1} (\mathbf{P}_{i+1,n-i-1,0} - \mathbf{P}_{i,n-i,0}) B_i^{n-1}(u),
+$$
+
+$$
+D_{(0,1,-1)} \mathbf{P}(u, v, 0) = n \sum_{i=0}^{n-1} (\mathbf{P}_{i,n-i,0} - \mathbf{P}_{i,n-i-1,1}) B_i^{n-1}(u),
+$$
+
+$$
+D_{(-1,0,1)} \mathbf{P}(u, v, 0) = n \sum_{i=0}^{n-1} (\mathbf{P}_{i,n-i-1,1} - \mathbf{P}_{i+1,n-i-1,0}) B_i^{n-1}(u).
+$$
+
+Bézier 三角片在边界 $w = 0$ 上的切平面 $\mathbf{T}\mathbf{P}(u, v, 0)$ 可以“形式地”表示为以 $n-1$ 个“平面”作为系数的一元 $n-1$ 次 Bézier 形式
+
+$$
+\mathbf{P}_T(u, v, 0) = \sum_{i=0}^{n-1} \Delta \mathbf{P}_{i+1,n-i-1,0} \mathbf{P}_{i,n-i,0} \mathbf{P}_{i,n-i-1,1} B_i^{n-1}(u).
+$$
+
+#### 曲面角点处的方向导矢与切平面
+
+当参数取为 $(1, 0, 0)$ 时，曲面在角点处的各方向导矢为
+
+$$
+D_{(1,-1,0)} \mathbf{P}(1, 0, 0) = n(\mathbf{P}_{n,0,0} - \mathbf{P}_{n-1,1,0}),
+$$
+
+$$
+D_{(0,1,-1)} \mathbf{P}(1, 0, 0) = n(\mathbf{P}_{n-1,1,0} - \mathbf{P}_{n-1,0,1}),
+$$
+
+$$
+D_{(-1,0,1)} \mathbf{P}(1, 0, 0) = n(\mathbf{P}_{n-1,0,1} - \mathbf{P}_{n,0,0}).
+$$
+
+Bézier 三角片在角点 $(1, 0, 0)$ 处的切平面为控制网格“角三角形”$\mathbf{P}_{n,0,0} \mathbf{P}_{n-1,1,0} \mathbf{P}_{n-1,0,1}$ 所在的平面
+
+$$
+\mathbf{T}\mathbf{P}(1, 0, 0) = \Delta \mathbf{P}_{n,0,0} \mathbf{P}_{n-1,1,0} \mathbf{P}_{n-1,0,1}.
+$$
+
+6. **升阶性质.** $n$ 次 Bézier 三角片可在形式上升阶为 $n+1$ 次 Bézier 三角片
+
+$$
+\begin{aligned}
+\mathbf{P}(u, v, w) &= \sum_{i+j+k=n} \mathbf{P}_{i,j,k} B_{i,j,k}^n(u, v, w) \\[4pt]
+&= \sum_{i+j+k=n+1} \mathbf{P}_{i,j,k}^{*} B_{i,j,k}^{n+1}(u, v, w), \quad (u, v, w) \in T,
+\end{aligned}
+$$
+
+其中
+
+$$
+\mathbf{P}_{i,j,k}^{*} = \frac{i}{n+1} \mathbf{P}_{i-1,j,k} + \frac{j}{n+1} \mathbf{P}_{i,j-1,k} + \frac{k}{n+1} \mathbf{P}_{i,j,k-1}, \quad i+j+k = n+1.
+$$
+
+在几何上，新控制顶点 $\mathbf{P}_{i,j,k}^{*}$ 落在三角形 $\mathbf{P}_{i-1,j,k} \mathbf{P}_{i,j-1,k} \mathbf{P}_{i,j,k-1}$ 上，并且在三角形上的面积坐标都是 $\left( \frac{i}{n+1}, \frac{j}{n+1}, \frac{k}{n+1} \right)$.
+
+7. **de Casteljau 算法.** 由三角域上 Bernstein 基函数的递推公式，得出计算曲面上一点 $\mathbf{P}(u, v, w)$ 的递归算法，
+
+$$
+\begin{aligned}
+\mathbf{P}(u, v, w) &= \sum_{i+j+k=n-1} \mathbf{P}_{i,j,k}^{(1)}(u, v, w) B_{i,j,k}^{n-1}(u, v, w) \\[4pt]
+&= \cdots = \mathbf{P}_{0,0,0}^{(n)}(u, v, w).
+\end{aligned}
+$$
+
+经过 $n$ 步后，曲面形式上“降阶”为 0 次曲面 $\mathbf{P}_{0,0,0}^{(n)}(u, v, w)$，即所求的点 $\mathbf{P}(u, v, w)$. 算法如下
+
+$$
+\begin{cases}
+\mathbf{P}_{i,j,k}^{(0)}(u, v, w) = \mathbf{P}_{i,j,k}^{(0)} = \mathbf{P}_{i,j,k}, & i+j+k = n, \\[4pt]
+\mathbf{P}_{i,j,k}^{(r)}(u, v, w) = u \mathbf{P}_{i+1,j,k}^{(r-1)}(u, v, w) + v \mathbf{P}_{i,j+1,k}^{(r-1)}(u, v, w) + w \mathbf{P}_{i,j,k+1}^{(r-1)}(u, v, w), \\[4pt]
+\qquad\qquad\qquad r = 1, 2, \cdots, n, \quad i+j+k = n-r.
+\end{cases} \tag{5.3}
+$$
+
+#### 实例：二次 Bézier 三角片控制顶点的递推关系
+
+二次 Bézier 三角片的控制网格由 6 个控制顶点 $\mathbf{P}_{0,0,2}^{(0)}, \mathbf{P}_{0,1,1}^{(0)}, \mathbf{P}_{0,2,0}^{(0)}, \mathbf{P}_{1,0,1}^{(0)}, \mathbf{P}_{1,1,0}^{(0)}, \mathbf{P}_{2,0,0}^{(0)}$ 组成，经过一次递推后得到 3 个控制顶点 $\mathbf{P}_{0,0,1}^{(1)}, \mathbf{P}_{0,1,0}^{(1)}, \mathbf{P}_{1,0,0}^{(1)}$，再经过一次递推得到所求的点 $\mathbf{P}_{0,0,0}^{(2)}$。
+
+#### 实例：两片三次 Bézier 三角片间的 $G^1$ 拼接
+
+两片 $n$ 次 Bézier 曲面片
+
+$$
+\mathbf{P}(u, v, w) = \sum_{i+j+k=n} \mathbf{P}_{i,j,k} B_{i,j,k}^n(u, v, w), \quad (u, v, w) \in T,
+$$
+
+$$
+\bar{\mathbf{P}}(\bar{u}, \bar{v}, \bar{w}) = \sum_{i+j+k=n} \bar{\mathbf{P}}_{i,j,k} B_{i,j,k}^n(\bar{u}, \bar{v}, \bar{w}), \quad (\bar{u}, \bar{v}, \bar{w}) \in \bar{T}
+$$
+
+在公共边界 $w = 0$ 和 $\bar{w} = 0$ 上，
+
+**(a) $G^0$ 连续.** 两曲面 $G^0$ 连续是指它们具有**公共的边界线** $\mathbf{P}(u, v, 0)$ 与 $\bar{\mathbf{P}}(\bar{u}, \bar{v}, 0)$，即控制顶点满足
+
+$$
+\mathbf{P}_{i,j,0} = \bar{\mathbf{P}}_{i,j,0}, \quad i+j = n.
+$$
+
+**(b) $G^1$ 连续.** 当两片曲面 $G^0$ 连续，且在公共边界线上处处具有相同的切平面，则两片曲面沿公共边界是 $G^1$ 连续的.
+
+即对 $i = 0, 1, \cdots, n-1$，四点
+
+$$
+\mathbf{P}_{i,n-i-1,1}, \mathbf{P}_{i+1,n-i-1,0}, \mathbf{P}_{i,n-i,0}, \bar{\mathbf{P}}_{i,n-i-1,1}
+$$
+
+共面，且两点 $\mathbf{P}_{i,n-i-1,1}, \bar{\mathbf{P}}_{i,n-i-1,1}$ 落在直线段 $\mathbf{P}_{i+1,n-i-1,0} \mathbf{P}_{i,n-i,0}$ 两侧时，两曲面沿公共边界达到 $G^1$ 连续.
+
+这是老师课堂上讲的 Bézier 三角片拼接的一个充分条件：每一对对应的“相邻三角形”处于同一个平面，并且两个外侧控制顶点位于公共边两侧。
+
+
