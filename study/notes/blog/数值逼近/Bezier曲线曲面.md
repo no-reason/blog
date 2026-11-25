@@ -961,6 +961,7 @@ $$
 \qquad\qquad\qquad r = 1, 2, \cdots, m, \quad s = 1, 2, \cdots, n, \\
 \qquad\qquad\qquad i = 0, 1, \cdots, m - r, \quad j = 0, 1, \cdots, n - s.
 \end{cases}
+$$
 
 # Bezier 三角形曲面片
 
